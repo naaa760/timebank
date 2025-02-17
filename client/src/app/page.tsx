@@ -84,7 +84,12 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center">
         {/* Trusted businesses banner */}
         <div className="text-center mb-8">
-          <span className="bg-[#e8ffd5] text-[#2d2d2d] px-4 py-2 rounded-full text-sm font-medium">
+          <span
+            className="bg-[#e8ffd5] text-[#2d2d2d] px-4 py-2 rounded-full text-sm font-semibold
+                          shadow-[0_2px_10px_rgba(132,204,22,0.2)]
+                          drop-shadow-sm
+                          border border-[#d1ffaa]"
+          >
             55,000+ trusted Businesses
           </span>
         </div>
@@ -94,10 +99,18 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Left content */}
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-5xl md:text-6xl font-semibold text-[#2d2d2d] leading-tight mb-6">
-                Put More Cash Back in Your Business Pocket.
+              <h1
+                className="text-5xl md:text-6xl font-bold text-[#2d2d2d] leading-tight mb-6
+                             drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]
+                             [text-shadow:_0_1px_0_rgb(0_0_0_/_10%)]"
+              >
+                TimeBank: Where time is currency, and every skill counts.
               </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl">
+              <p
+                className="text-lg text-gray-600 mb-8 max-w-2xl
+                              drop-shadow-sm
+                              [text-shadow:_0_1px_1px_rgb(255_255_255_/_80%)]"
+              >
                 Maximize savings with GreenClover, the AI-powered business card
                 that optimizes every purchase, giving you unmatched value
                 effortlessly.
@@ -106,23 +119,33 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   href="/more-info"
-                  className="px-6 py-3 bg-[#f4f4f4] text-[#2d2d2d] rounded-lg font-medium 
-                               hover:bg-[#e8e8e8] transition-all duration-300"
+                  className="px-6 py-3 bg-[#f4f4f4] text-[#2d2d2d] rounded-lg font-semibold 
+                               hover:bg-[#e8e8e8] transition-all duration-300
+                               shadow-[0_2px_10px_rgba(0,0,0,0.06)]
+                               hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)]
+                               border border-gray-200"
                 >
                   More Info
                 </Link>
                 <Link
                   href="/get-started"
-                  className="px-6 py-3 bg-[#2d2d2d] text-white rounded-lg font-medium 
-                               hover:bg-[#404040] transition-all duration-300"
+                  className="px-6 py-3 bg-[#2d2d2d] text-white rounded-lg font-semibold 
+                               hover:bg-[#404040] transition-all duration-300
+                               shadow-[0_2px_10px_rgba(0,0,0,0.1)]
+                               hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
+                               border border-[#1a1a1a]"
                 >
                   Get Started
                 </Link>
               </div>
 
-              <div className="mt-6 text-sm text-gray-500 space-y-2">
-                <p>*No long-term commitment, cancel anytime.*</p>
-                <p>*Instant savings first, monthly updates on the 1st.*</p>
+              <div className="mt-6 text-sm text-gray-500 space-y-2 font-medium">
+                <p className="drop-shadow-sm">
+                  *No long-term commitment, cancel anytime.*
+                </p>
+                <p className="drop-shadow-sm">
+                  *Instant savings first, monthly updates on the 1st.*
+                </p>
               </div>
             </div>
 
