@@ -22,7 +22,7 @@ export default function Navbar() {
               className="text-xl font-bold text-[#2d2d2d]
                             [text-shadow:_0_1px_0_rgb(0_0_0_/_10%)]"
             >
-              Clover
+              Timebank
             </span>
           </Link>
 

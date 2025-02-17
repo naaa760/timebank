@@ -119,32 +119,42 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   href="/more-info"
-                  className="px-6 py-3 bg-[#f4f4f4] text-[#2d2d2d] rounded-lg font-semibold 
-                               hover:bg-[#e8e8e8] transition-all duration-300
+                  className="group relative px-6 py-3 bg-[#f4f4f4] text-[#2d2d2d] rounded-lg font-semibold 
+                               hover:bg-[#e8e8e8] transition-all duration-300 overflow-hidden
                                shadow-[0_2px_10px_rgba(0,0,0,0.06)]
                                hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)]
                                border border-gray-200"
                 >
-                  More Info
+                  <span className="relative z-10">More Info</span>
+                  <div
+                    className="absolute inset-0 w-0 bg-gradient-to-r from-gray-200 to-gray-300 
+                                  transition-all duration-300 ease-out group-hover:w-full 
+                                  group-active:bg-gray-400 -skew-x-12 origin-left"
+                  ></div>
                 </Link>
                 <Link
                   href="/get-started"
-                  className="px-6 py-3 bg-[#2d2d2d] text-white rounded-lg font-semibold 
-                               hover:bg-[#404040] transition-all duration-300
+                  className="group relative px-6 py-3 bg-[#2d2d2d] text-white rounded-lg font-semibold 
+                               overflow-hidden transition-all duration-300
                                shadow-[0_2px_10px_rgba(0,0,0,0.1)]
                                hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
                                border border-[#1a1a1a]"
                 >
-                  Get Started
+                  <span className="relative z-10">Get Started</span>
+                  <div
+                    className="absolute inset-0 w-0 bg-gradient-to-r from-[#404040] to-[#505050] 
+                                  transition-all duration-300 ease-out group-hover:w-full 
+                                  group-active:bg-[#606060] -skew-x-12 origin-left"
+                  ></div>
                 </Link>
               </div>
 
               <div className="mt-6 text-sm text-gray-500 space-y-2 font-medium">
                 <p className="drop-shadow-sm">
-                  *No long-term commitment, cancel anytime.*
+                  Empower Community: Share skills, build trust.
                 </p>
                 <p className="drop-shadow-sm">
-                  *Instant savings first, monthly updates on the 1st.*
+                  Cashless Exchange: Trade time credits for services.
                 </p>
               </div>
             </div>
