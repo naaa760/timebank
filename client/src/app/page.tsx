@@ -10,6 +10,79 @@ export default function Home() {
       {/* Add a subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-silver/10 to-brown-200/20 z-0" />
 
+      {/* Abstract corner decorations with img3.png */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, rotate: -45 }}
+        animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute -left-20 -top-20 z-0"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-brown-300/20 to-transparent blur-2xl transform scale-110" />
+          <Image
+            src="/img3.png"
+            alt="Abstract decoration"
+            width={200}
+            height={200}
+            className="transform -rotate-45 opacity-80 drop-shadow-[0_20px_50px_rgba(133,99,88,0.3)]"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, rotate: 45 }}
+        animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute -right-20 -top-20 z-0"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-bl from-silver-300/20 to-transparent blur-2xl transform scale-110" />
+          <Image
+            src="/img3.png"
+            alt="Abstract decoration"
+            width={200}
+            height={200}
+            className="transform rotate-45 opacity-80 drop-shadow-[0_20px_50px_rgba(167,167,167,0.3)]"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, rotate: -45 }}
+        animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute -left-20 -bottom-20 z-0"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-tr from-brown-300/20 to-transparent blur-2xl transform scale-110" />
+          <Image
+            src="/img3.png"
+            alt="Abstract decoration"
+            width={200}
+            height={200}
+            className="transform rotate-[135deg] opacity-80 drop-shadow-[0_20px_50px_rgba(133,99,88,0.3)]"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, rotate: 45 }}
+        animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute -right-20 -bottom-20 z-0"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-tl from-silver-300/20 to-transparent blur-2xl transform scale-110" />
+          <Image
+            src="/img3.png"
+            alt="Abstract decoration"
+            width={200}
+            height={200}
+            className="transform -rotate-[135deg] opacity-80 drop-shadow-[0_20px_50px_rgba(167,167,167,0.3)]"
+          />
+        </div>
+      </motion.div>
+
       {/* Background decorative images - updated with new animations */}
       <motion.div
         className="absolute -left-20 top-40 z-0"
