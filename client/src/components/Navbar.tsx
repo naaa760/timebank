@@ -9,78 +9,82 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/logo.png" // Add your logo to public folder
-              alt="Clover Logo"
-              width={32}
-              height={32}
-              className="w-8 h-8 drop-shadow-md"
-            />
+          {/* Logo with enhanced hover effect */}
+          <Link href="/" className="flex items-center space-x-2 group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-lg">
+              <Image
+                src="/img3.png"
+                alt="Timebank Logo"
+                width={80}
+                height={80}
+                className="object-contain drop-shadow-md transition-all duration-300
+                         filter contrast-125 brightness-105 group-hover:scale-110
+                         group-hover:rotate-3"
+                quality={100}
+                priority
+                style={{
+                  transform: "translate3d(0, 0, 0)",
+                  imageRendering: "crisp-edges",
+                }}
+              />
+            </div>
             <span
-              className="text-xl font-bold text-[#2d2d2d]
-                            [text-shadow:_0_1px_0_rgb(0_0_0_/_10%)]"
+              className="text-xl font-bold text-[#2d2d2d] transition-all duration-300
+                          [text-shadow:_0_1px_0_rgb(0_0_0_/_10%)]
+                          group-hover:text-[#404040] group-hover:translate-x-0.5"
             >
               Timebank
             </span>
           </Link>
 
-          {/* Navigation Links */}
+          {/* Navigation Links with enhanced hover effects */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/product"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium
-                        drop-shadow-sm hover:drop-shadow"
-            >
-              Product
-            </Link>
-            <Link
-              href="/reviews"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium
-                        drop-shadow-sm hover:drop-shadow"
-            >
-              Reviews
-            </Link>
-            <Link
-              href="/benefits"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium
-                        drop-shadow-sm hover:drop-shadow"
-            >
-              Benefits
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium
-                        drop-shadow-sm hover:drop-shadow"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/changelog"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium
-                        drop-shadow-sm hover:drop-shadow"
-            >
-              Changelog
-            </Link>
+            {[
+              { href: "/product", label: "Product" },
+              { href: "/reviews", label: "Reviews" },
+              { href: "/benefits", label: "Benefits" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/changelog", label: "Changelog" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="relative text-gray-600 hover:text-gray-900 transition-all duration-300 
+                        font-medium group py-2"
+              >
+                {link.label}
+                <span
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-900 transform scale-x-0 
+                              transition-transform duration-300 group-hover:scale-x-100"
+                />
+              </Link>
+            ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button with enhanced hover effect */}
           <Link
             href="/get-clover"
             className="hidden md:inline-flex items-center px-4 py-2 bg-[#2d2d2d] text-white rounded-lg 
-                     hover:bg-[#404040] transition-all duration-300 text-sm font-semibold
-                     shadow-[0_2px_10px_rgba(0,0,0,0.1)]
+                     hover:bg-[#404040] transition-all duration-300 text-sm font-semibold relative
+                     shadow-[0_2px_10px_rgba(0,0,0,0.1)] overflow-hidden group
                      hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
                      border border-[#1a1a1a]"
           >
-            Get Clover
+            <span className="relative z-10">Get Started</span>
+            <div
+              className="absolute inset-0 h-full w-full bg-gradient-to-r from-[#404040] to-[#505050] 
+                         transform translate-x-full group-hover:translate-x-0 transition-transform 
+                         duration-300"
+            />
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+          {/* Mobile Menu Button with hover effect */}
+          <button
+            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 
+                          hover:bg-gray-100 transition-all duration-300 group"
+          >
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 transform transition-transform duration-300 group-hover:rotate-180"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
