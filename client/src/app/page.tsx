@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -342,6 +345,137 @@ export default function Home() {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Unique Features section */}
+      <section className="py-20 bg-[#fafafa] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h2
+              className={`text-[40px] font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}`}
+            >
+              Unique Features That Make a Difference
+            </h2>
+            <p className="text-[#666666] text-lg max-w-2xl mx-auto leading-relaxed">
+              Focusing on innovation and usability, we provide tools that
+              enhance productivity and drive success.
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: (
+                  <svg
+                    className="w-7 h-7 text-[#ff6b3d]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                ),
+                title: "Seamless Integration",
+                description: "Unite your apps for a cohesive workflow.",
+              },
+              {
+                icon: (
+                  <svg
+                    className="w-6 h-6 text-[#ff6b3d]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                  </svg>
+                ),
+                title: "Advance Reporting",
+                description: "Reports customized to your metrics.",
+              },
+              {
+                icon: "📝",
+                title: "Quoting & Invoicing",
+                description: "Generate quotes and invoices easily.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-[28px] p-10 transition-all duration-500
+                          shadow-[0_4px_30px_rgba(0,0,0,0.03)]
+                          hover:shadow-[0_4px_40px_rgba(0,0,0,0.06)]
+                          hover:translate-y-[-2px]"
+              >
+                <div className="mb-8">
+                  <div
+                    className="w-[72px] h-[72px] bg-white rounded-2xl flex items-center justify-center
+                                shadow-[0_4px_24px_rgba(0,0,0,0.06)] group-hover:scale-105 
+                                transition-all duration-500"
+                  >
+                    {feature.icon}
+                  </div>
+                </div>
+                <h3
+                  className={`text-[22px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                >
+                  {feature.title}
+                </h3>
+                <p className="text-[#666666] text-[17px] leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Feature Cards - Second Row */}
+            {[
+              {
+                icon: "⚡",
+                title: "Project Automation",
+                description: "Simply automate follow-ups to drive results.",
+              },
+              {
+                icon: "👥",
+                title: "Audience Grouping",
+                description: "Easily filter contacts for targeted marketing.",
+              },
+              {
+                icon: "🔒",
+                title: "Advanced Security",
+                description: "Leading-edge security solutions for your data.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-[32px] p-12 transition-all duration-300
+                          shadow-[0_2px_20px_rgba(0,0,0,0.02)]
+                          hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
+              >
+                <div className="mb-8">
+                  <div
+                    className="w-16 h-16 bg-white rounded-full flex items-center justify-center
+                                shadow-[0_4px_24px_rgba(0,0,0,0.04)] group-hover:scale-110 
+                                transition-transform duration-300"
+                  >
+                    {feature.icon}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-semibold text-[#2d2d2d] mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-[#666666] text-lg leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
