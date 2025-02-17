@@ -116,35 +116,37 @@ export default function Home() {
                 effortlessly.
               </p>
 
+              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   href="/more-info"
-                  className="group relative px-6 py-3 bg-[#f4f4f4] text-[#2d2d2d] rounded-lg font-semibold 
-                               hover:bg-[#e8e8e8] transition-all duration-300 overflow-hidden
-                               shadow-[0_2px_10px_rgba(0,0,0,0.06)]
-                               hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)]
-                               border border-gray-200"
+                  className="group relative px-8 py-3 bg-white/50 text-[#2d2d2d] rounded-lg font-semibold 
+                           overflow-hidden transition-all duration-300
+                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)]
+                           border border-white/50 backdrop-blur-sm"
                 >
-                  <span className="relative z-10">More Info</span>
+                  <span className="relative z-10 group-hover:text-[#2d2d2d] transition-colors">
+                    More Info
+                  </span>
                   <div
-                    className="absolute inset-0 w-0 bg-gradient-to-r from-gray-200 to-gray-300 
-                                  transition-all duration-300 ease-out group-hover:w-full 
-                                  group-active:bg-gray-400 -skew-x-12 origin-left"
+                    className="absolute inset-0 bg-white/80 transform scale-x-0 group-hover:scale-x-100 
+                                 transition-transform duration-300 origin-left"
                   ></div>
                 </Link>
+
                 <Link
                   href="/get-started"
-                  className="group relative px-6 py-3 bg-[#2d2d2d] text-white rounded-lg font-semibold 
-                               overflow-hidden transition-all duration-300
-                               shadow-[0_2px_10px_rgba(0,0,0,0.1)]
-                               hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
-                               border border-[#1a1a1a]"
+                  className="group relative px-8 py-3 bg-[#2d2d2d]/90 text-white rounded-lg font-semibold 
+                           overflow-hidden transition-all duration-300
+                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
+                           border border-[#1a1a1a]/50 backdrop-blur-sm"
                 >
-                  <span className="relative z-10">Get Started</span>
+                  <span className="relative z-10 group-hover:text-white transition-colors">
+                    Get Started
+                  </span>
                   <div
-                    className="absolute inset-0 w-0 bg-gradient-to-r from-[#404040] to-[#505050] 
-                                  transition-all duration-300 ease-out group-hover:w-full 
-                                  group-active:bg-[#606060] -skew-x-12 origin-left"
+                    className="absolute inset-0 bg-[#1a1a1a] transform scale-x-0 group-hover:scale-x-100 
+                                 transition-transform duration-300 origin-left"
                   ></div>
                 </Link>
               </div>
@@ -181,6 +183,168 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Why Choose Us section */}
+      <section className="py-20 bg-[#f9fff0]/40 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-16">
+            <span className="text-[#84cc16] font-medium inline-flex items-center gap-2 mb-2">
+              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0L10 5.09L15.5 5.09L11 8.19L13 13.28L8 10.18L3 13.28L5 8.19L0.5 5.09L6 5.09L8 0Z" />
+              </svg>
+              THE CLOVER ADVANTAGES
+            </span>
+            <h2 className="text-[2.5rem] font-bold text-[#2d2d2d] mb-4">
+              Why Choose Us?
+            </h2>
+            <p className="text-[#4a4a4a] text-lg">
+              Leverage the power of AI to automatically optimize your purchases,
+              ensuring you get the best value for your business with every
+              transaction.
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* AI-Optimized Savings */}
+            <div
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
+                          transition-all duration-300 
+                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
+                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
+                          hover:border-[#84cc16]/30 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+                AI-Optimized Savings – No Effort Required
+              </h3>
+              <p className="text-[#4a4a4a]">
+                Never miss an opportunity to save. Unlike traditional cards, our
+                AI dynamically adjusts to maximize your savings on every
+                purchase in real-time.
+              </p>
+            </div>
+
+            {/* Real-Time Insights */}
+            <div
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
+                          transition-all duration-300 
+                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
+                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
+                          hover:border-[#84cc16]/30 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.5h-15V5h15v14.5z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+                Real-Time Insights – Smarter Spending
+              </h3>
+              <p className="text-[#4a4a4a]">
+                Stay in control with detailed analytics. We provide transparent
+                spending reports and intelligent insights to guide your
+                financial decisions.
+              </p>
+            </div>
+
+            {/* Flexible Plans */}
+            <div
+              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
+                          transition-all duration-300 
+                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
+                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
+                          hover:border-[#84cc16]/30 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M19.5 3h-15A2.5 2.5 0 002 5.5v13A2.5 2.5 0 004.5 21h15a2.5 2.5 0 002.5-2.5v-13A2.5 2.5 0 0019.5 3zm-7 2h2v2h-2V5zm-2 12h-2v-2h2v2z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+                Flexible Plans – Tailored for You
+              </h3>
+              <p className="text-[#4a4a4a]">
+                Adaptive plans adjust monthly, ensuring you always get the best
+                savings, rewards, and maximum optimal value for your business
+                needs.
+              </p>
+            </div>
+          </div>
+
+          {/* Features Tags Slider */}
+          <div className="mt-12 overflow-hidden relative before:content-[''] before:absolute before:left-0 before:top-0 before:w-20 before:h-full before:bg-gradient-to-r before:from-[#f9fff0]/40 before:to-transparent before:z-10 after:content-[''] after:absolute after:right-0 after:top-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-[#f9fff0]/40 after:to-transparent after:z-10">
+            <div className="flex animate-scroll gap-6 py-4">
+              {[
+                "Automatic Adjustments",
+                "Real-Time Reports",
+                "Secure Transactions",
+                "Dedicated Support",
+                "Flexible Payments",
+                "Smart Spending",
+                "Customizable Plans",
+                "Instant Savings",
+              ].map((feature, index) => (
+                <span
+                  key={feature + index}
+                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
+                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
+                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
+                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
+                           flex-none"
+                >
+                  {feature}
+                </span>
+              ))}
+              {/* Duplicate items for seamless loop */}
+              {[
+                "Automatic Adjustments",
+                "Real-Time Reports",
+                "Secure Transactions",
+                "Dedicated Support",
+                "Flexible Payments",
+                "Smart Spending",
+                "Customizable Plans",
+                "Instant Savings",
+              ].map((feature, index) => (
+                <span
+                  key={feature + "duplicate" + index}
+                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
+                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
+                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
+                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
+                           flex-none"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
