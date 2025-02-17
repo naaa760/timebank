@@ -62,6 +62,12 @@ const config: Config = {
         float: "float 6s ease-in-out infinite",
         "float-delayed": "floatDelayed 7s ease-in-out infinite",
         draw: "draw 3s ease-out forwards",
+        "fade-in": "fadeIn 1s ease-out forwards",
+        "scale-in": "scaleIn 0.5s ease-out forwards",
+        "slow-spin": "slow-spin 20s linear infinite",
+        "slow-spin-reverse": "slow-spin-reverse 25s linear infinite",
+        "draw-spiral": "draw-spiral 3s ease-out forwards",
+        "draw-wave": "draw-wave 10s linear infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
