@@ -1021,6 +1021,239 @@ export default function Home() {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Pricing Section */}
+        <div className="py-24 bg-gradient-to-b from-white/50 to-white/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2
+                className={`text-4xl font-bold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+              >
+                Choose the Best Plan for Your Business
+              </h2>
+              <p className="text-[#666666] text-lg max-w-2xl mx-auto">
+                Find the right plan for your needs, with flexible choices and
+                transparent pricing details.
+              </p>
+
+              {/* Pricing Toggle */}
+              <div className="flex items-center justify-center gap-4 mt-8">
+                <span
+                  className={`text-sm font-medium ${plusJakarta.className} text-[#2d2d2d]`}
+                >
+                  Monthly
+                </span>
+                <div className="w-12 h-6 bg-white/50 rounded-full p-1 cursor-pointer">
+                  <div className="w-4 h-4 bg-[#2d2d2d] rounded-full" />
+                </div>
+                <span
+                  className={`text-sm font-medium ${plusJakarta.className} text-[#666666]`}
+                >
+                  Yearly
+                </span>
+                <span className="text-xs font-medium text-orange-500 bg-orange-500/10 px-2 py-1 rounded-full">
+                  Save 20%
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Pricing Cards */}
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {[
+                {
+                  name: "Basic Plan",
+                  description: "Small businesses",
+                  price: "19",
+                  features: [
+                    "Contact Management",
+                    "Task and Activity Tracking",
+                    "Automation Workflows",
+                    "Customizable Dashboards",
+                    "24/7 Priority Support",
+                  ],
+                },
+                {
+                  name: "Basic Plan",
+                  description: "Growing businesses",
+                  price: "49",
+                  popular: true,
+                  features: [
+                    "Contact Management",
+                    "Task and Activity Tracking",
+                    "Automation Workflows",
+                    "Customizable Dashboards",
+                    "24/7 Priority Support",
+                  ],
+                },
+                {
+                  name: "Enterprise Plan",
+                  description: "Large businesses",
+                  price: "99",
+                  features: [
+                    "Contact Management",
+                    "Task and Activity Tracking",
+                    "Automation Workflows",
+                    "Customizable Dashboards",
+                    "24/7 Priority Support",
+                  ],
+                },
+              ].map((plan, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: index * 0.2 }}
+                  whileHover={{
+                    y: -8,
+                    transition: { duration: 0.3 },
+                  }}
+                  className={`relative p-8 rounded-3xl overflow-hidden ${
+                    plan.popular ? "bg-[#2d2d2d]" : "bg-white/10"
+                  }`}
+                  style={{
+                    backdropFilter: "blur(12px)",
+                    border: plan.popular
+                      ? "1px solid rgba(255,255,255,0.2)"
+                      : "1px solid rgba(255,255,255,0.3)",
+                    boxShadow: "0 8px 32px 0 rgba(31,38,135,0.1)",
+                  }}
+                >
+                  {/* Popular badge */}
+                  {plan.popular && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5, duration: 0.3 }}
+                      className="absolute top-4 right-4 px-3 py-1 bg-lime-500/20 rounded-full"
+                    >
+                      <span className="text-xs font-medium text-lime-600">
+                        Popular
+                      </span>
+                    </motion.div>
+                  )}
+
+                  <div className="relative z-10">
+                    {/* Price animation */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+                      className="flex items-baseline mb-8"
+                    >
+                      <span
+                        className={`text-4xl font-bold ${
+                          plan.popular ? "text-white" : "text-[#2d2d2d]"
+                        }`}
+                      >
+                        ${plan.price}
+                      </span>
+                      <span
+                        className={`text-sm ml-2 ${
+                          plan.popular ? "text-white/60" : "text-[#666666]"
+                        }`}
+                      >
+                        /month
+                      </span>
+                    </motion.div>
+
+                    {/* Button with hover effect */}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full py-3 px-6 rounded-xl mb-8 transition-all duration-300 ${
+                        plan.popular
+                          ? "bg-white text-[#2d2d2d] hover:bg-white/90"
+                          : "bg-[#2d2d2d] text-white hover:bg-[#2d2d2d]/90"
+                      }`}
+                    >
+                      Get Started
+                    </motion.button>
+
+                    {/* Features list with staggered animation */}
+                    <div className="space-y-4">
+                      {plan.features.map((feature, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: 0.4 + i * 0.1 }}
+                          className="flex items-center gap-3"
+                        >
+                          <motion.svg
+                            whileHover={{ scale: 1.2, rotate: 360 }}
+                            transition={{ duration: 0.3 }}
+                            className={`w-5 h-5 ${
+                              plan.popular ? "text-white" : "text-[#2d2d2d]"
+                            }`}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </motion.svg>
+                          <span
+                            className={`text-sm ${
+                              plan.popular ? "text-white/80" : "text-[#666666]"
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Animated gradient background */}
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    style={{
+                      background: plan.popular
+                        ? "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)"
+                        : "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%)",
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Features included */}
+            <div className="mt-16 text-center">
+              <p className="text-[#666666] mb-8">All Plans Include</p>
+              <div className="flex flex-wrap justify-center gap-6">
+                {[
+                  "Email Support",
+                  "Real-Time Collaboration",
+                  "Document Sharing",
+                  "Mobile App Access",
+                ].map((feature, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-[#666666]
+                     border border-white/50"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
