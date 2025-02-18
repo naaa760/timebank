@@ -1,129 +1,116 @@
-import { UserButton } from "@clerk/nextjs";
+"use client";
+
+import { Suspense } from "react";
+import { UserButton, useUser } from "@clerk/nextjs";
+import { PlusCircle, Search } from "lucide-react";
 import Link from "next/link";
-import DashboardCard from "@/components/DashboardCard";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import TimeBalance from "@/components/TimeBalance";
+import RecentTransactions from "@/components/RecentTransactions";
+import AvailableServices from "@/components/AvailableServices";
+import UpcomingAppointments from "@/components/UpcomingAppointments";
+import CommunityActivity from "@/components/CommunityActivity";
 
 export default function DashboardPage() {
+  const { user } = useUser();
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Top Navigation Bar */}
-      <nav className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-xl font-semibold text-gray-800">
-            TimeBank Dashboard
-          </h1>
-          <UserButton afterSignOutUrl="/" />
+    <div className="flex flex-col min-h-screen">
+      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-primary">TimeBank</h1>
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search services..."
+                className="w-64 pl-9"
+              />
+            </div>
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <DashboardCard title="Time Balance">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">120</p>
-              <p className="text-sm text-gray-600">Hours Available</p>
-            </div>
-          </DashboardCard>
-
-          <DashboardCard title="Services Offered">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-green-600">8</p>
-              <p className="text-sm text-gray-600">Active Listings</p>
-            </div>
-          </DashboardCard>
-
-          <DashboardCard title="Services Received">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">5</p>
-              <p className="text-sm text-gray-600">Completed</p>
-            </div>
-          </DashboardCard>
-        </div>
-
-        {/* Quick Actions and Recent Activity */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Quick Actions */}
-          <div className="space-y-6">
-            <DashboardCard title="Quick Actions">
-              <div className="space-y-3">
-                <Link
-                  href="/services/offer"
-                  className="block w-full text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
-                >
-                  Offer a Service
-                </Link>
-                <Link
-                  href="/services/request"
-                  className="block w-full text-center bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
-                >
-                  Request a Service
-                </Link>
-                <Link
-                  href="/community"
-                  className="block w-full text-center bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"
-                >
-                  Join Community
-                </Link>
-              </div>
-            </DashboardCard>
-
-            <DashboardCard title="My Services">
-              <div className="space-y-3">
-                {/* Placeholder for services list */}
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="font-medium">Web Development</p>
-                  <p className="text-sm text-gray-600">2 hours/session</p>
+      </header>
+      <main className="flex-grow container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Main Content Area */}
+          <div className="md:col-span-2 space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Welcome back, {user?.firstName}!</CardTitle>
+                <CardDescription>
+                  Here is what is happening with your TimeBank account
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-start mb-6">
+                  <TimeBalance />
+                  <div className="space-x-2">
+                    <Button asChild>
+                      <Link href="/services/offer-service">
+                        <PlusCircle className="mr-2 h-4 w-4" /> Offer Service
+                      </Link>
+                    </Button>
+                    <Button variant="outline" asChild>
+                      <Link href="/services">
+                        <Search className="mr-2 h-4 w-4" /> Find Service
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="font-medium">Language Teaching</p>
-                  <p className="text-sm text-gray-600">1 hour/session</p>
+                <div className="space-y-6">
+                  <Suspense fallback={<div>Loading transactions...</div>}>
+                    <RecentTransactions />
+                  </Suspense>
+                  <Suspense fallback={<div>Loading services...</div>}>
+                    <AvailableServices />
+                  </Suspense>
                 </div>
-              </div>
-            </DashboardCard>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Recent Activity */}
+          {/* Sidebar */}
           <div className="space-y-6">
-            <DashboardCard title="Recent Activity">
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <div>
-                    <p className="font-medium">Service Completed</p>
-                    <p className="text-sm text-gray-600">
-                      Web Development with John Doe
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      2 hours • 2 days ago
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <div>
-                    <p className="font-medium">New Service Request</p>
-                    <p className="text-sm text-gray-600">
-                      Language Teaching from Jane Smith
-                    </p>
-                    <p className="text-xs text-gray-500">1 hour • 3 days ago</p>
-                  </div>
-                </div>
-              </div>
-            </DashboardCard>
+            <Card>
+              <CardHeader>
+                <CardTitle>Upcoming Appointments</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Suspense fallback={<div>Loading appointments...</div>}>
+                  <UpcomingAppointments />
+                </Suspense>
+              </CardContent>
+            </Card>
 
-            <DashboardCard title="Upcoming Sessions">
-              <div className="space-y-3">
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="font-medium">Web Development Session</p>
-                  <p className="text-sm text-gray-600">with John Doe</p>
-                  <p className="text-xs text-gray-500">Tomorrow at 2:00 PM</p>
-                </div>
-              </div>
-            </DashboardCard>
+            <Card>
+              <CardHeader>
+                <CardTitle>Community Activity</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Suspense fallback={<div>Loading community activity...</div>}>
+                  <CommunityActivity />
+                </Suspense>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>
+      <footer className="border-t bg-white">
+        <div className="container mx-auto px-4 py-4 text-center text-sm text-muted-foreground">
+          © 2024 TimeBank. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
