@@ -5,13 +5,13 @@ import Link from "next/link";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { GlassCard } from "@/components/GlassCard";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { FeatureCard } from "@/components/FeatureCard";
 
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Home() {
-  const { scrollY } = useScroll();
+  useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -39,24 +39,19 @@ export default function Home() {
     checkAuth();
   }, []);
 
-  const navBackground = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]
-  );
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
       {/* Navbar */}
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 px-4 py-4 mx-4 mt-4 rounded-2xl 
-                   bg-white/20 backdrop-blur-[6px] border border-white/30"
+                   bg-gradient-to-r from-white/20 via-lime-500/10 to-white/20 backdrop-blur-[6px] 
+                   border border-lime-500/20 shadow-lg shadow-lime-500/10"
         animate={{
           backdropFilter: isScrolled ? "blur(12px)" : "blur(6px)",
-          boxShadow: isScrolled ? "0 4px 30px rgba(0, 0, 0, 0.03)" : "none",
+          boxShadow: isScrolled ? "0 4px 30px rgba(132, 204, 22, 0.1)" : "none",
           background: isScrolled
-            ? "rgba(255, 255, 255, 0.8)"
-            : "rgba(255, 255, 255, 0.2)",
+            ? "linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(132, 204, 22, 0.1), rgba(255, 255, 255, 0.8))"
+            : "linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(132, 204, 22, 0.1), rgba(255, 255, 255, 0.2))",
         }}
       >
         <div className="max-w-7xl mx-auto">
@@ -78,7 +73,7 @@ export default function Home() {
               <span
                 className={`text-lg font-semibold text-[#2d2d2d] ${plusJakarta.className}`}
               >
-                Active
+                TiMBnk
               </span>
             </motion.div>
 
@@ -89,24 +84,22 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {["Features", "Pricing", "About", "Contact"].map(
-                (item, index) => (
-                  <motion.a
-                    key={item}
-                    href="#"
-                    className="text-[#666666] hover:text-[#2d2d2d] transition-colors duration-200
+              {["Features", "Pricing", "About", "Contact"].map((item) => (
+                <motion.a
+                  key={item}
+                  href="#"
+                  className="text-[#666666] hover:text-[#2d2d2d] transition-colors duration-200
                            relative group"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {item}
-                    <motion.div
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {item}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full
                              transition-all duration-300"
-                      initial={false}
-                    />
-                  </motion.a>
-                )
-              )}
+                    initial={false}
+                  />
+                </motion.a>
+              ))}
             </motion.div>
 
             {/* CTA Button */}
