@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -6,8 +8,17 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div
+      className={`min-h-screen bg-white relative overflow-hidden transition-all duration-700 
+                     ${isLoaded ? "opacity-100" : "opacity-0"}`}
+    >
       {/* Navbar */}
       <Navbar />
 
@@ -84,7 +95,14 @@ export default function Home() {
         </svg>
       </div>
 
-      <main className="flex min-h-screen flex-col items-center justify-center">
+      <main
+        className={`flex min-h-screen flex-col items-center justify-center transition-all duration-700 delay-300 transform
+                       ${
+                         isLoaded
+                           ? "translate-y-0 opacity-100"
+                           : "translate-y-10 opacity-0"
+                       }`}
+      >
         {/* Trusted businesses banner */}
         <div className="text-center mb-8">
           <span
@@ -188,174 +206,86 @@ export default function Home() {
       </main>
 
       {/* Why Choose Us section */}
-      <section className="py-20 bg-[#f9fff0]/40 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-16">
-            <span className="text-[#84cc16] font-medium inline-flex items-center gap-2 mb-2">
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0L10 5.09L15.5 5.09L11 8.19L13 13.28L8 10.18L3 13.28L5 8.19L0.5 5.09L6 5.09L8 0Z" />
-              </svg>
+      <section className="py-24 relative overflow-hidden">
+        {/* Background with warm gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#fdfcfb] to-[#e2d1c3]" />
+
+        {/* Decorative elements */}
+        <div className="absolute inset-0">
+          {/* Floating orbs */}
+          <div
+            className="absolute top-20 right-40 w-[300px] h-[300px] rounded-full 
+                          bg-gradient-to-br from-[#e2d1c3]/30 to-transparent blur-[60px] 
+                          animate-float-slow"
+          />
+          <div
+            className="absolute bottom-40 left-20 w-[400px] h-[400px] rounded-full 
+                          bg-gradient-to-tr from-[#e2d1c3]/20 to-transparent blur-[80px] 
+                          animate-float-slow-reverse"
+          />
+
+          {/* Subtle patterns */}
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-[#84cc16] text-sm font-medium inline-flex items-center gap-2">
+              <span className="w-8 h-[1px] bg-[#84cc16]" />
               THE CLOVER ADVANTAGES
+              <span className="w-8 h-[1px] bg-[#84cc16]" />
             </span>
-            <h2 className="text-[2.5rem] font-bold text-[#2d2d2d] mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#2d2d2d] mt-4 mb-6">
               Why Choose Us?
             </h2>
-            <p className="text-[#4a4a4a] text-lg">
-              Leverage the power of AI to automatically optimize your purchases,
-              ensuring you get the best value for your business with every
-              transaction.
-            </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* AI-Optimized Savings */}
-            <div
-              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
-                          transition-all duration-300 
-                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
-                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
-                          hover:border-[#84cc16]/30 hover:-translate-y-1"
-            >
-              <div className="mb-6">
-                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
-                AI-Optimized Savings – No Effort Required
-              </h3>
-              <p className="text-[#4a4a4a]">
-                Never miss an opportunity to save. Unlike traditional cards, our
-                AI dynamically adjusts to maximize your savings on every
-                purchase in real-time.
-              </p>
-            </div>
-
-            {/* Real-Time Insights */}
-            <div
-              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
-                          transition-all duration-300 
-                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
-                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
-                          hover:border-[#84cc16]/30 hover:-translate-y-1"
-            >
-              <div className="mb-6">
-                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.5h-15V5h15v14.5z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
-                Real-Time Insights – Smarter Spending
-              </h3>
-              <p className="text-[#4a4a4a]">
-                Stay in control with detailed analytics. We provide transparent
-                spending reports and intelligent insights to guide your
-                financial decisions.
-              </p>
-            </div>
-
-            {/* Flexible Plans */}
-            <div
-              className="bg-white/80 backdrop-blur-sm rounded-xl p-8 
-                          transition-all duration-300 
-                          border border-[#e8ffd5] shadow-[0_2px_15px_-3px_rgba(132,204,22,0.05)]
-                          hover:shadow-[0_8px_25px_-5px_rgba(132,204,22,0.15)]
-                          hover:border-[#84cc16]/30 hover:-translate-y-1"
-            >
-              <div className="mb-6">
-                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M19.5 3h-15A2.5 2.5 0 002 5.5v13A2.5 2.5 0 004.5 21h15a2.5 2.5 0 002.5-2.5v-13A2.5 2.5 0 0019.5 3zm-7 2h2v2h-2V5zm-2 12h-2v-2h2v2z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
-                Flexible Plans – Tailored for You
-              </h3>
-              <p className="text-[#4a4a4a]">
-                Adaptive plans adjust monthly, ensuring you always get the best
-                savings, rewards, and maximum optimal value for your business
-                needs.
-              </p>
-            </div>
-          </div>
-
-          {/* Features Tags Slider */}
-          <div className="mt-12 overflow-hidden relative before:content-[''] before:absolute before:left-0 before:top-0 before:w-20 before:h-full before:bg-gradient-to-r before:from-[#f9fff0]/40 before:to-transparent before:z-10 after:content-[''] after:absolute after:right-0 after:top-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-[#f9fff0]/40 after:to-transparent after:z-10">
-            <div className="flex animate-scroll gap-6 py-4">
-              {[
-                "Automatic Adjustments",
-                "Real-Time Reports",
-                "Secure Transactions",
-                "Dedicated Support",
-                "Flexible Payments",
-                "Smart Spending",
-                "Customizable Plans",
-                "Instant Savings",
-              ].map((feature, index) => (
-                <span
-                  key={feature + index}
-                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
-                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
-                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
-                           flex-none"
-                >
-                  {feature}
-                </span>
-              ))}
-              {/* Duplicate items for seamless loop */}
-              {[
-                "Automatic Adjustments",
-                "Real-Time Reports",
-                "Secure Transactions",
-                "Dedicated Support",
-                "Flexible Payments",
-                "Smart Spending",
-                "Customizable Plans",
-                "Instant Savings",
-              ].map((feature, index) => (
-                <span
-                  key={feature + "duplicate" + index}
-                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
-                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
-                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
-                           flex-none"
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
       {/* Unique Features section */}
-      <section className="py-20 bg-[#fafafa] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Warm gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#fdfcfb] to-[#e2d1c3]" />
+
+        {/* Decorative elements */}
+        <div className="absolute inset-0">
+          {/* Animated gradient circles */}
+          <div
+            className="absolute -top-1/4 right-0 w-[800px] h-[800px] rounded-full 
+                          bg-gradient-to-br from-[#e2d1c3]/40 via-[#fdfcfb]/20 to-transparent 
+                          blur-[100px] animate-pulse-slow transform rotate-12"
+          />
+
+          <div
+            className="absolute -bottom-1/4 left-0 w-[800px] h-[800px] rounded-full 
+                          bg-gradient-to-tr from-[#e2d1c3]/30 via-[#fdfcfb]/10 to-transparent 
+                          blur-[120px] animate-pulse-slow-reverse transform -rotate-12"
+          />
+
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1.5 h-1.5 rounded-full animate-float-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                backgroundColor: `rgba(226, 209, 195, ${
+                  0.3 + Math.random() * 0.4
+                })`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${15 + Math.random() * 15}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
-              className={`text-[40px] font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}`}
+              className={`text-[40px] font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}
+                            [text-shadow:_0_1px_1px_rgb(255_255_255_/_80%)]`}
             >
               Unique Features That Make a Difference
             </h2>
@@ -405,38 +335,6 @@ export default function Home() {
                 title: "Quoting & Invoicing",
                 description: "Generate quotes and invoices easily.",
               },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-[28px] p-10 transition-all duration-500
-                          shadow-[0_4px_30px_rgba(0,0,0,0.03)]
-                          hover:shadow-[0_4px_40px_rgba(0,0,0,0.06)]
-                          hover:translate-y-[-2px]"
-              >
-                <div className="mb-8">
-                  <div
-                    className="w-[72px] h-[72px] bg-white rounded-2xl flex items-center justify-center
-                                shadow-[0_4px_24px_rgba(0,0,0,0.06)] group-hover:scale-105 
-                                transition-all duration-500"
-                  >
-                    {feature.icon}
-                  </div>
-                </div>
-                <h3
-                  className={`text-[22px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-                >
-                  {feature.title}
-                </h3>
-                <p className="text-[#666666] text-[17px] leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Feature Cards - Second Row */}
-            {[
               {
                 icon: "⚡",
                 title: "Project Automation",
@@ -455,23 +353,28 @@ export default function Home() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-[32px] p-12 transition-all duration-300
-                          shadow-[0_2px_20px_rgba(0,0,0,0.02)]
-                          hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
+                className="group bg-white/80 backdrop-blur-sm rounded-[32px] p-12 
+                             transition-all duration-500 hover-glow feature-card
+                             border border-[#e2d1c3]/20 shadow-[0_4px_30px_rgba(226,209,195,0.1)]
+                             hover:shadow-[0_20px_40px_rgba(226,209,195,0.2)]
+                             hover:-translate-y-2"
               >
-                <div className="mb-8">
+                <div className="mb-10">
                   <div
-                    className="w-16 h-16 bg-white rounded-full flex items-center justify-center
-                                shadow-[0_4px_24px_rgba(0,0,0,0.04)] group-hover:scale-110 
-                                transition-transform duration-300"
+                    className="w-[80px] h-[80px] bg-gradient-to-br from-white to-[#fdfcfb] 
+                                rounded-full flex items-center justify-center
+                                shadow-[0_8px_20px_rgba(226,209,195,0.15)] group-hover:scale-110 
+                                transition-all duration-500 border border-[#e2d1c3]/20"
                   >
                     {feature.icon}
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-[#2d2d2d] mb-4">
+                <h3
+                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                >
                   {feature.title}
                 </h3>
-                <p className="text-[#666666] text-lg leading-relaxed">
+                <p className="text-[#666666] text-[17px] leading-relaxed">
                   {feature.description}
                 </p>
               </div>
