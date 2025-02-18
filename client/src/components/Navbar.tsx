@@ -6,23 +6,23 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
+    <nav className="fixed top-4 left-4 right-4 z-50">
       {/* Lime gradient background with transparency */}
-      <div className="absolute inset-0 bg-gradient-to-r from-lime-500/10 to-lime-600/5 backdrop-blur-md rounded-b-3xl border-b border-lime-500/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-lime-500/10 to-lime-600/5 backdrop-blur-md rounded-full border border-lime-500/20" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 group">
               <Image
                 src="/img3.png"
                 alt="TiMBa Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+                width={36}
+                height={36}
+                className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
               />
-              <span className="text-xl font-semibold text-gray-900 group-hover:text-lime-600 transition-colors">
+              <span className="text-lg font-semibold text-gray-900 group-hover:text-lime-600 transition-colors">
                 TiMBa
               </span>
             </Link>
