@@ -1029,13 +1029,48 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-16 relative"
             >
-              <h2
-                className={`text-4xl font-bold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-              >
-                Choose the Best Plan for Your Business
-              </h2>
+              {/* Title with pen image */}
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <h2
+                  className={`text-4xl font-bold text-[#2d2d2d] ${plusJakarta.className}`}
+                >
+                  Choose the Best Plan for Your Business
+                </h2>
+                <motion.div
+                  className="relative w-12 h-12 md:w-16 md:h-16"
+                  initial={{ rotate: -45, opacity: 0 }}
+                  whileInView={{ rotate: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10,
+                    delay: 0.2,
+                  }}
+                >
+                  <Image
+                    src="/pen.png"
+                    alt="Pen illustration"
+                    fill
+                    className="object-contain drop-shadow-lg"
+                  />
+                  <motion.div
+                    className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500/20 rounded-full"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.div>
+              </div>
+
               <p className="text-[#666666] text-lg max-w-2xl mx-auto">
                 Find the right plan for your needs, with flexible choices and
                 transparent pricing details.
@@ -1252,6 +1287,125 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-sm font-medium text-[#666666] mb-4 block">
+              Common Question
+            </span>
+            <h2
+              className={`text-4xl font-bold text-[#2d2d2d] ${plusJakarta.className}`}
+            >
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: "How can a Active benefit my business?",
+                answer:
+                  "It can boost efficiency, improve customer service, organize data better, and increase sales by offering insights into customer behavior and preferences.",
+              },
+              {
+                question: "What kind of customer support do you provide?",
+                answer:
+                  "We offer 24/7 dedicated support through multiple channels including live chat, email, and phone. Our expert team is always ready to help you with any questions or concerns.",
+              },
+              {
+                question: "Can I change or cancel my subscription?",
+                answer:
+                  "Yes, you can modify or cancel your subscription at any time. Changes will take effect in the next billing cycle, and we offer prorated refunds for unused time.",
+              },
+              {
+                question: "Can I try the Active before making a purchase?",
+                answer:
+                  "Absolutely! We offer a 14-day free trial with full access to all features, allowing you to experience the platform before making a commitment.",
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <motion.div
+                  className="group relative bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden
+                             border border-white/20 hover:border-white/30 transition-all duration-300"
+                  whileHover={{ y: -2 }}
+                  style={{
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  <motion.button
+                    className="w-full text-left p-6 focus:outline-none"
+                    onClick={() => {
+                      /* Add toggle logic here */
+                    }}
+                  >
+                    <div className="flex justify-between items-center gap-4">
+                      <motion.h3
+                        className={`text-lg font-medium text-[#2d2d2d] ${plusJakarta.className}`}
+                        layout
+                      >
+                        {faq.question}
+                      </motion.h3>
+                      <motion.div
+                        className="flex-shrink-0 w-6 h-6 rounded-full bg-lime-500/10 
+                                   flex items-center justify-center group-hover:bg-lime-500/20
+                                   transition-all duration-300"
+                        whileHover={{ rotate: 180 }}
+                      >
+                        <svg
+                          className="w-4 h-4 text-lime-600 transform group-hover:rotate-180 transition-transform duration-300"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 text-[#666666] text-sm leading-relaxed"
+                    >
+                      {faq.answer}
+                    </motion.div>
+                  </motion.button>
+
+                  {/* Gradient line */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-[2px]"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      background:
+                        "linear-gradient(to right, #84cc16, #84cc16/50)",
+                      transformOrigin: "left",
+                    }}
+                  />
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
