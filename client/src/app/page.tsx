@@ -1461,22 +1461,44 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Ready to Transform Section */}
+        {/* Ready to Transform Section with animated tree background */}
         <div className="py-24 relative overflow-hidden">
-          {/* Background gradient with glassmorphism */}
-          <div className="absolute inset-0 bg-gradient-to-br from-lime-50/80 via-white/60 to-lime-50/40 backdrop-blur-md" />
-
-          {/* Decorative blobs */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Animated tree background */}
+          <div className="absolute inset-0 pointer-events-none">
             <motion.div
-              className="absolute -top-48 -right-48 w-96 h-96 rounded-full"
+              className="absolute inset-0"
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.1, 0.15, 0.1],
+                rotate: [-1, 1, -1],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src="/tree.png"
+                alt="Background pattern"
+                fill
+                className="object-cover object-center"
+                style={{ filter: "hue-rotate(85deg) brightness(1.5)" }}
+              />
+            </motion.div>
+
+            {/* Floating elements */}
+            <motion.div
+              className="absolute top-1/4 -right-20 w-96 h-96 rounded-full"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(132,204,22,0.1) 0%, rgba(132,204,22,0) 70%)",
+                  "radial-gradient(circle, rgba(132,204,22,0.15) 0%, rgba(132,204,22,0) 70%)",
               }}
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
+                y: [-20, 20, -20],
+                x: [-10, 10, -10],
+                scale: [1, 1.1, 1],
               }}
               transition={{
                 duration: 8,
@@ -1484,24 +1506,27 @@ export default function Home() {
                 ease: "easeInOut",
               }}
             />
+
             <motion.div
-              className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full"
+              className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full"
               style={{
                 background:
                   "radial-gradient(circle, rgba(132,204,22,0.1) 0%, rgba(132,204,22,0) 70%)",
               }}
               animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.5, 0.3, 0.5],
+                y: [20, -20, 20],
+                x: [10, -10, 10],
+                scale: [1.1, 1, 1.1],
               }}
               transition={{
-                duration: 8,
+                duration: 7,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             />
           </div>
 
+          {/* Content with glass effect */}
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div
               className="p-8 md:p-12 rounded-3xl relative overflow-hidden"
@@ -1512,10 +1537,31 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.4)",
                 boxShadow: "0 8px 32px 0 rgba(31,38,135,0.1)",
               }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
             >
+              {/* Animated particles */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(20)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-lime-500/20 rounded-full"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                      y: [0, -30, 0],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 2 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                      ease: "easeInOut",
+                    }}
+                  />
+                ))}
+              </div>
+
               {/* Content */}
               <div className="text-center relative z-10">
                 <motion.span
@@ -1646,15 +1692,15 @@ export default function Home() {
                 className="absolute inset-0 rounded-3xl"
                 style={{
                   background:
-                    "linear-gradient(90deg, transparent, rgba(132,204,22,0.2), transparent)",
+                    "linear-gradient(90deg, transparent, rgba(132,204,22,0.3), transparent)",
                   maskImage:
                     "linear-gradient(to right, transparent, black, transparent)",
                 }}
                 animate={{
-                  x: ["-100%", "100%"],
+                  x: ["-200%", "200%"],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 5,
                   repeat: Infinity,
                   ease: "linear",
                 }}
