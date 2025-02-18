@@ -1,79 +1,97 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-export default function Navbar() {
+import Link from "next/link";
+import Image from "next/image";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
+export const Navbar = () => {
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-[100] bg-white/50 backdrop-blur-md border-b border-white/10
-                    shadow-[0_2px_15px_rgba(0,0,0,0.05)] transition-all duration-300"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Lime gradient background with transparency */}
+      <div className="absolute inset-0 bg-gradient-to-r from-lime-500/10 to-lime-600/5 backdrop-blur-md rounded-b-3xl border-b border-lime-500/20" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo with enhanced hover effect */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 overflow-hidden rounded-lg">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center space-x-2 group">
               <Image
                 src="/img3.png"
-                alt="Timebank Logo"
-                width={80}
-                height={80}
-                className="object-contain drop-shadow-md transition-all duration-300
-                         filter contrast-125 brightness-105 group-hover:scale-110
-                         group-hover:rotate-3"
-                quality={100}
-                priority
+                alt="TiMBa Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
               />
-            </div>
-            <span
-              className="text-xl font-bold text-[#2d2d2d] transition-all duration-300
-                          group-hover:text-[#404040] group-hover:translate-x-0.5"
-            >
-              Timebank
-            </span>
-          </Link>
+              <span className="text-xl font-semibold text-gray-900 group-hover:text-lime-600 transition-colors">
+                TiMBa
+              </span>
+            </Link>
+          </div>
 
-          {/* Navigation Links with enhanced hover effects */}
+          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {[
-              { href: "/product", label: "Product" },
-              { href: "/reviews", label: "Reviews" },
-              { href: "/benefits", label: "Benefits" },
-              { href: "/pricing", label: "Pricing" },
-              { href: "/changelog", label: "Changelog" },
-            ].map((link) => (
+            {["Features", "Pricing", "About", "Contact"].map((item) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="relative text-gray-700 hover:text-gray-900 transition-all duration-300 
-                        font-medium group py-2"
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className="relative group py-2"
               >
-                {link.label}
-                <span
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-900 transform scale-x-0 
-                              transition-transform duration-300 group-hover:scale-x-100"
-                />
+                <span className="text-gray-700 font-medium hover:text-lime-600 transition-colors duration-300">
+                  {item}
+                </span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full transition-all duration-300 rounded-full" />
               </Link>
             ))}
           </div>
 
-          {/* CTA Button with enhanced hover effect */}
-          <Link
-            href="/get-clover"
-            className="hidden md:inline-flex items-center px-4 py-2 bg-[#2d2d2d]/90 text-white rounded-lg 
-                     hover:bg-[#404040] transition-all duration-300 text-sm font-semibold relative
-                     shadow-[0_2px_10px_rgba(0,0,0,0.1)] overflow-hidden group
-                     hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
-                     border border-[#1a1a1a]/50 backdrop-blur-sm"
-          >
-            <span className="relative z-10">Get Started</span>
-            <div
-              className="absolute inset-0 h-full w-full bg-gradient-to-r from-[#404040] to-[#505050] 
-                         transform translate-x-full group-hover:translate-x-0 transition-transform 
-                         duration-300"
-            />
-          </Link>
+          {/* Auth Links and Dashboard */}
+          <div className="flex items-center space-x-8">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <span className="relative group cursor-pointer">
+                  <span className="text-gray-700 font-medium hover:text-lime-600 transition-colors duration-300">
+                    Sign In
+                  </span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full transition-all duration-300 rounded-full" />
+                </span>
+              </SignInButton>
+            </SignedOut>
+
+            <SignedIn>
+              {/* Dashboard Link */}
+              <Link href="/dashboard" className="relative group">
+                <span className="text-gray-700 font-medium hover:text-lime-600 transition-colors duration-300">
+                  Dashboard
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full transition-all duration-300 rounded-full" />
+              </Link>
+
+              {/* User Button */}
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox:
+                      "w-8 h-8 rounded-full border-2 border-lime-500/50 hover:border-lime-500 transition-colors duration-300",
+                    userButtonPopoverCard:
+                      "bg-white/90 backdrop-blur-sm shadow-xl border border-lime-500/20 rounded-2xl",
+                    userButtonPopoverActions: "p-2",
+                    userButtonPopoverActionButton:
+                      "hover:bg-lime-50 text-gray-700 rounded-xl",
+                    userButtonPopoverFooter: "hidden",
+                    userButtonTrigger: "rounded-full hover:opacity-80",
+                  },
+                  variables: {
+                    colorBackground: "white",
+                    colorText: "#374151",
+                    colorPrimary: "rgb(132, 204, 22)",
+                  },
+                }}
+              />
+            </SignedIn>
+          </div>
         </div>
       </div>
     </nav>
   );
-}
+};

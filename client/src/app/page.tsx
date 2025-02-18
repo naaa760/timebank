@@ -5,15 +5,15 @@ import Link from "next/link";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { GlassCard } from "@/components/GlassCard";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { FeatureCard } from "@/components/FeatureCard";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { Navbar } from "@/components/Navbar";
 
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Home() {
-  useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Update scroll state
   useEffect(() => {
@@ -21,135 +21,15 @@ export default function Home() {
       setIsScrolled(window.scrollY > 20);
     };
 
-    // Call it once on mount to set initial state
     updateScrollState();
-
     window.addEventListener("scroll", updateScrollState);
     return () => window.removeEventListener("scroll", updateScrollState);
   }, []);
 
-  // Add this effect to check authentication status
-  useEffect(() => {
-    // You can replace this with your actual auth check
-    const checkAuth = () => {
-      const token = localStorage.getItem("token");
-      setIsAuthenticated(!!token);
-    };
-
-    checkAuth();
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Navbar */}
-      <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 px-4 py-4 mx-4 mt-4 rounded-2xl 
-                   bg-gradient-to-r from-white/20 via-lime-500/10 to-white/20 backdrop-blur-[6px] 
-                   border border-lime-500/20 shadow-lg shadow-lime-500/10"
-        animate={{
-          backdropFilter: isScrolled ? "blur(12px)" : "blur(6px)",
-          boxShadow: isScrolled ? "0 4px 30px rgba(132, 204, 22, 0.1)" : "none",
-          background: isScrolled
-            ? "linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(132, 204, 22, 0.1), rgba(255, 255, 255, 0.8))"
-            : "linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(132, 204, 22, 0.1), rgba(255, 255, 255, 0.2))",
-        }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="relative flex items-center justify-between">
-            {/* Logo */}
-            <motion.div
-              className="flex items-center gap-2"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src="/img3.png"
-                alt="Active Logo"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
-              <span
-                className={`text-lg font-semibold text-[#2d2d2d] ${plusJakarta.className}`}
-              >
-                TiMBnk
-              </span>
-            </motion.div>
-
-            {/* Navigation Links */}
-            <motion.div
-              className="hidden md:flex items-center gap-8"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              {["Features", "Pricing", "About", "Contact"].map((item) => (
-                <motion.a
-                  key={item}
-                  href="#"
-                  className="text-[#666666] hover:text-[#2d2d2d] transition-colors duration-200
-                           relative group"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {item}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-500 group-hover:w-full
-                             transition-all duration-300"
-                    initial={false}
-                  />
-                </motion.a>
-              ))}
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.button
-              className="px-5 py-2 rounded-full text-sm font-medium
-                       bg-gradient-to-r from-lime-500 to-lime-600
-                       text-white hover:shadow-lg hover:from-lime-600 hover:to-lime-700
-                       transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              onClick={() => {
-                if (isAuthenticated) {
-                  window.location.href = "/dashboard";
-                } else {
-                  window.location.href = "/signup";
-                }
-              }}
-            >
-              {isAuthenticated ? "Dashboard" : "Get Started"}
-            </motion.button>
-
-            {/* Mobile menu button */}
-            <motion.button
-              className="md:hidden p-2 rounded-xl bg-white/80 backdrop-blur-sm
-                       border border-white/20 shadow-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg
-                className="w-6 h-6 text-[#2d2d2d]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </motion.button>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Add padding to account for fixed navbar */}
+      <Navbar />
+      {/* Rest of your page content */}
       <div className="pt-20">
         <div
           className={`min-h-screen relative overflow-hidden transition-all duration-700`}
@@ -920,7 +800,7 @@ export default function Home() {
                           viewBox="0 0 24 24"
                           fill="currentColor"
                         >
-                          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z" />
+                          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 5 8s1.34 3 3 3z" />
                         </svg>
                       </div>
                       <h3
