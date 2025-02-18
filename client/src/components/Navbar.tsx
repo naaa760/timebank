@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100
-                   shadow-[0_2px_15px_rgba(0,0,0,0.05)]"
+      className="fixed top-0 left-0 right-0 z-[100] bg-white/50 backdrop-blur-md border-b border-white/10
+                    shadow-[0_2px_15px_rgba(0,0,0,0.05)] transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -22,15 +22,10 @@ export default function Navbar() {
                          group-hover:rotate-3"
                 quality={100}
                 priority
-                style={{
-                  transform: "translate3d(0, 0, 0)",
-                  imageRendering: "crisp-edges",
-                }}
               />
             </div>
             <span
               className="text-xl font-bold text-[#2d2d2d] transition-all duration-300
-                          [text-shadow:_0_1px_0_rgb(0_0_0_/_10%)]
                           group-hover:text-[#404040] group-hover:translate-x-0.5"
             >
               Timebank
@@ -49,7 +44,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-gray-600 hover:text-gray-900 transition-all duration-300 
+                className="relative text-gray-700 hover:text-gray-900 transition-all duration-300 
                         font-medium group py-2"
               >
                 {link.label}
@@ -64,11 +59,11 @@ export default function Navbar() {
           {/* CTA Button with enhanced hover effect */}
           <Link
             href="/get-clover"
-            className="hidden md:inline-flex items-center px-4 py-2 bg-[#2d2d2d] text-white rounded-lg 
+            className="hidden md:inline-flex items-center px-4 py-2 bg-[#2d2d2d]/90 text-white rounded-lg 
                      hover:bg-[#404040] transition-all duration-300 text-sm font-semibold relative
                      shadow-[0_2px_10px_rgba(0,0,0,0.1)] overflow-hidden group
                      hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
-                     border border-[#1a1a1a]"
+                     border border-[#1a1a1a]/50 backdrop-blur-sm"
           >
             <span className="relative z-10">Get Started</span>
             <div
@@ -77,24 +72,6 @@ export default function Navbar() {
                          duration-300"
             />
           </Link>
-
-          {/* Mobile Menu Button with hover effect */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 
-                          hover:bg-gray-100 transition-all duration-300 group"
-          >
-            <svg
-              className="h-6 w-6 transform transition-transform duration-300 group-hover:rotate-180"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
         </div>
       </div>
     </nav>

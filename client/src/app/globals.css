@@ -704,3 +704,57 @@ html {
 .hover-glow:hover {
   box-shadow: 0 0 30px rgba(226, 209, 195, 0.4);
 }
+
+/* Infinite scroll animation */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+
+.animate-scroll-x:hover {
+  animation-play-state: paused;
+}
+
+/* Button hover effects */
+.button-glow {
+  position: relative;
+}
+
+.button-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #fdfcfb, #e2d1c3, #fdfcfb);
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.button-glow:hover::after {
+  opacity: 1;
+}
+
+/* Improve button text */
+button span {
+  background: linear-gradient(
+    to right,
+    currentColor,
+    currentColor 50%,
+    currentColor 50%
+  );
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  transition: background-position-x 0.5s ease-out;
+}
+
+button:hover span {
+  background-position-x: 0%;
+}
