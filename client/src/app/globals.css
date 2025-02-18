@@ -758,3 +758,13 @@ button span {
 button:hover span {
   background-position-x: 0%;
 }
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}

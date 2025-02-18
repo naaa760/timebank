@@ -166,317 +166,213 @@ export default function Home() {
         </main>
 
         {/* Why Choose Us content */}
-        <div className="py-16 max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="mb-12">
-            <span className="text-[#84cc16] font-medium inline-flex items-center gap-2 mb-2">
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0L10 5.09L15.5 5.09L11 8.19L13 13.28L8 10.18L3 13.28L5 8.19L0.5 5.09L6 5.09L8 0Z" />
-              </svg>
-              THE CLOVER ADVANTAGES
-            </span>
-            <h2 className="text-3xl font-bold text-[#2d2d2d] mb-3">
-              Why Choose Us?
-            </h2>
-            <p className="text-[#4a4a4a] text-base max-w-2xl">
-              Leverage the power of AI to automatically optimize your purchases,
-              ensuring you get the best value for your business with every
-              transaction.
-            </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* AI-Optimized Savings */}
-            <motion.div
-              className="glass-card relative rounded-3xl overflow-hidden h-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.1,
-                hover: {
-                  duration: 0.2,
-                  ease: "easeOut",
-                },
-              }}
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
-                whileHover={{
-                  opacity: 0.6,
-                  transition: { duration: 0.2 },
-                }}
-              />
-
-              <motion.div
-                className="p-8 h-full flex flex-col relative z-10"
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="mb-6"
-                  whileHover={{
-                    rotate: 5,
-                    scale: 1.1,
-                    transition: { duration: 0.2 },
-                  }}
-                >
-                  {/* Icon container */}
-                  <div
-                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
-                               rounded-full flex items-center justify-center backdrop-blur-md
-                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
-                  >
+        <div className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left side - Cards */}
+            <div className="lg:w-2/3 grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: (
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-8 h-8 text-[#2d2d2d]"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                    </svg>
+                  ),
+                  title: "Efficient Management",
+                  description:
+                    "Streamline your operations with our intuitive management tools",
+                },
+                {
+                  icon: (
+                    <svg
+                      className="w-6 h-6 text-[#ff6b3d]"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
                       <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                  </div>
-                </motion.div>
-
-                {/* Content */}
-                <motion.h3
-                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  AI-Optimized Savings
-                </motion.h3>
-                <p className="text-[#4a4a4a]">
-                  Never miss an opportunity to save. Our AI dynamically adjusts
-                  to maximize your savings on every purchase.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* Real-Time Insights */}
-            <motion.div
-              className="glass-card relative rounded-3xl overflow-hidden h-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3,
-                hover: {
-                  duration: 0.2,
-                  ease: "easeOut",
+                  ),
+                  title: "Real-Time Insights",
+                  description:
+                    "Stay in control with detailed analytics. We provide transparent spending reports and intelligent insights to guide your financial decisions.",
                 },
-              }}
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
-                whileHover={{
-                  opacity: 0.6,
-                  transition: { duration: 0.2 },
-                }}
-              />
-
-              <motion.div
-                className="p-8 h-full flex flex-col relative z-10"
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="mb-6"
-                  whileHover={{
-                    rotate: 5,
-                    scale: 1.1,
-                    transition: { duration: 0.2 },
-                  }}
-                >
-                  {/* Icon container */}
-                  <div
-                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
-                               rounded-full flex items-center justify-center backdrop-blur-md
-                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
-                  >
+                {
+                  icon: (
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-6 h-6 text-[#ff6b3d]"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
                       <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.5h-15V5h15v14.5z" />
                     </svg>
-                  </div>
-                </motion.div>
-
-                {/* Content */}
-                <motion.h3
-                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  Real-Time Insights
-                </motion.h3>
-                <p className="text-[#4a4a4a]">
-                  Stay in control with detailed analytics. We provide
-                  transparent spending reports and intelligent insights to guide
-                  your financial decisions.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* Flexible Plans */}
-            <motion.div
-              className="glass-card relative rounded-3xl overflow-hidden h-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.5,
-                hover: {
-                  duration: 0.2,
-                  ease: "easeOut",
+                  ),
+                  title: "Flexible Plans",
+                  description:
+                    "Adaptive plans adjust monthly, ensuring you always get the best savings, rewards, and maximum optimal value for your business needs.",
                 },
-              }}
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
-                whileHover={{
-                  opacity: 0.6,
-                  transition: { duration: 0.2 },
-                }}
-              />
-
-              <motion.div
-                className="p-8 h-full flex flex-col relative z-10"
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.2 }}
-              >
+              ].map((feature, index) => (
                 <motion.div
-                  className="mb-6"
+                  key={index}
+                  className="glass-card relative rounded-3xl overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{
-                    rotate: 5,
-                    scale: 1.1,
+                    y: -10,
+                    scale: 1.02,
                     transition: { duration: 0.2 },
                   }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                  }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                    boxShadow:
+                      "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
+                  }}
                 >
-                  {/* Icon container */}
-                  <div
-                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
-                               rounded-full flex items-center justify-center backdrop-blur-md
-                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                    whileHover={{
+                      opacity: 0.6,
+                      transition: { duration: 0.2 },
+                    }}
+                  />
+
+                  <motion.div
+                    className="p-8 h-full flex flex-col relative z-10"
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <svg
-                      className="w-6 h-6 text-white"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
+                    <motion.div
+                      className="mb-6"
+                      whileHover={{
+                        rotate: 5,
+                        scale: 1.1,
+                        transition: { duration: 0.2 },
+                      }}
                     >
-                      <path d="M19.5 3h-15A2.5 2.5 0 002 5.5v13A2.5 2.5 0 004.5 21h15a2.5 2.5 0 002.5-2.5v-13A2.5 2.5 0 0019.5 3zm-7 2h2v2h-2V5zm-2 12h-2v-2h2v2z" />
-                    </svg>
-                  </div>
+                      {/* Icon container */}
+                      <div
+                        className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
+                                   rounded-full flex items-center justify-center backdrop-blur-md
+                                   border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
+                      >
+                        {feature.icon}
+                      </div>
+                    </motion.div>
+
+                    {/* Content */}
+                    <motion.h3
+                      className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      {feature.title}
+                    </motion.h3>
+                    <p className="text-[#4a4a4a]">{feature.description}</p>
+                  </motion.div>
                 </motion.div>
-
-                {/* Content */}
-                <motion.h3
-                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  Flexible Plans
-                </motion.h3>
-                <p className="text-[#4a4a4a]">
-                  Adaptive plans adjust monthly, ensuring you always get the
-                  best savings, rewards, and maximum optimal value for your
-                  business needs.
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Features Tags Slider */}
-          <div className="mt-12 overflow-hidden relative before:content-[''] before:absolute before:left-0 before:top-0 before:w-20 before:h-full before:bg-gradient-to-r before:from-[#f9fff0]/40 before:to-transparent before:z-10 after:content-[''] after:absolute after:right-0 after:top-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-[#f9fff0]/40 after:to-transparent after:z-10">
-            <div className="flex animate-scroll gap-6 py-4">
-              {[
-                "Automatic Adjustments",
-                "Real-Time Reports",
-                "Secure Transactions",
-                "Dedicated Support",
-                "Flexible Payments",
-                "Smart Spending",
-                "Customizable Plans",
-                "Instant Savings",
-              ].map((feature, index) => (
-                <span
-                  key={feature + index}
-                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
-                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
-                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
-                           flex-none"
-                >
-                  {feature}
-                </span>
-              ))}
-              {/* Duplicate items for seamless loop */}
-              {[
-                "Automatic Adjustments",
-                "Real-Time Reports",
-                "Secure Transactions",
-                "Dedicated Support",
-                "Flexible Payments",
-                "Smart Spending",
-                "Customizable Plans",
-                "Instant Savings",
-              ].map((feature, index) => (
-                <span
-                  key={feature + "duplicate" + index}
-                  className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
-                           rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
-                           border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                           hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
-                           flex-none"
-                >
-                  {feature}
-                </span>
               ))}
             </div>
+
+            {/* Right side - Image */}
+            <div className="lg:w-1/3">
+              <motion.div
+                className="relative w-full h-[400px] rounded-3xl overflow-hidden"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                whileHover={{
+                  scale: 1.05,
+                  rotate: [-1, 1, -1],
+                  transition: {
+                    rotate: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                    scale: {
+                      duration: 0.3,
+                    },
+                  },
+                }}
+              >
+                <Image
+                  src="/img5.png"
+                  alt="Why Choose Us Illustration"
+                  fill
+                  className="object-cover rounded-3xl hover:filter hover:brightness-110 transition-all duration-300"
+                />
+
+                {/* Glass overlay */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                  }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Tags Slider */}
+        <div className="mt-12 overflow-hidden relative before:content-[''] before:absolute before:left-0 before:top-0 before:w-20 before:h-full before:bg-gradient-to-r before:from-[#f9fff0]/40 before:to-transparent before:z-10 after:content-[''] after:absolute after:right-0 after:top-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-[#f9fff0]/40 after:to-transparent after:z-10">
+          <div className="flex animate-scroll gap-6 py-4">
+            {[
+              "Automatic Adjustments",
+              "Real-Time Reports",
+              "Secure Transactions",
+              "Dedicated Support",
+              "Flexible Payments",
+              "Smart Spending",
+              "Customizable Plans",
+              "Instant Savings",
+            ].map((feature, index) => (
+              <span
+                key={feature + index}
+                className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
+                         rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
+                         border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
+                         hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
+                         flex-none"
+              >
+                {feature}
+              </span>
+            ))}
+            {/* Duplicate items for seamless loop */}
+            {[
+              "Automatic Adjustments",
+              "Real-Time Reports",
+              "Secure Transactions",
+              "Dedicated Support",
+              "Flexible Payments",
+              "Smart Spending",
+              "Customizable Plans",
+              "Instant Savings",
+            ].map((feature, index) => (
+              <span
+                key={feature + "duplicate" + index}
+                className="px-6 py-3 bg-white/40 backdrop-blur-sm text-[#4a4a4a] text-sm 
+                         rounded-full whitespace-nowrap hover:bg-white/60 transition-all duration-300
+                         border border-white/50 shadow-[0_2px_10px_rgba(0,0,0,0.05)]
+                         hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5
+                         flex-none"
+              >
+                {feature}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -660,7 +556,7 @@ export default function Home() {
                       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
                     </svg>
                   }
-                  title="Efficient Expense Management"
+                  title="Efficient Management"
                   description="Streamline your expense tracking with our intuitive management tools"
                   delay={0.1}
                 />
@@ -675,8 +571,8 @@ export default function Home() {
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" />
                     </svg>
                   }
-                  title="Maximize Your Savings"
-                  description="Optimize your financial resources with smart saving strategies"
+                  title="Smart Financial Tools"
+                  description="Optimize your financial resources with intelligent insights and analytics"
                   delay={0.2}
                 />
 
@@ -690,8 +586,8 @@ export default function Home() {
                       <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z" />
                     </svg>
                   }
-                  title="Smart Insights"
-                  description="Gain actionable insights to make informed financial decisions"
+                  title="Performance Tracking"
+                  description="Monitor and optimize your business performance in real-time"
                   delay={0.3}
                 />
               </div>

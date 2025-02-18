@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const GlassCard = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -26,26 +27,62 @@ export const GlassCard = () => {
       <motion.div
         className="glass-card relative w-full min-h-[200px] md:min-h-[300px] 
                    rounded-xl sm:rounded-3xl overflow-hidden mx-auto
-                   max-w-[400px] sm:max-w-none"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{
-          y: -10,
-          scale: 1.02,
-          transition: { duration: 0.2 },
+                   max-w-[400px] sm:max-w-none perspective-1000"
+        initial={{ opacity: 0, y: 20, rotateX: 10 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          rotateX: [10, 0, 10],
+          rotateY: [-5, 5, -5],
         }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        whileHover={{
+          scale: 1.02,
+          rotateX: 0,
+          rotateY: 0,
+          transition: { duration: 0.3 },
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         style={{
           background:
-            "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+            "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
           backdropFilter: "blur(12px)",
-          border: "1px solid rgba(255,255,255,0.3)",
+          border: "1px solid rgba(255,255,255,0.2)",
           boxShadow:
             "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
+          transformStyle: "preserve-3d",
         }}
       >
+        {/* Background Image with enhanced animations */}
+        <motion.div
+          className="absolute inset-0 opacity-30"
+          animate={{
+            scale: [1, 1.1, 1],
+            rotateZ: [-2, 2, -2],
+            y: [-10, 0, -10],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            times: [0, 0.5, 1],
+          }}
+        >
+          <Image
+            src="/img4.png"
+            alt="Innovation illustration"
+            fill
+            className="object-cover filter contrast-75 brightness-110 transform-gpu"
+            style={{
+              transformStyle: "preserve-3d",
+              backfaceVisibility: "hidden",
+            }}
+          />
+        </motion.div>
+
         {/* Hover gradient effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
@@ -64,7 +101,7 @@ export const GlassCard = () => {
           }}
         />
 
-        <div className="p-6 sm:p-8 h-full flex flex-col justify-between relative z-10">
+        <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col justify-between">
           <div>
             <motion.span
               className="inline-block px-3 py-1 text-xs font-semibold rounded-full"
@@ -82,22 +119,38 @@ export const GlassCard = () => {
 
             <motion.h2
               className="mt-4 text-2xl md:text-4xl font-light tracking-tight text-[#2d2d2d]
-                         leading-tight"
+                         leading-tight transform-gpu"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              whileHover={{ scale: 1.02 }}
-              transition={{ delay: 0.2 }}
+              animate={{
+                opacity: 1,
+                rotateX: [5, 0, 5],
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.2,
+              }}
             >
               Discover Innovation
             </motion.h2>
 
             <motion.p
               className="mt-3 text-base md:text-lg text-[#666666] leading-relaxed
-                         max-w-[280px] sm:max-w-none"
+                         max-w-[280px] sm:max-w-none transform-gpu"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              whileHover={{ x: 5 }}
-              transition={{ delay: 0.3 }}
+              animate={{
+                opacity: [0.8, 1, 0.8],
+                rotateX: [3, 0, 3],
+                y: [0, -3, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.4,
+              }}
             >
               Experience the future of design with our cutting-edge solutions
             </motion.p>
@@ -105,7 +158,7 @@ export const GlassCard = () => {
 
           <motion.button
             className="w-fit mt-6 px-5 py-2.5 rounded-full text-sm font-medium 
-                       text-[#2d2d2d] transition-all duration-300"
+                       text-[#2d2d2d] transition-all duration-300 transform-gpu"
             whileHover={{
               scale: 1.05,
               backgroundColor: "rgba(255,255,255,0.2)",
