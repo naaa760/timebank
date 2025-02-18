@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { GlassCard } from "@/components/GlassCard";
 import { motion } from "framer-motion";
+import { FeatureCard } from "@/components/FeatureCard";
 
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -633,17 +634,67 @@ export default function Home() {
         {/* Glass Card content */}
         <div className="py-24 max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-start gap-8">
-            {/* Left side - Content */}
-            <div className="lg:w-1/2">
-              <h2
-                className={`text-3xl font-bold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
-              >
-                Discover Our Innovation
-              </h2>
-              <p className="text-[#666666] text-base leading-relaxed mb-6 max-w-xl">
-                Experience the future of design with our cutting-edge solutions
-                that transform the way you work.
-              </p>
+            {/* Left side - Content and Feature Cards */}
+            <div className="lg:w-1/2 space-y-6">
+              <div>
+                <h2
+                  className={`text-3xl font-bold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                >
+                  Discover Our Innovation
+                </h2>
+                <p className="text-[#666666] text-base leading-relaxed mb-6 max-w-xl">
+                  Experience the future of design with our cutting-edge
+                  solutions that transform the way you work.
+                </p>
+              </div>
+
+              {/* Feature Cards */}
+              <div className="space-y-4">
+                <FeatureCard
+                  icon={
+                    <svg
+                      className="w-6 h-6 text-[#2d2d2d]"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                    </svg>
+                  }
+                  title="Efficient Expense Management"
+                  description="Streamline your expense tracking with our intuitive management tools"
+                  delay={0.1}
+                />
+
+                <FeatureCard
+                  icon={
+                    <svg
+                      className="w-6 h-6 text-[#2d2d2d]"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" />
+                    </svg>
+                  }
+                  title="Maximize Your Savings"
+                  description="Optimize your financial resources with smart saving strategies"
+                  delay={0.2}
+                />
+
+                <FeatureCard
+                  icon={
+                    <svg
+                      className="w-6 h-6 text-[#2d2d2d]"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z" />
+                    </svg>
+                  }
+                  title="Smart Insights"
+                  description="Gain actionable insights to make informed financial decisions"
+                  delay={0.3}
+                />
+              </div>
             </div>
 
             {/* Right side - Glass Card */}
