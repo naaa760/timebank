@@ -233,8 +233,6 @@ export default function Home() {
                       "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
                     backdropFilter: "blur(12px)",
                     border: "1px solid rgba(255,255,255,0.25)",
-                    boxShadow:
-                      "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
                   }}
                 >
                   <motion.div
@@ -1566,13 +1564,15 @@ export default function Home() {
                     transition={{ delay: 0.2 }}
                   >
                     <div className="relative">
-                      <Image
-                        src="/avatar1.png"
-                        alt="Team member"
-                        width={48}
-                        height={48}
-                        className="rounded-full border-2 border-white shadow-lg"
-                      />
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                        <Image
+                          src="/avatar1.jpg"
+                          alt="Team member"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <motion.div
                         className="absolute -right-1 -bottom-1 w-4 h-4 bg-lime-500 rounded-full border-2 border-white"
                         animate={{ scale: [1, 1.2, 1] }}
@@ -1590,13 +1590,15 @@ export default function Home() {
                     transition={{ delay: 0.3 }}
                   >
                     <div className="relative">
-                      <Image
-                        src="/avatar2.png"
-                        alt="Team member"
-                        width={40}
-                        height={40}
-                        className="rounded-full border-2 border-white shadow-lg"
-                      />
+                      <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                        <Image
+                          src="/avatar2.jpg"
+                          alt="Team member"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <motion.div
                         className="absolute -right-1 -bottom-1 w-3 h-3 bg-lime-500 rounded-full border-2 border-white"
                         animate={{ scale: [1, 1.2, 1] }}
@@ -1679,7 +1681,7 @@ export default function Home() {
                   lead management.
                 </p>
                 <p className="text-sm text-[#666666] mt-4">
-                  hello.active@gmail.com
+                  nehaprasad27118@gmail.com
                 </p>
               </div>
 
