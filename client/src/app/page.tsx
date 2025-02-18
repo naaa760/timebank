@@ -1462,6 +1462,268 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* Ready to Transform Section */}
+        <div className="py-24 relative overflow-hidden">
+          {/* Background gradient with glassmorphism */}
+          <div className="absolute inset-0 bg-gradient-to-br from-lime-50/80 via-white/60 to-lime-50/40 backdrop-blur-md" />
+
+          {/* Decorative blobs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div
+              className="absolute -top-48 -right-48 w-96 h-96 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(132,204,22,0.1) 0%, rgba(132,204,22,0) 70%)",
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(132,204,22,0.1) 0%, rgba(132,204,22,0) 70%)",
+              }}
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.5, 0.3, 0.5],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <motion.div
+              className="p-8 md:p-12 rounded-3xl relative overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.4)",
+                boxShadow: "0 8px 32px 0 rgba(31,38,135,0.1)",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              {/* Content */}
+              <div className="text-center relative z-10">
+                <motion.span
+                  className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-lime-500/10 
+                             text-lime-700 border border-lime-500/20 mb-6"
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  Elevate Your Business
+                </motion.span>
+
+                <motion.h2
+                  className={`text-4xl md:text-5xl font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Ready to Transform
+                  <br />
+                  Your Customer Management?
+                </motion.h2>
+
+                <motion.p
+                  className="text-[#666666] text-lg mb-12 max-w-2xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  Sign up today and see the difference Active can make for your
+                  business.
+                </motion.p>
+
+                {/* Email subscription form with glassmorphism */}
+                <div className="relative max-w-xl mx-auto">
+                  {/* Decorative elements */}
+                  <motion.div
+                    className="absolute -left-16 -top-10 z-20"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <div className="relative">
+                      <Image
+                        src="/avatar1.png"
+                        alt="Team member"
+                        width={48}
+                        height={48}
+                        className="rounded-full border-2 border-white shadow-lg"
+                      />
+                      <motion.div
+                        className="absolute -right-1 -bottom-1 w-4 h-4 bg-lime-500 rounded-full border-2 border-white"
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    className="absolute -right-12 -top-6 z-20"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <div className="relative">
+                      <Image
+                        src="/avatar2.png"
+                        alt="Team member"
+                        width={40}
+                        height={40}
+                        className="rounded-full border-2 border-white shadow-lg"
+                      />
+                      <motion.div
+                        className="absolute -right-1 -bottom-1 w-3 h-3 bg-lime-500 rounded-full border-2 border-white"
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: 0.5,
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Form with enhanced glassmorphism */}
+                  <div className="relative flex items-center">
+                    <input
+                      type="email"
+                      placeholder="Your Email Address"
+                      className="w-full px-6 py-4 rounded-full 
+                               bg-white/40 backdrop-blur-xl
+                               border border-white/60
+                               text-[#2d2d2d] placeholder-[#666666]
+                               outline-none focus:ring-2 focus:ring-lime-500/20
+                               shadow-[0_4px_20px_rgba(0,0,0,0.03)]
+                               transition-all duration-300
+                               hover:bg-white/50 focus:bg-white/50"
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="absolute right-2 px-6 py-2.5 
+                               bg-gradient-to-r from-lime-500 to-lime-600
+                               text-white rounded-full text-sm font-medium
+                               hover:from-lime-600 hover:to-lime-700
+                               transition-all duration-200
+                               shadow-[0_4px_20px_rgba(132,204,22,0.3)]"
+                    >
+                      Get Started
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Animated gradient border */}
+              <motion.div
+                className="absolute inset-0 rounded-3xl"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, rgba(132,204,22,0.2), transparent)",
+                  maskImage:
+                    "linear-gradient(to right, transparent, black, transparent)",
+                }}
+                animate={{
+                  x: ["-100%", "100%"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="py-12 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {/* Logo and description */}
+              <div className="col-span-2 md:col-span-1">
+                <Image
+                  src="/img3.png"
+                  alt="Active Logo"
+                  width={40}
+                  height={40}
+                  className="mb-4"
+                />
+                <p className="text-sm text-[#666666] max-w-xs">
+                  Streamline workflows and grow your business with effective
+                  lead management.
+                </p>
+                <p className="text-sm text-[#666666] mt-4">
+                  hello.active@gmail.com
+                </p>
+              </div>
+
+              {/* Footer links */}
+              {[
+                {
+                  title: "Features",
+                  links: ["Benefits", "Why Choose Us", "How To Use", "Pricing"],
+                },
+                {
+                  title: "Pages",
+                  links: [
+                    "Homepage",
+                    "Contact",
+                    "404 Page",
+                    "Terms & Conditions",
+                  ],
+                },
+                {
+                  title: "Social",
+                  links: ["Twitter(x)", "Instagram", "LinkedIn", "Dribbble"],
+                },
+              ].map((section, index) => (
+                <div key={index}>
+                  <h3 className="font-semibold text-[#2d2d2d] mb-4">
+                    {section.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <a
+                          href="#"
+                          className="text-sm text-[#666666] hover:text-[#2d2d2d] transition-colors duration-200"
+                        >
+                          {link}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
