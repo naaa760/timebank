@@ -193,37 +193,54 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{
                 y: -10,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.2)",
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
               }}
               transition={{
                 duration: 0.6,
                 delay: 0.1,
-                hover: { duration: 0.2 },
+                hover: {
+                  duration: 0.2,
+                  ease: "easeOut",
+                },
               }}
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.25)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.3)",
                 boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.2)",
+                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
               }}
             >
               <motion.div
-                className="p-8 h-full flex flex-col"
-                whileHover={{ scale: 1.02 }}
+                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                whileHover={{
+                  opacity: 0.6,
+                  transition: { duration: 0.2 },
+                }}
+              />
+
+              <motion.div
+                className="p-8 h-full flex flex-col relative z-10"
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
                   className="mb-6"
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{
+                    rotate: 5,
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
+                  }}
                 >
+                  {/* Icon container */}
                   <div
-                    className="w-12 h-12 bg-[#2d2d2d]/90 rounded-full flex items-center justify-center
-                                 backdrop-blur-sm border border-white/20"
+                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
+                               rounded-full flex items-center justify-center backdrop-blur-md
+                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
                   >
                     <svg
                       className="w-6 h-6 text-white"
@@ -234,9 +251,14 @@ export default function Home() {
                     </svg>
                   </div>
                 </motion.div>
-                <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+
+                {/* Content */}
+                <motion.h3
+                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                  whileHover={{ scale: 1.02 }}
+                >
                   AI-Optimized Savings
-                </h3>
+                </motion.h3>
                 <p className="text-[#4a4a4a]">
                   Never miss an opportunity to save. Our AI dynamically adjusts
                   to maximize your savings on every purchase.
@@ -251,37 +273,54 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{
                 y: -10,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.2)",
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
               }}
               transition={{
                 duration: 0.6,
                 delay: 0.3,
-                hover: { duration: 0.2 },
+                hover: {
+                  duration: 0.2,
+                  ease: "easeOut",
+                },
               }}
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.25)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.3)",
                 boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.2)",
+                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
               }}
             >
               <motion.div
-                className="p-8 h-full flex flex-col"
-                whileHover={{ scale: 1.02 }}
+                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                whileHover={{
+                  opacity: 0.6,
+                  transition: { duration: 0.2 },
+                }}
+              />
+
+              <motion.div
+                className="p-8 h-full flex flex-col relative z-10"
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
                   className="mb-6"
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{
+                    rotate: 5,
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
+                  }}
                 >
+                  {/* Icon container */}
                   <div
-                    className="w-12 h-12 bg-[#2d2d2d]/90 rounded-full flex items-center justify-center
-                                 backdrop-blur-sm border border-white/20"
+                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
+                               rounded-full flex items-center justify-center backdrop-blur-md
+                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
                   >
                     <svg
                       className="w-6 h-6 text-white"
@@ -292,9 +331,14 @@ export default function Home() {
                     </svg>
                   </div>
                 </motion.div>
-                <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+
+                {/* Content */}
+                <motion.h3
+                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                  whileHover={{ scale: 1.02 }}
+                >
                   Real-Time Insights
-                </h3>
+                </motion.h3>
                 <p className="text-[#4a4a4a]">
                   Stay in control with detailed analytics. We provide
                   transparent spending reports and intelligent insights to guide
@@ -310,37 +354,54 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{
                 y: -10,
-                boxShadow: "0 20px 40px rgba(31,38,135,0.2)",
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
               }}
               transition={{
                 duration: 0.6,
                 delay: 0.5,
-                hover: { duration: 0.2 },
+                hover: {
+                  duration: 0.2,
+                  ease: "easeOut",
+                },
               }}
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.25)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.3)",
                 boxShadow:
-                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.2)",
+                  "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
               }}
             >
               <motion.div
-                className="p-8 h-full flex flex-col"
-                whileHover={{ scale: 1.02 }}
+                className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                whileHover={{
+                  opacity: 0.6,
+                  transition: { duration: 0.2 },
+                }}
+              />
+
+              <motion.div
+                className="p-8 h-full flex flex-col relative z-10"
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
                   className="mb-6"
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{
+                    rotate: 5,
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
+                  }}
                 >
+                  {/* Icon container */}
                   <div
-                    className="w-12 h-12 bg-[#2d2d2d]/90 rounded-full flex items-center justify-center
-                                 backdrop-blur-sm border border-white/20"
+                    className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
+                               rounded-full flex items-center justify-center backdrop-blur-md
+                               border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
                   >
                     <svg
                       className="w-6 h-6 text-white"
@@ -351,9 +412,14 @@ export default function Home() {
                     </svg>
                   </div>
                 </motion.div>
-                <h3 className="text-xl font-bold text-[#2d2d2d] mb-3">
+
+                {/* Content */}
+                <motion.h3
+                  className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                  whileHover={{ scale: 1.02 }}
+                >
                   Flexible Plans
-                </h3>
+                </motion.h3>
                 <p className="text-[#4a4a4a]">
                   Adaptive plans adjust monthly, ensuring you always get the
                   best savings, rewards, and maximum optimal value for your
@@ -495,47 +561,66 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{
                   y: -10,
-                  boxShadow: "0 20px 40px rgba(31,38,135,0.2)",
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(31,38,135,0.25)",
                   background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                    "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 100%)",
                 }}
                 transition={{
                   duration: 0.6,
                   delay: index * 0.1,
-                  hover: { duration: 0.2 },
+                  hover: {
+                    duration: 0.2,
+                    ease: "easeOut",
+                  },
                 }}
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.08) 100%)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.25)",
+                    "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255,255,255,0.3)",
                   boxShadow:
-                    "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.2)",
+                    "0 8px 32px 0 rgba(31,38,135,0.1), inset 0 1px 1px rgba(255,255,255,0.3)",
                 }}
               >
                 <motion.div
-                  className="p-8 h-full flex flex-col"
-                  whileHover={{ scale: 1.02 }}
+                  className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                  whileHover={{
+                    opacity: 0.6,
+                    transition: { duration: 0.2 },
+                  }}
+                />
+
+                <motion.div
+                  className="p-8 h-full flex flex-col relative z-10"
+                  whileHover={{ scale: 1.01 }}
                   transition={{ duration: 0.2 }}
                 >
                   <motion.div
                     className="mb-6"
-                    whileHover={{ rotate: 5 }}
-                    transition={{ duration: 0.2 }}
+                    whileHover={{
+                      rotate: 5,
+                      scale: 1.1,
+                      transition: { duration: 0.2 },
+                    }}
                   >
+                    {/* Icon container */}
                     <div
-                      className="w-[80px] h-[80px] bg-gradient-to-br from-white/10 to-white/5 
-                                   rounded-full flex items-center justify-center backdrop-blur-sm
-                                   border border-white/20"
+                      className="w-[80px] h-[80px] bg-gradient-to-br from-white/20 to-white/5 
+                                 rounded-full flex items-center justify-center backdrop-blur-md
+                                 border border-white/30 shadow-[0_4px_20px_rgba(31,38,135,0.15)]"
                     >
                       {feature.icon}
                     </div>
                   </motion.div>
-                  <h3
+
+                  {/* Content */}
+                  <motion.h3
                     className={`text-[24px] font-semibold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+                    whileHover={{ scale: 1.02 }}
                   >
                     {feature.title}
-                  </h3>
+                  </motion.h3>
                   <p className="text-[#666666] text-[17px] leading-relaxed">
                     {feature.description}
                   </p>
