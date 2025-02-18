@@ -1032,38 +1032,92 @@ export default function Home() {
               className="text-center mb-16 relative"
             >
               {/* Title with pen image */}
-              <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="flex items-center justify-center gap-6 mb-4">
                 <h2
                   className={`text-4xl font-bold text-[#2d2d2d] ${plusJakarta.className}`}
                 >
                   Choose the Best Plan for Your Business
                 </h2>
                 <motion.div
-                  className="relative w-12 h-12 md:w-16 md:h-16"
-                  initial={{ rotate: -45, opacity: 0 }}
-                  whileInView={{ rotate: 0, opacity: 1 }}
+                  className="relative w-20 h-20 md:w-28 md:h-28"
+                  initial={{ rotate: -45, opacity: 0, scale: 0.5 }}
+                  whileInView={{
+                    rotate: 0,
+                    opacity: 1,
+                    scale: 1,
+                    y: [0, -10, 0],
+                  }}
                   viewport={{ once: true }}
                   transition={{
                     type: "spring",
                     stiffness: 100,
                     damping: 10,
                     delay: 0.2,
+                    y: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
                   }}
                 >
-                  <Image
-                    src="/pen.png"
-                    alt="Pen illustration"
-                    fill
-                    className="object-contain drop-shadow-lg"
-                  />
                   <motion.div
-                    className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500/20 rounded-full"
+                    className="relative w-full h-full"
+                    animate={{
+                      rotate: [-2, 2, -2],
+                      x: [-2, 2, -2],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Image
+                      src="/pen.png"
+                      alt="Pen illustration"
+                      fill
+                      className="object-contain drop-shadow-xl"
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    className="absolute -top-2 -right-2 w-4 h-4 bg-orange-500/20 rounded-full"
                     animate={{
                       scale: [1, 1.5, 1],
                       opacity: [0.5, 1, 0.5],
                     }}
                     transition={{
                       duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <motion.div
+                    className="absolute top-1/2 right-0 w-3 h-3 bg-lime-500/20 rounded-full"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5,
+                    }}
+                  />
+
+                  <motion.div
+                    className="absolute -bottom-1 -left-2 w-12 h-1.5 rounded-full"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), transparent)",
+                    }}
+                    animate={{
+                      scaleX: [0, 1, 0],
+                      opacity: [0, 0.5, 0],
+                    }}
+                    transition={{
+                      duration: 3,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
