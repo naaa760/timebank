@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
-import { MessageSquare, ThumbsUp, Share, Flag } from "lucide-react";
+import { ThumbsUp, Share, Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -36,40 +36,62 @@ interface Reply {
 }
 
 export default function ForumPostPage() {
-  const { id } = useParams();
-  const { user } = useUser();
+  const params = useParams();
+  const { user: currentUser } = useUser();
   const [replyContent, setReplyContent] = useState("");
+  const [post, setPost] = useState<ForumPost | null>(null);
 
-  // Mock data - would be fetched from API
-  const post: ForumPost = {
-    id: "1",
-    title: "Tips for new time bankers",
-    content:
-      "Here are some helpful tips for getting started with time banking...",
-    author: {
-      id: "user1",
-      name: "Sarah Wilson",
-      avatar: "/avatars/sarah.jpg",
-    },
-    createdAt: new Date("2024-03-20"),
-    likes: 15,
-    replies: [
-      {
-        id: "reply1",
-        content: "Great tips! I'd also add...",
-        author: {
-          id: "user2",
-          name: "John Doe",
-        },
-        createdAt: new Date("2024-03-21"),
-        likes: 3,
-      },
-    ],
-  };
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        // TODO: Replace with actual API call
+        const mockPost: ForumPost = {
+          id: "1",
+          title: "Tips for new time bankers",
+          content:
+            "Here are some helpful tips for getting started with time banking...",
+          author: {
+            id: "user1",
+            name: "Sarah Wilson",
+            avatar: "/avatars/sarah.jpg",
+          },
+          createdAt: new Date("2024-03-20"),
+          likes: 15,
+          replies: [
+            {
+              id: "reply1",
+              content: "Great tips! I'd also add...",
+              author: {
+                id: "user2",
+                name: "John Doe",
+              },
+              createdAt: new Date("2024-03-21"),
+              likes: 3,
+            },
+          ],
+        };
 
+        console.log("Fetching post:", params.id);
+        setPost(mockPost);
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      }
+    };
+
+    fetchPost();
+  }, [params.id]);
+
+  if (!post) {
+    return <div>Loading...</div>;
+  }
+
+  // Use currentUser in reply submission
   const handleSubmitReply = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle reply submission
+    if (!currentUser || !replyContent.trim()) return;
+
+    // TODO: Implement reply submission
+    console.log("Submitting reply as:", currentUser.id);
     setReplyContent("");
   };
 
