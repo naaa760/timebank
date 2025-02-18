@@ -831,22 +831,51 @@ export default function Home() {
         </div>
 
         {/* Benefits Section */}
-        <div className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Left Column */}
-            <div className="lg:w-5/12">
-              <span className="text-sm font-semibold text-[#666666] mb-4 block">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="lg:w-5/12"
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-sm font-semibold text-[#666666] mb-4 block"
+              >
                 Benefits
-              </span>
-              <h2
+              </motion.span>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className={`text-4xl font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}`}
               >
                 Unlock a New Era of Operational Excellence and Innovation
-              </h2>
-              <p className="text-[#666666] text-lg mb-8">
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-[#666666] text-lg mb-8"
+              >
                 Unlock operational excellence and innovation with our advanced
                 tools and streamlined processes.
-              </p>
+              </motion.p>
 
               {/* Feature Tags */}
               <div className="flex flex-wrap gap-3">
@@ -857,19 +886,29 @@ export default function Home() {
                   "Automated Efficiency",
                   "Centralized Data",
                 ].map((tag, index) => (
-                  <span
+                  <motion.span
                     key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                     className="px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-[#666666]
                              border border-white/50 hover:bg-white/60 transition-all duration-300"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column - Benefits List */}
-            <div className="lg:w-7/12">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              className="lg:w-7/12"
+            >
               <div className="space-y-8">
                 {[
                   {
@@ -979,9 +1018,9 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
