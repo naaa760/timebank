@@ -543,7 +543,6 @@ export default function Home() {
                   solutions that transform the way you work.
                 </p>
               </div>
-
               {/* Feature Cards */}
               <div className="space-y-4">
                 <FeatureCard
@@ -596,6 +595,390 @@ export default function Home() {
             {/* Right side - Glass Card */}
             <div className="lg:w-1/2">
               <GlassCard />
+            </div>
+          </div>
+        </div>
+
+        {/* Valuable Features Section */}
+        <div className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold text-[#666666] mb-2 block">
+              Valuable Features
+            </span>
+            <h2
+              className={`text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4 ${plusJakarta.className}`}
+            >
+              Customizable Solutions for Every Need
+            </h2>
+            <p className="text-[#666666] text-lg max-w-2xl mx-auto">
+              Adapt our platform to suit your unique business needs with
+              flexible, scalable solutions designed to grow with you.
+            </p>
+          </div>
+
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Real Time Analytics Card */}
+            <div
+              className="group relative bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden
+                         border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+              }}
+            >
+              {/* Image Container */}
+              <div className="relative h-[240px] overflow-hidden">
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src="/book1.png"
+                    alt="Real Time Analytics Interface"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
+                </motion.div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2.5 bg-orange-500/10 backdrop-blur-sm rounded-xl">
+                    <svg
+                      className="w-6 h-6 text-orange-500"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                    </svg>
+                  </div>
+                  <h3
+                    className={`text-xl font-semibold text-[#2d2d2d] ${plusJakarta.className}`}
+                  >
+                    Real Time Analytics
+                  </h3>
+                </div>
+
+                <p className="text-[#666666] leading-relaxed">
+                  Monitor result performance with real time insights. Track your
+                  business metrics and make data-driven decisions.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2">
+                  <span className="text-sm font-medium text-[#2d2d2d]">
+                    Learn more
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-[#2d2d2d] transform group-hover:translate-x-1 transition-transform"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Scheduling Card - Similar structure */}
+            <div
+              className="group relative bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden
+                         border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+              }}
+            >
+              <div className="relative h-[240px] overflow-hidden">
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src="/book2.png"
+                    alt="Content Scheduling Interface"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
+                </motion.div>
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2.5 bg-blue-500/10 backdrop-blur-sm rounded-xl">
+                    <svg
+                      className="w-6 h-6 text-blue-500"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                    </svg>
+                  </div>
+                  <h3
+                    className={`text-xl font-semibold text-[#2d2d2d] ${plusJakarta.className}`}
+                  >
+                    Content Scheduling
+                  </h3>
+                </div>
+
+                <p className="text-[#666666] leading-relaxed">
+                  Plan and schedule content across all platforms. Streamline
+                  your workflow with our intuitive scheduling tools.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2">
+                  <span className="text-sm font-medium text-[#2d2d2d]">
+                    Learn more
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-[#2d2d2d] transform group-hover:translate-x-1 transition-transform"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Team Collaboration Card - Similar structure */}
+            <div
+              className="group relative bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden
+                         border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
+              }}
+            >
+              <div className="relative h-[240px] overflow-hidden">
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src="/book3.png"
+                    alt="Team Collaboration Interface"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
+                </motion.div>
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2.5 bg-purple-500/10 backdrop-blur-sm rounded-xl">
+                    <svg
+                      className="w-6 h-6 text-purple-500"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z" />
+                    </svg>
+                  </div>
+                  <h3
+                    className={`text-xl font-semibold text-[#2d2d2d] ${plusJakarta.className}`}
+                  >
+                    Team Collaboration
+                  </h3>
+                </div>
+
+                <p className="text-[#666666] leading-relaxed">
+                  Manage and improve campaigns efficiently. Work together
+                  seamlessly with integrated collaboration tools.
+                </p>
+
+                <div className="mt-6 flex items-center gap-2">
+                  <span className="text-sm font-medium text-[#2d2d2d]">
+                    Learn more
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-[#2d2d2d] transform group-hover:translate-x-1 transition-transform"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Benefits Section */}
+        <div className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-16">
+            {/* Left Column */}
+            <div className="lg:w-5/12">
+              <span className="text-sm font-semibold text-[#666666] mb-4 block">
+                Benefits
+              </span>
+              <h2
+                className={`text-4xl font-bold text-[#2d2d2d] mb-6 ${plusJakarta.className}`}
+              >
+                Unlock a New Era of Operational Excellence and Innovation
+              </h2>
+              <p className="text-[#666666] text-lg mb-8">
+                Unlock operational excellence and innovation with our advanced
+                tools and streamlined processes.
+              </p>
+
+              {/* Feature Tags */}
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "Robust Security",
+                  "Customizable",
+                  "Accessibility",
+                  "Automated Efficiency",
+                  "Centralized Data",
+                ].map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-white/40 backdrop-blur-sm rounded-full text-sm text-[#666666]
+                             border border-white/50 hover:bg-white/60 transition-all duration-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Benefits List */}
+            <div className="lg:w-7/12">
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: "👥",
+                    title: "Expert Team",
+                    description:
+                      "An expert team ready to tackle your challenges with innovative solutions and proven strategies.",
+                  },
+                  {
+                    icon: "⚡",
+                    title: "Fast and Scalable",
+                    description:
+                      "Scale your business effortlessly with our SaaS, designed to grow alongside your evolving needs.",
+                  },
+                  {
+                    icon: "🎯",
+                    title: "Customizable for You",
+                    description:
+                      "Customize the platform to perfectly align with your business's unique requirements and goals.",
+                  },
+                  {
+                    icon: "⚙️",
+                    title: "Maximum Efficiency",
+                    description:
+                      "Maximize efficiency with integrated solutions that eliminate bottlenecks, saving time and costs.",
+                  },
+                  {
+                    icon: "🤝",
+                    title: "User Friendly",
+                    description:
+                      "A simple and accessible interface for users of all skill levels, making it easy to find what you need.",
+                  },
+                  {
+                    icon: "🔒",
+                    title: "Security You Can Trust",
+                    description:
+                      "Protect sensitive data with industry leading security to prevent unauthorized breaches.",
+                  },
+                ].map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-6 group relative"
+                  >
+                    {/* Orange Line Indicator */}
+                    <div className="absolute -left-3 top-1/2 -translate-y-1/2">
+                      <motion.div
+                        initial={{ height: 0 }}
+                        whileInView={{ height: "24px" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        className="w-[3px] bg-gradient-to-b from-lime-500 to-lime-400/50 rounded-full"
+                      />
+                    </div>
+
+                    {/* Icon with animated container */}
+                    <motion.div
+                      className="relative"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <div
+                        className="w-12 h-12 flex items-center justify-center rounded-xl 
+                                  bg-gradient-to-br from-lime-500/10 to-lime-500/5
+                                  border border-lime-500/20 group-hover:border-lime-500/40
+                                  transition-all duration-300
+                                  relative overflow-hidden"
+                      >
+                        {/* Animated gradient background */}
+                        <motion.div
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100
+                                    bg-gradient-to-r from-lime-500/20 via-lime-400/10 to-lime-500/20"
+                          animate={{
+                            x: ["0%", "100%", "0%"],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+
+                        {/* Icon */}
+                        <span className="text-2xl relative z-10">
+                          {benefit.icon}
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    {/* Content with fade-in animation */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.15 }}
+                    >
+                      <h3
+                        className={`text-xl font-semibold text-[#2d2d2d] mb-2 ${plusJakarta.className}`}
+                      >
+                        {benefit.title}
+                      </h3>
+                      <p className="text-[#666666] leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
