@@ -3,18 +3,20 @@ const logger = require("../utils/logger");
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? { rejectUnauthorized: false }
-      : false,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const connectDB = async () => {
   try {
-    await pool.connect();
+    const client = await pool.connect();
+    await client.query("SELECT NOW()");
+    client.release();
     logger.info("Database connected successfully");
   } catch (error) {
-    logger.error("Database connection failed:", error.message);
+    logger.error("Database connection failed - Full error:", error);
+    logger.error("Connection string:", process.env.DATABASE_URL);
     process.exit(1);
   }
 };

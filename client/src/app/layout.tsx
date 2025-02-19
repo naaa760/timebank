@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { DashboardProvider } from "@/contexts/DashboardContext";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,15 +33,17 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <DashboardProvider>
-        <html lang="en">
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
-          >
-            {children}
-          </body>
-        </html>
-      </DashboardProvider>
+      <AuthProvider>
+        <DashboardProvider>
+          <html lang="en">
+            <body
+              className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
+            >
+              {children}
+            </body>
+          </html>
+        </DashboardProvider>
+      </AuthProvider>
     </ClerkProvider>
   );
 }
