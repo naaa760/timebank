@@ -22,8 +22,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { createService, type ServiceFormData } from "@/lib/api";
+import { communityApi } from "@/lib/api/community";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useDashboard } from "@/contexts/DashboardContext";
 
 const categories = [
   "Technology",
@@ -34,6 +35,57 @@ const categories = [
   "Business",
   "Other",
 ];
+
+interface ServicePreviewData {
+  title: string;
+  description: string;
+  category: string;
+  duration: string;
+  tags: string[];
+  provider: {
+    id: string;
+    name: string;
+    avatar?: string;
+    rating: number;
+  };
+}
+
+function ServicePreview({ data }: { data: ServicePreviewData }) {
+  return (
+    <Card className="bg-white/50 backdrop-blur-sm border-lime-500/20">
+      <CardHeader>
+        <CardTitle>{data.title}</CardTitle>
+        <CardDescription>
+          {data.category} • {data.duration} hours per session
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <p className="text-sm text-muted-foreground whitespace-pre-wrap">
+          {data.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {data.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2 py-1 bg-lime-50 text-lime-700 rounded-full text-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <Avatar className="h-8 w-8">
+            <AvatarImage src={data.provider.avatar} />
+            <AvatarFallback>{data.provider.name[0]}</AvatarFallback>
+          </Avatar>
+          <span>{data.provider.name}</span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function OfferServicePage() {
   const router = useRouter();
@@ -54,6 +106,7 @@ export default function OfferServicePage() {
     duration: true,
   });
   const [isPreview, setIsPreview] = useState(false);
+  const { dispatch } = useDashboard();
 
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
@@ -155,26 +208,20 @@ export default function OfferServicePage() {
         throw new Error("Please sign in to offer a service");
       }
 
-      const serviceData: ServiceFormData = {
-        ...formData,
-        tags,
-        provider: {
-          id: user.id,
-          name: user.fullName || "Anonymous",
-          avatar: user.imageUrl,
-          rating: 0,
-        },
-      };
+      const newService = await communityApi.createService({
+        title: formData.title,
+        description: formData.description,
+        category: formData.category,
+        hoursPerSession: parseFloat(formData.duration),
+        tags: tags,
+      });
 
-      await createService(serviceData);
+      dispatch({ type: "ADD_SERVICE", payload: newService });
       toast.success("Service offered successfully!");
-      setIsDirty(false);
-      router.push("/services");
+      router.push("/dashboard");
     } catch (error) {
-      console.error("Error submitting service:", error);
-      toast.error(
-        error instanceof Error ? error.message : "Failed to offer service"
-      );
+      console.error("Failed to create service:", error);
+      toast.error("Failed to create service. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -193,43 +240,6 @@ export default function OfferServicePage() {
       router.back();
     }
   };
-
-  function ServicePreview({ data }: { data: ServiceFormData }) {
-    return (
-      <Card className="bg-white/50 backdrop-blur-sm border-lime-500/20">
-        <CardHeader>
-          <CardTitle>{data.title}</CardTitle>
-          <CardDescription>
-            {data.category} • {data.duration} hours per session
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-            {data.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {data.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 bg-lime-50 text-lime-700 rounded-full text-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src={data.provider.avatar} />
-              <AvatarFallback>{data.provider.name[0]}</AvatarFallback>
-            </Avatar>
-            <span>{data.provider.name}</span>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
 
   if (!isLoaded) {
     return (

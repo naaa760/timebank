@@ -18,22 +18,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "react-hot-toast";
+import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { communityApi } from "@/lib/api/community";
-
-interface ForumPost {
-  id: string;
-  title: string;
-  author: string;
-  category: string;
-  replies: number;
-  views: number;
-  lastActivity: Date;
-  isSticky?: boolean;
-}
 
 interface Discussion {
   id: string;
@@ -56,28 +45,6 @@ export default function CommunityPage() {
     "latest"
   );
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
-
-  const forumPosts: ForumPost[] = [
-    {
-      id: "1",
-      title: "Tips for new time bankers",
-      author: "Sarah Wilson",
-      category: "General Discussion",
-      replies: 23,
-      views: 156,
-      lastActivity: new Date("2024-03-20"),
-      isSticky: true,
-    },
-    {
-      id: "2",
-      title: "Looking for web development mentorship",
-      author: "Mike Chen",
-      category: "Service Requests",
-      replies: 5,
-      views: 45,
-      lastActivity: new Date("2024-03-19"),
-    },
-  ];
 
   const categories = [
     { id: "general", name: "General Discussion", count: 156 },
@@ -107,36 +74,52 @@ export default function CommunityPage() {
 
   // Update the getSortedPosts function to use discussions
   const getSortedPosts = useCallback(() => {
-    let filteredPosts = discussions;
+    let filteredPosts = [...discussions]; // Create a copy to avoid mutation
 
+    // Category filter
     if (selectedCategory) {
       filteredPosts = filteredPosts.filter(
-        (post) => post.category === selectedCategory
+        (post) => post.category.toLowerCase() === selectedCategory.toLowerCase()
       );
     }
 
+    // Search filter
     if (searchQuery) {
+      const query = searchQuery.toLowerCase();
       filteredPosts = filteredPosts.filter(
         (post) =>
-          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.content.toLowerCase().includes(searchQuery.toLowerCase())
+          post.title.toLowerCase().includes(query) ||
+          post.content.toLowerCase().includes(query) ||
+          post.author.toLowerCase().includes(query)
       );
     }
 
-    return filteredPosts;
-  }, [discussions, selectedCategory, searchQuery]);
+    // Sorting
+    return filteredPosts.sort((a, b) => {
+      switch (sortBy) {
+        case "latest":
+          return b.lastActivity.getTime() - a.lastActivity.getTime();
+        case "popular":
+          return b.views - a.views;
+        case "active":
+          return b.replies - a.replies;
+        default:
+          return 0;
+      }
+    });
+  }, [discussions, selectedCategory, searchQuery, sortBy]);
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
-      <div className="flex justify-between items-start mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
           <h1 className="text-3xl font-bold mb-2">Community</h1>
           <p className="text-muted-foreground">
             Connect, share, and learn from other time bankers
           </p>
         </div>
-        <div className="flex items-center space-x-6">
+        <div className="flex flex-wrap gap-4">
           <Link
             href="/community/chat"
             className="group flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 transition-all"
@@ -144,7 +127,6 @@ export default function CommunityPage() {
             <MessageSquare className="h-4 w-4 mr-2 text-lime-600" />
             <span className="text-lime-700">Open Chat</span>
           </Link>
-
           <Link
             href="/community/new"
             className="group flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 transition-all"
@@ -156,7 +138,7 @@ export default function CommunityPage() {
       </div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Left Sidebar - Categories */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

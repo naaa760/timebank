@@ -200,7 +200,7 @@ export default function ChatPage() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto h-[calc(100vh-4rem)] p-4 sm:p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-gray-200 rounded w-1/4"></div>
           <div className="h-[600px] bg-gray-200 rounded"></div>
@@ -213,7 +213,7 @@ export default function ChatPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="container mx-auto px-4 py-8"
+      className="container mx-auto h-[calc(100vh-4rem)] p-4 sm:p-6"
     >
       <Link
         href="/community"

@@ -3,8 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = ["Features", "Pricing", "About", "Contact"];
+
   return (
     <nav className="fixed top-4 left-4 right-4 z-50">
       {/* Lime gradient background with transparency */}
@@ -28,9 +34,21 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* Navigation Links */}
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden text-gray-700 hover:text-lime-600 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {["Features", "Pricing", "About", "Contact"].map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item}
                 href={`/${item.toLowerCase()}`}
@@ -45,7 +63,7 @@ export const Navbar = () => {
           </div>
 
           {/* Auth Links and Dashboard */}
-          <div className="flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <SignedOut>
               <SignInButton mode="modal">
                 <span className="relative group cursor-pointer">
@@ -91,6 +109,40 @@ export const Navbar = () => {
             </SignedIn>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm rounded-2xl border border-lime-500/20 shadow-lg p-4">
+            <div className="space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item}
+                  href={`/${item.toLowerCase()}`}
+                  className="block px-4 py-2 text-gray-700 hover:text-lime-600 hover:bg-lime-50 rounded-lg transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              ))}
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <span className="block px-4 py-2 text-gray-700 hover:text-lime-600 hover:bg-lime-50 rounded-lg transition-colors">
+                    Sign In
+                  </span>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <Link
+                  href="/dashboard"
+                  className="block px-4 py-2 text-gray-700 hover:text-lime-600 hover:bg-lime-50 rounded-lg transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              </SignedIn>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

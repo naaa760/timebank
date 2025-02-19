@@ -53,13 +53,7 @@ export default function ServicesPage() {
       </div>
 
       {/* Services Grid/List */}
-      <div
-        className={`grid ${
-          viewMode === "grid"
-            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-            : "grid-cols-1"
-        } gap-6`}
-      >
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <ServiceCard />
         {/* More ServiceCards will be mapped here */}
       </div>

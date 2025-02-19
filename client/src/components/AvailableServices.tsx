@@ -1,14 +1,31 @@
 "use client";
 
+import { useEffect } from "react";
 import { useDashboard } from "@/contexts/DashboardContext";
+import { communityApi } from "@/lib/api/community";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Star, Clock } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function AvailableServices() {
-  const { state } = useDashboard();
+  const { state, dispatch } = useDashboard();
+
+  useEffect(() => {
+    const loadServices = async () => {
+      try {
+        const services = await communityApi.getServices();
+        dispatch({ type: "SET_SERVICES", payload: services });
+      } catch (error) {
+        console.error("Failed to load services:", error);
+        toast.error("Failed to load available services");
+      }
+    };
+
+    loadServices();
+  }, [dispatch]);
 
   if (state.loading.services) {
     return (

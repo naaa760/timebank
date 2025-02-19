@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { DashboardProvider } from "@/contexts/DashboardContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,13 +32,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </html>
+      <DashboardProvider>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </html>
+      </DashboardProvider>
     </ClerkProvider>
   );
 }

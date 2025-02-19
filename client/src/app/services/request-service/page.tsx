@@ -12,6 +12,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { format } from "date-fns";
+import { communityApi } from "@/lib/api/community";
+import { toast } from "sonner";
 
 interface ServiceDetails {
   id: string;
@@ -25,6 +27,7 @@ export default function RequestServicePage() {
   const router = useRouter();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [timeSlot, setTimeSlot] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // This would come from the service you're requesting
   const serviceDetails: ServiceDetails = {
@@ -36,6 +39,30 @@ export default function RequestServicePage() {
   };
 
   const timeSlots = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"];
+
+  const handleConfirmBooking = async () => {
+    if (!date || !timeSlot) {
+      toast.error("Please select both date and time");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await communityApi.createBooking({
+        serviceId: serviceDetails.id,
+        date,
+        timeSlot,
+      });
+
+      toast.success("Booking confirmed successfully!");
+      router.push("/dashboard");
+    } catch (error) {
+      console.error("Failed to create booking:", error);
+      toast.error("Failed to confirm booking. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
@@ -132,7 +159,12 @@ export default function RequestServicePage() {
                   <Button variant="outline" onClick={() => router.back()}>
                     Cancel
                   </Button>
-                  <Button>Confirm Booking</Button>
+                  <Button
+                    onClick={handleConfirmBooking}
+                    disabled={isSubmitting || !date || !timeSlot}
+                  >
+                    {isSubmitting ? "Confirming..." : "Confirm Booking"}
+                  </Button>
                 </div>
               </div>
             )}

@@ -14,9 +14,9 @@ import {
   Notification,
   fetchUserProfile,
   fetchTransactions,
-  fetchServices,
   fetchNotifications,
 } from "@/lib/api";
+import { communityApi } from "@/lib/api/community";
 
 interface DashboardState {
   profile: UserProfile | null;
@@ -53,26 +53,8 @@ type DashboardAction =
       value: string | null;
     }
   | { type: "ADD_TRANSACTION"; payload: Transaction }
-  | { type: "ADD_NOTIFICATION"; payload: Notification };
-
-const initialState: DashboardState = {
-  profile: null,
-  transactions: [],
-  services: [],
-  notifications: [],
-  loading: {
-    profile: true,
-    transactions: true,
-    services: true,
-    notifications: true,
-  },
-  error: {
-    profile: null,
-    transactions: null,
-    services: null,
-    notifications: null,
-  },
-};
+  | { type: "ADD_NOTIFICATION"; payload: Notification }
+  | { type: "ADD_SERVICE"; payload: Service };
 
 const DashboardContext = createContext<{
   state: DashboardState;
@@ -112,13 +94,35 @@ function dashboardReducer(
         ...state,
         notifications: [action.payload, ...state.notifications],
       };
+    case "ADD_SERVICE":
+      return {
+        ...state,
+        services: [...state.services, action.payload],
+      };
     default:
       return state;
   }
 }
 
-export function DashboardProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(dashboardReducer, initialState);
+function DashboardProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(dashboardReducer, {
+    loading: {
+      profile: true,
+      transactions: true,
+      services: true,
+      notifications: true,
+    },
+    error: {
+      profile: null,
+      transactions: null,
+      services: null,
+      notifications: null,
+    },
+    profile: null,
+    transactions: [],
+    services: [],
+    notifications: [],
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -155,7 +159,7 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
       try {
         // Fetch services
         dispatch({ type: "SET_LOADING", key: "services", value: true });
-        const services = await fetchServices();
+        const services = await communityApi.getServices();
         dispatch({ type: "SET_SERVICES", payload: services });
       } catch {
         dispatch({
@@ -193,10 +197,12 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useDashboard() {
+function useDashboard() {
   const context = useContext(DashboardContext);
   if (!context) {
     throw new Error("useDashboard must be used within a DashboardProvider");
   }
   return context;
 }
+
+export { DashboardProvider, useDashboard };
