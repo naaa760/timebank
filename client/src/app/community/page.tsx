@@ -16,9 +16,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,6 +47,11 @@ export default function CommunityPage() {
     "latest"
   );
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
+  const [filters, setFilters] = useState({
+    category: new Set<string>(),
+    sortBy: "latest", // "latest" | "popular" | "active"
+    timeFrame: new Set<string>(),
+  });
 
   const categories = [
     { id: "general", name: "General Discussion", count: 156 },
@@ -53,6 +60,20 @@ export default function CommunityPage() {
     { id: "success", name: "Success Stories", count: 34 },
     { id: "support", name: "Support", count: 12 },
   ];
+
+  const timeFrames = ["Today", "This Week", "This Month", "All Time"];
+
+  const toggleFilter = (type: "category" | "timeFrame", value: string) => {
+    setFilters((prev) => {
+      const updated = new Set(prev[type]);
+      if (updated.has(value)) {
+        updated.delete(value);
+      } else {
+        updated.add(value);
+      }
+      return { ...prev, [type]: updated };
+    });
+  };
 
   // Add this useEffect to load discussions
   useEffect(() => {
@@ -134,6 +155,102 @@ export default function CommunityPage() {
             <PlusCircle className="h-4 w-4 mr-2 text-lime-600" />
             <span className="text-lime-700">New Discussion</span>
           </Link>
+        </div>
+      </div>
+
+      {/* Search and Filters Bar */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Search discussions..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+        <div className="flex gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                <Filter className="h-4 w-4 mr-2" />
+                Filter
+                {(filters.category.size > 0 || filters.timeFrame.size > 0) && (
+                  <span className="ml-2 w-5 h-5 rounded-full bg-lime-500 text-white text-xs flex items-center justify-center">
+                    {filters.category.size + filters.timeFrame.size}
+                  </span>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <div className="p-2">
+                <h4 className="mb-2 text-sm font-medium">Categories</h4>
+                {categories.map((category) => (
+                  <DropdownMenuCheckboxItem
+                    key={category.id}
+                    checked={filters.category.has(category.id)}
+                    onCheckedChange={() =>
+                      toggleFilter("category", category.id)
+                    }
+                  >
+                    {category.name}
+                  </DropdownMenuCheckboxItem>
+                ))}
+              </div>
+              <div className="border-t p-2">
+                <h4 className="mb-2 text-sm font-medium">Time Frame</h4>
+                {timeFrames.map((timeFrame) => (
+                  <DropdownMenuCheckboxItem
+                    key={timeFrame}
+                    checked={filters.timeFrame.has(timeFrame)}
+                    onCheckedChange={() => toggleFilter("timeFrame", timeFrame)}
+                  >
+                    {timeFrame}
+                  </DropdownMenuCheckboxItem>
+                ))}
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                <TrendingUp className="h-4 w-4 mr-2" />
+                {sortBy === "latest"
+                  ? "Latest"
+                  : sortBy === "popular"
+                  ? "Popular"
+                  : "Most Active"}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuCheckboxItem
+                checked={filters.sortBy === "latest"}
+                onCheckedChange={() =>
+                  setFilters((prev) => ({ ...prev, sortBy: "latest" }))
+                }
+              >
+                Latest
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={filters.sortBy === "popular"}
+                onCheckedChange={() =>
+                  setFilters((prev) => ({ ...prev, sortBy: "popular" }))
+                }
+              >
+                Popular
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={filters.sortBy === "active"}
+                onCheckedChange={() =>
+                  setFilters((prev) => ({ ...prev, sortBy: "active" }))
+                }
+              >
+                Most Active
+              </DropdownMenuCheckboxItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
