@@ -13,6 +13,7 @@ const http = require("http");
 const setupWebSocket = require("./websocket/chatHandler");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Wrap the initialization in an async function
 const startServer = async () => {
@@ -26,7 +27,7 @@ const startServer = async () => {
     // Middleware
     app.use(
       cors({
-        origin: process.env.FRONTEND_URL || PORT,
+        origin: process.env.FRONTEND_URL || "http://localhost:3000",
         credentials: true,
       })
     );
@@ -51,28 +52,30 @@ const startServer = async () => {
     // Error Handler
     app.use(errorHandler);
 
-    const PORT = process.env.PORT || 5000;
-
     // Create HTTP server
     const server = http.createServer(app);
 
     // Setup WebSocket
     setupWebSocket(server);
 
-    // Try to start server with error handling
-    server
-      .listen(PORT, () => {
-        logger.info(`Server running on port ${PORT}`);
-      })
-      .on("error", (err) => {
-        if (err.code === "EADDRINUSE") {
-          logger.error(`Port ${PORT} is already in use. Trying ${PORT + 1}`);
-          server.listen(PORT + 1);
-        } else {
-          logger.error("Server error:", err);
-          process.exit(1);
-        }
-      });
+    // Improved server start with port handling
+    const startServerOnPort = (port) => {
+      server
+        .listen(port, () => {
+          logger.info(`Server running on port ${port}`);
+        })
+        .on("error", (err) => {
+          if (err.code === "EADDRINUSE") {
+            logger.error(`Port ${port} is already in use. Trying ${port + 1}`);
+            startServerOnPort(port + 1);
+          } else {
+            logger.error("Server error:", err);
+            process.exit(1);
+          }
+        });
+    };
+
+    startServerOnPort(PORT);
   } catch (error) {
     logger.error("Failed to start server:", error);
     process.exit(1);

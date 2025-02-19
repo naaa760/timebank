@@ -456,3 +456,38 @@
 {"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:23:32.726Z"}
 {"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:23:33.441Z"}
 {"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:23:33.583Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:24:26.284Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:24:26.588Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:24:27.224Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:24:27.301Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:28:33.378Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:28:33.685Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:28:34.299Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:28:50.991Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:28:51.298Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:28:52.017Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:29:06.453Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:29:06.760Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:29:06.884Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:29:07.375Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:29:07.454Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:29:19.563Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:29:19.971Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:29:20.584Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:29:30.012Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:29:30.241Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:29:30.882Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:29:53.356Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:30:04.955Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:30:05.334Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:30:06.019Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:32:46.297Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:32:46.304Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:32:46.547Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:32:47.028Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:32:47.130Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:32:58.907Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:33:12.117Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:33:12.424Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:33:13.036Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:33:13.111Z"}
