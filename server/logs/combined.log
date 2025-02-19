@@ -66,3 +66,173 @@
 {"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T10:30:34.521Z"}
 {"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T10:30:34.523Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T10:30:36.967Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:28:25.427Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:28:25.688Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:28:26.194Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:28:26.713Z"}
+{"level":"info","message":"GET /","timestamp":"2025-02-19T11:29:13.496Z"}
+{"level":"info","message":"GET /favicon.ico","timestamp":"2025-02-19T11:29:13.585Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:31:01.547Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:31:01.803Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:31:03.354Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:31:03.439Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:31:46.011Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:31:46.260Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:31:46.881Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:31:46.959Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:32:11.061Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:32:11.471Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:32:11.477Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:32:14.749Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:32:14.750Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:32:14.759Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:32:17.906Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:42:23.007Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:42:23.517Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:42:24.235Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:42:24.356Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:42:25.879Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:42:25.881Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:43:13.733Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:43:13.735Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:43:32.844Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:43:32.849Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:43:35.302Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:43:51.437Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:43:54.437Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:49:11.181Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:49:11.590Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:49:12.203Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:49:12.308Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:49:14.467Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:49:14.471Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:49:29.082Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:49:29.083Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:49:30.234Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:49:30.608Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:49:30.608Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:49:32.346Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:49:32.350Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:49:33.611Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:49:36.199Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:50:14.827Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:50:14.828Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:50:15.454Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:50:15.827Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:50:15.862Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:50:16.520Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:50:16.521Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:50:18.894Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:50:20.188Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T11:53:41.108Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T11:53:41.413Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T11:53:41.926Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T11:53:42.034Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:53:42.495Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:53:42.498Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:42.501Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:51.804Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:52.133Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:53:52.610Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:53.133Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:57.605Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:57.935Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:53:58.402Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:53:58.936Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:00.295Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:00.296Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:01.951Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:02.335Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:02.341Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:54:02.351Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:54:03.654Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:54:03.654Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:05.344Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:54:06.028Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:54:06.328Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:54:06.716Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:54:07.329Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:54:09.268Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:09.484Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:09.485Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:10.189Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:54:10.642Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:10.648Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:54:10.673Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:54:11.424Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:54:11.425Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:54:11.726Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:54:13.679Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:50.378Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:50.740Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:56:51.121Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:51.740Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:56:54.558Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:56:54.559Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:56:55.095Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T11:56:55.493Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:56:55.508Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:55.516Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T11:56:56.403Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T11:56:56.404Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T11:56:58.498Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:58.768Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T11:56:58.845Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:59.768Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:56:59.772Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.274Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.303Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.333Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.363Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.393Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:00.422Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:01.422Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"jkkkkkkk","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:57:02.670Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:23.673Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:23.958Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T11:57:24.275Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T11:57:24.958Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:16.985Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:17.319Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:13:17.735Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:18.378Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:28.755Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:29.058Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:13:29.422Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:30.057Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:36.737Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:37.054Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:13:37.292Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:38.052Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:48.605Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:48.893Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:13:49.153Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:13:49.898Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T12:17:06.389Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T12:17:06.708Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T12:17:07.782Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T12:17:08.078Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:17:08.265Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:17:08.273Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:08.280Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:18.245Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:18.575Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:17:18.996Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:19.575Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:26.574Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:26.881Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:27.144Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:27.385Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:27.584Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:28.000Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:28.356Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:28.641Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:28.950Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:29.142Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:29.328Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:29.607Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi i am neha","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T12:17:29.891Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:17:30.606Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:26:50.299Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:26:53.353Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:26:53.355Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}

@@ -1,5 +1,4 @@
 export interface ChatMessage {
-  edited: boolean | Date;
   id: string;
   content: string;
   sender: {
@@ -9,6 +8,7 @@ export interface ChatMessage {
   };
   timestamp: Date;
   status?: "sent" | "delivered" | "read";
+  edited: boolean;
   reactions?: {
     emoji: string;
     users: string[];

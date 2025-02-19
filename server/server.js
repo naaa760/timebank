@@ -9,6 +9,8 @@ const initializeDatabase = require("./config/initDb");
 const ApiResponse = require("./utils/apiResponse");
 const limiter = require("./middleware/rateLimiter");
 const requestLogger = require("./middleware/requestLogger");
+const http = require("http");
+const setupWebSocket = require("./websocket/chatHandler");
 
 const app = express();
 
@@ -51,7 +53,14 @@ const startServer = async () => {
 
     const PORT = process.env.PORT || 5000;
 
-    app.listen(PORT, () => {
+    // Create HTTP server
+    const server = http.createServer(app);
+
+    // Setup WebSocket
+    setupWebSocket(server);
+
+    // Update the listen call
+    server.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
     });
   } catch (error) {
