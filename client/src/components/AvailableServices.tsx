@@ -5,7 +5,7 @@ import { useDashboard } from "@/contexts/DashboardContext";
 import { communityApi } from "@/lib/api/community";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { Star, Clock } from "lucide-react";
+import { Star, Clock, ChevronRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -29,9 +29,9 @@ export default function AvailableServices() {
 
   if (state.loading.services) {
     return (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {[1, 2, 3].map((i) => (
-          <Skeleton key={i} className="h-48 w-full" />
+          <Skeleton key={i} className="h-64 w-full rounded-xl" />
         ))}
       </div>
     );
@@ -42,44 +42,57 @@ export default function AvailableServices() {
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {state.services.slice(0, 6).map((service) => (
         <div
           key={service.id}
-          className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          className="group relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
         >
-          <div className="p-4">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="relative p-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
-                <Avatar>
+                <Avatar className="border-2 border-primary/20">
                   <AvatarImage src={service.provider.avatar} />
-                  <AvatarFallback>
+                  <AvatarFallback className="bg-primary/20 text-primary-foreground">
                     {service.provider.name.charAt(0).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-medium">{service.title}</h3>
+                  <h3 className="font-semibold text-lg text-primary">
+                    {service.title}
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     by {service.provider.name}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center bg-yellow-400/20 rounded-full px-2 py-1">
                 <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                <span className="text-sm ml-1">{service.provider.rating}</span>
+                <span className="text-sm font-medium ml-1 text-yellow-700">
+                  {service.provider.rating}
+                </span>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-muted-foreground mb-6 line-clamp-2">
               {service.description}
             </p>
             <div className="flex items-center justify-between">
-              <div className="flex items-center text-sm text-muted-foreground">
-                <Clock className="h-4 w-4 mr-1" />
+              <div className="flex items-center text-sm text-muted-foreground bg-primary/10 rounded-full px-3 py-1">
+                <Clock className="h-4 w-4 mr-2 text-primary" />
                 {service.hoursPerSession} hours/session
               </div>
-              <Button asChild>
-                <Link href={`/services/request-service?id=${service.id}`}>
+              <Button
+                asChild
+                variant="ghost"
+                className="group/button hover:bg-primary/20"
+              >
+                <Link
+                  href={`/services/request-service?id=${service.id}`}
+                  className="flex items-center"
+                >
                   Request
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover/button:translate-x-1" />
                 </Link>
               </Button>
             </div>

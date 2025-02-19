@@ -236,3 +236,34 @@
 {"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:26:50.299Z"}
 {"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:26:53.353Z"}
 {"level":"info","message":"Received message:","timestamp":"2025-02-19T12:26:53.355Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:45:03.963Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:45:03.986Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:45:07.002Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T12:45:07.014Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T12:45:07.050Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:45:09.483Z"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T12:45:09.484Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T12:45:26.613Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T12:45:26.616Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T12:45:30.216Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T12:48:50.844Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T12:48:50.852Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T12:48:53.187Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T12:56:37.111Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T12:56:37.160Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T12:56:41.121Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T13:03:00.312Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T13:03:00.325Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T13:03:04.482Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T13:09:39.559Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T13:09:39.560Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T13:09:43.248Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T13:11:24.007Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T13:11:24.018Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T13:11:26.761Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T13:24:17.103Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T13:24:17.120Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T13:24:22.913Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T13:24:29.069Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T13:24:29.071Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T13:24:29.569Z"}
