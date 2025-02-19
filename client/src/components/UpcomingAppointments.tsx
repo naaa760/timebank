@@ -1,78 +1,102 @@
-import { Calendar, Clock, User } from "lucide-react";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, MapPin } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface Appointment {
   id: string;
   service: string;
-  with: string;
-  date: string;
-  time: string;
+  with: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
+  date: Date;
   duration: number;
-  status: "scheduled" | "pending" | "cancelled";
+  location: string;
+  status: "upcoming" | "completed" | "cancelled";
 }
 
 export default function UpcomingAppointments() {
+  // Mock data - would come from context
   const appointments: Appointment[] = [
     {
       id: "1",
-      service: "Web Development Session",
-      with: "John Doe",
-      date: "2024-03-25",
-      time: "14:00",
+      service: "Web Development",
+      with: {
+        id: "user1",
+        name: "John Doe",
+        avatar: "/avatars/john.jpg",
+      },
+      date: new Date("2024-03-25T14:00:00"),
       duration: 2,
-      status: "scheduled",
-    },
-    {
-      id: "2",
-      service: "Spanish Tutoring",
-      with: "Maria Garcia",
-      date: "2024-03-26",
-      time: "10:00",
-      duration: 1,
-      status: "scheduled",
+      location: "Online",
+      status: "upcoming",
     },
   ];
 
   return (
-    <div className="space-y-4">
-      {appointments.length === 0 ? (
-        <p className="text-center text-muted-foreground py-4">
-          No upcoming appointments
-        </p>
-      ) : (
-        appointments.map((apt) => (
-          <div
-            key={apt.id}
-            className="p-4 bg-white rounded-lg hover:shadow-md transition-shadow"
-          >
-            <h4 className="font-medium mb-2">{apt.service}</h4>
-
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <User className="h-4 w-4" />
-                <span>{apt.with}</span>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Calendar className="h-4 w-4" />
-                <span>{apt.date}</span>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4" />
-                <span>
-                  {apt.time} ({apt.duration}h)
-                </span>
+    <Card>
+      <CardHeader>
+        <CardTitle>Upcoming Appointments</CardTitle>
+        <CardDescription>Your scheduled services</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          {appointments.map((appointment) => (
+            <div
+              key={appointment.id}
+              className="flex items-start space-x-4 p-4 bg-muted/50 rounded-lg"
+            >
+              <Avatar>
+                <AvatarImage src={appointment.with.avatar} />
+                <AvatarFallback>
+                  {appointment.with.name.charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h4 className="font-medium">{appointment.service}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      with {appointment.with.name}
+                    </p>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    Reschedule
+                  </Button>
+                </div>
+                <div className="mt-2 space-y-1">
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    {appointment.date.toLocaleDateString()} at{" "}
+                    {appointment.date.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </div>
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <Clock className="h-4 w-4 mr-2" />
+                    {appointment.duration} hours
+                  </div>
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    {appointment.location}
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div className="mt-3 flex justify-end">
-              <button className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full">
-                Reschedule
-              </button>
-            </div>
-          </div>
-        ))
-      )}
-    </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }

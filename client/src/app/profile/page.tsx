@@ -21,38 +21,6 @@ interface UserProfile {
   reviewCount: number;
 }
 
-interface UserService {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  hoursPerSession: number;
-  isActive: boolean;
-}
-
-interface Review {
-  id: string;
-  rating: number;
-  comment: string;
-  from: {
-    id: string;
-    name: string;
-    avatar?: string;
-  };
-  service: string;
-  date: Date;
-}
-
-interface Transaction {
-  id: string;
-  type: "earned" | "spent";
-  amount: number;
-  service: string;
-  with: string;
-  date: Date;
-  status: "completed" | "pending" | "cancelled";
-}
-
 export default function ProfilePage() {
   const { user } = useUser();
   const [isEditing, setIsEditing] = useState(false);

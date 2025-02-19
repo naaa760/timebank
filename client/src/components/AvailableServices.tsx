@@ -1,88 +1,74 @@
-import { ArrowRight, Star } from "lucide-react";
+"use client";
+
+import { useDashboard } from "@/contexts/DashboardContext";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Star, Clock } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 
-interface Service {
-  id: string;
-  title: string;
-  provider: string;
-  rating: number;
-  hoursRequired: number;
-  category: string;
-  tags: string[];
-}
-
 export default function AvailableServices() {
-  const services: Service[] = [
-    {
-      id: "1",
-      title: "Professional Web Development",
-      provider: "Alex Johnson",
-      rating: 4.8,
-      hoursRequired: 2,
-      category: "Technology",
-      tags: ["React", "Next.js", "Frontend"],
-    },
-    {
-      id: "2",
-      title: "Spanish Language Tutoring",
-      provider: "Maria Garcia",
-      rating: 4.9,
-      hoursRequired: 1,
-      category: "Education",
-      tags: ["Language", "Beginner", "Conversation"],
-    },
-  ];
+  const { state } = useDashboard();
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Available Services</h3>
-        <Link
-          href="/services"
-          className="text-sm text-primary hover:underline flex items-center"
-        >
-          View All
-          <ArrowRight className="h-4 w-4 ml-1" />
-        </Link>
-      </div>
-
-      <div className="grid gap-4">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="p-4 bg-white rounded-lg hover:shadow-md transition-shadow"
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h4 className="font-medium">{service.title}</h4>
-                <p className="text-sm text-muted-foreground">
-                  by {service.provider}
-                </p>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                <span className="text-sm font-medium">{service.rating}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between mt-3">
-              <div className="flex gap-2">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm font-medium text-primary">
-                {service.hoursRequired}h
-              </p>
-            </div>
-          </div>
+  if (state.loading.services) {
+    return (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="h-48 w-full" />
         ))}
       </div>
+    );
+  }
+
+  if (state.error.services) {
+    return <div className="text-red-500">{state.error.services}</div>;
+  }
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {state.services.slice(0, 6).map((service) => (
+        <div
+          key={service.id}
+          className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+        >
+          <div className="p-4">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <Avatar>
+                  <AvatarImage src={service.provider.avatar} />
+                  <AvatarFallback>
+                    {service.provider.name.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div>
+                  <h3 className="font-medium">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    by {service.provider.name}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                <span className="text-sm ml-1">{service.provider.rating}</span>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              {service.description}
+            </p>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center text-sm text-muted-foreground">
+                <Clock className="h-4 w-4 mr-1" />
+                {service.hoursPerSession} hours/session
+              </div>
+              <Button asChild>
+                <Link href={`/services/request-service?id=${service.id}`}>
+                  Request
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

@@ -1,75 +1,55 @@
-import { Clock, ArrowUpRight, ArrowDownRight } from "lucide-react";
+"use client";
 
-interface Transaction {
-  id: string;
-  type: "earned" | "spent";
-  amount: number;
-  service: string;
-  with: string;
-  date: string;
-  status: "completed" | "pending" | "cancelled";
-}
+import { useDashboard } from "@/contexts/DashboardContext";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function RecentTransactions() {
-  const transactions: Transaction[] = [
-    {
-      id: "1",
-      type: "earned",
-      amount: 2,
-      service: "Web Development",
-      with: "John Doe",
-      date: "2024-03-20",
-      status: "completed",
-    },
-    {
-      id: "2",
-      type: "spent",
-      amount: 1.5,
-      service: "Language Tutoring",
-      with: "Sarah Smith",
-      date: "2024-03-19",
-      status: "completed",
-    },
-  ];
+  const { state } = useDashboard();
+
+  if (state.loading.transactions) {
+    return (
+      <div className="space-y-4">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="h-16 w-full" />
+        ))}
+      </div>
+    );
+  }
+
+  if (state.error.transactions) {
+    return <div className="text-red-500">{state.error.transactions}</div>;
+  }
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Recent Transactions</h3>
-        <Clock className="h-5 w-5 text-muted-foreground" />
-      </div>
-
-      <div className="space-y-3">
-        {transactions.map((tx) => (
-          <div
-            key={tx.id}
-            className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-center space-x-3">
-              {tx.type === "earned" ? (
-                <ArrowUpRight className="h-5 w-5 text-green-500" />
-              ) : (
-                <ArrowDownRight className="h-5 w-5 text-orange-500" />
-              )}
-              <div>
-                <p className="font-medium">{tx.service}</p>
-                <p className="text-sm text-muted-foreground">with {tx.with}</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <p
-                className={`font-semibold ${
-                  tx.type === "earned" ? "text-green-600" : "text-orange-600"
-                }`}
-              >
-                {tx.type === "earned" ? "+" : "-"}
-                {tx.amount}h
-              </p>
-              <p className="text-xs text-muted-foreground">{tx.date}</p>
-            </div>
+      {state.transactions.slice(0, 5).map((transaction) => (
+        <div
+          key={transaction.id}
+          className="flex items-center justify-between p-4 bg-white rounded-lg shadow"
+        >
+          <div>
+            <h3 className="font-medium">{transaction.service}</h3>
+            <p className="text-sm text-muted-foreground">
+              with {transaction.with.name}
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="text-right">
+            <p
+              className={`font-medium ${
+                transaction.type === "earned"
+                  ? "text-green-600"
+                  : "text-orange-600"
+              }`}
+            >
+              {transaction.type === "earned" ? "+" : "-"}
+              {transaction.amount} hours
+            </p>
+            <p className="text-xs text-muted-foreground capitalize">
+              {transaction.status}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

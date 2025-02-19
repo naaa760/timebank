@@ -1,92 +1,94 @@
-import { MessageSquare, Users, ArrowRight } from "lucide-react";
+"use client";
+import { Button } from "@/components/ui/button";
+import { MessageSquare, Users, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface CommunityPost {
   id: string;
-  type: "discussion" | "announcement" | "question";
   title: string;
-  author: string;
-  replies: number;
+  author: {
+    name: string;
+    avatar?: string;
+  };
   category: string;
-  timeAgo: string;
+  replies: number;
+  views: number;
+  lastActivity: Date;
 }
 
 export default function CommunityActivity() {
+  // Mock data - would come from context
   const posts: CommunityPost[] = [
     {
       id: "1",
-      type: "discussion",
-      title: "Best practices for time banking",
-      author: "Sarah Wilson",
-      replies: 12,
+      title: "Tips for new time bankers",
+      author: {
+        name: "Sarah Wilson",
+      },
       category: "General Discussion",
-      timeAgo: "2 hours ago",
-    },
-    {
-      id: "2",
-      type: "question",
-      title: "How to start teaching languages?",
-      author: "Mike Chen",
-      replies: 5,
-      category: "Getting Started",
-      timeAgo: "4 hours ago",
+      replies: 23,
+      views: 156,
+      lastActivity: new Date("2024-03-20"),
     },
   ];
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Community Activity</h3>
-        <Link
-          href="/community"
-          className="text-sm text-primary hover:underline flex items-center"
-        >
-          Join Discussion
-          <ArrowRight className="h-4 w-4 ml-1" />
-        </Link>
-      </div>
-
-      <div className="space-y-3">
-        {posts.map((post) => (
-          <div
-            key={post.id}
-            className="p-4 bg-white rounded-lg hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <h4 className="font-medium">{post.title}</h4>
-                <p className="text-sm text-muted-foreground">
-                  by {post.author} • {post.timeAgo}
-                </p>
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <CardTitle>Community Activity</CardTitle>
+          <CardDescription>Recent discussions and updates</CardDescription>
+        </div>
+        <Button asChild variant="outline">
+          <Link href="/community">
+            <MessageSquare className="h-4 w-4 mr-2" />
+            View All
+          </Link>
+        </Button>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/community/forum/${post.id}`}
+              className="block"
+            >
+              <div className="p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="font-medium">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Posted by {post.author.name} in {post.category}
+                    </p>
+                  </div>
+                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                    <span className="flex items-center">
+                      <MessageSquare className="h-4 w-4 mr-1" />
+                      {post.replies}
+                    </span>
+                    <span className="flex items-center">
+                      <Users className="h-4 w-4 mr-1" />
+                      {post.views}
+                    </span>
+                    <span className="flex items-center">
+                      <TrendingUp className="h-4 w-4 mr-1" />
+                      Active
+                    </span>
+                  </div>
+                </div>
               </div>
-              <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs">
-                {post.category}
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-4 mt-3 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-1">
-                <MessageSquare className="h-4 w-4" />
-                <span>{post.replies} replies</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Users className="h-4 w-4" />
-                <span>Active Discussion</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Quick Action Buttons */}
-      <div className="grid grid-cols-2 gap-2 pt-2">
-        <button className="p-2 text-sm text-center bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
-          Start Discussion
-        </button>
-        <button className="p-2 text-sm text-center bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
-          Ask Question
-        </button>
-      </div>
-    </div>
+            </Link>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }

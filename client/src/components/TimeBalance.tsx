@@ -1,3 +1,7 @@
+"use client";
+
+import { useDashboard } from "@/contexts/DashboardContext";
+import { Skeleton } from "@/components/ui/skeleton";
 import { CreditCard, TrendingUp, TrendingDown } from "lucide-react";
 
 interface TimeBalanceStats {
@@ -7,6 +11,16 @@ interface TimeBalanceStats {
 }
 
 export default function TimeBalance() {
+  const { state } = useDashboard();
+
+  if (state.loading.profile) {
+    return <Skeleton className="h-20 w-48" />;
+  }
+
+  if (state.error.profile) {
+    return <div className="text-red-500">{state.error.profile}</div>;
+  }
+
   // This would typically fetch the balance from an API
   const stats: TimeBalanceStats = {
     currentBalance: 25.5,
@@ -23,7 +37,7 @@ export default function TimeBalance() {
             Current Balance
           </p>
           <p className="text-3xl font-bold text-primary">
-            {stats.currentBalance} hours
+            {state.profile?.timeCredits} hours
           </p>
         </div>
       </div>
