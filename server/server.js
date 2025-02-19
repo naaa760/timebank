@@ -61,26 +61,34 @@ const startServer = async () => {
     // Setup WebSocket
     setupWebSocket(server);
 
-    // Improved server start with port handling
-    const startServerOnPort = (port) => {
-      server
-        .listen(port, () => {
-          logger.info(
-            `Server running in ${process.env.NODE_ENV} mode on port ${port}`
-          );
-        })
-        .on("error", (err) => {
-          if (err.code === "EADDRINUSE") {
-            logger.error(`Port ${port} is already in use. Trying ${port + 1}`);
-            startServerOnPort(port + 1);
-          } else {
-            logger.error("Server error:", err);
-            process.exit(1);
-          }
-        });
+    // Try available ports starting from PORT
+    const findAvailablePort = async (startPort) => {
+      return new Promise((resolve, reject) => {
+        const tryPort = (port) => {
+          server
+            .listen(port)
+            .once("listening", () => {
+              server.removeAllListeners("error");
+              logger.info(
+                `Server running in ${process.env.NODE_ENV} mode on port ${port}`
+              );
+              resolve(port);
+            })
+            .once("error", (err) => {
+              server.removeAllListeners("listening");
+              if (err.code === "EADDRINUSE") {
+                logger.warn(`Port ${port} is in use, trying ${port + 1}`);
+                tryPort(port + 1);
+              } else {
+                reject(err);
+              }
+            });
+        };
+        tryPort(startPort);
+      });
     };
 
-    startServerOnPort(PORT);
+    await findAvailablePort(PORT);
   } catch (error) {
     logger.error("Failed to start server:", error);
     process.exit(1);
@@ -88,7 +96,10 @@ const startServer = async () => {
 };
 
 // Start the server
-startServer();
+startServer().catch((error) => {
+  logger.error("Server startup failed:", error);
+  process.exit(1);
+});
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
