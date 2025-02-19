@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { ChatMessage, ChatUser } from "@/types/chat";
 import { communityApi } from "@/lib/api/community";
 import { Message } from "@/components/chat/Message";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ChatPage() {
   const { user } = useUser();
@@ -183,6 +184,7 @@ export default function ChatPage() {
     }
   };
 
+  // Handle message reactions
   const handleReaction = (messageId: string, emoji: string) => {
     if (ws.current) {
       ws.current.send(
@@ -256,8 +258,14 @@ export default function ChatPage() {
         <Card className="md:col-span-3 flex flex-col h-[600px] bg-white/50 backdrop-blur-sm">
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            <AnimatePresence>
-              {messages.map((message) => (
+            {isLoading ? (
+              <div className="space-y-4">
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} className="h-20" />
+                ))}
+              </div>
+            ) : (
+              messages.map((message) => (
                 <Message
                   key={message.id}
                   message={message}
@@ -277,13 +285,16 @@ export default function ChatPage() {
                   onDelete={(messageId) => {
                     if (ws.current) {
                       ws.current.send(
-                        JSON.stringify({ type: "delete", messageId })
+                        JSON.stringify({
+                          type: "delete",
+                          messageId,
+                        })
                       );
                     }
                   }}
                 />
-              ))}
-            </AnimatePresence>
+              ))
+            )}
 
             {/* Typing Indicator */}
             {typingUsers.size > 0 && (

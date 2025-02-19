@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   MessageSquare,
@@ -18,9 +18,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "react-hot-toast";
 
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { communityApi } from "@/lib/api/community";
 
 interface ForumPost {
   id: string;
@@ -33,6 +35,18 @@ interface ForumPost {
   isSticky?: boolean;
 }
 
+interface Discussion {
+  id: string;
+  title: string;
+  author: string;
+  category: string;
+  replies: number;
+  views: number;
+  lastActivity: Date;
+  isSticky?: boolean;
+  content: string;
+}
+
 export default function CommunityPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -41,6 +55,7 @@ export default function CommunityPage() {
   const [sortBy, setSortBy] = useState<"latest" | "popular" | "active">(
     "latest"
   );
+  const [discussions, setDiscussions] = useState<Discussion[]>([]);
 
   const forumPosts: ForumPost[] = [
     {
@@ -72,39 +87,44 @@ export default function CommunityPage() {
     { id: "support", name: "Support", count: 12 },
   ];
 
-  // Filter posts based on search and category
-  const filteredPosts = forumPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.author.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory =
-      !selectedCategory || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
-
-  // Sort posts based on criteria
-  const getSortedPosts = () => {
-    return filteredPosts.sort((a, b) => {
-      switch (sortBy) {
-        case "latest":
-          return b.lastActivity.getTime() - a.lastActivity.getTime();
-        case "popular":
-          return b.views - a.views;
-        case "active":
-          return b.replies - a.replies;
-        default:
-          return 0;
-      }
-    });
-  };
-
+  // Add this useEffect to load discussions
   useEffect(() => {
-    // Simulate loading data
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
+    const loadDiscussions = async () => {
+      try {
+        setIsLoading(true);
+        const data = await communityApi.getDiscussions();
+        setDiscussions(data);
+      } catch (error) {
+        console.error("Failed to load discussions:", error);
+        toast.error("Failed to load discussions");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadDiscussions();
   }, []);
+
+  // Update the getSortedPosts function to use discussions
+  const getSortedPosts = useCallback(() => {
+    let filteredPosts = discussions;
+
+    if (selectedCategory) {
+      filteredPosts = filteredPosts.filter(
+        (post) => post.category === selectedCategory
+      );
+    }
+
+    if (searchQuery) {
+      filteredPosts = filteredPosts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.content.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    return filteredPosts;
+  }, [discussions, selectedCategory, searchQuery]);
 
   return (
     <div className="container mx-auto px-4 py-8">
