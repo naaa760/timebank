@@ -26,7 +26,7 @@ const startServer = async () => {
     // Middleware
     app.use(
       cors({
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin: process.env.FRONTEND_URL || PORT,
         credentials: true,
       })
     );
@@ -59,10 +59,20 @@ const startServer = async () => {
     // Setup WebSocket
     setupWebSocket(server);
 
-    // Update the listen call
-    server.listen(PORT, () => {
-      logger.info(`Server running on port ${PORT}`);
-    });
+    // Try to start server with error handling
+    server
+      .listen(PORT, () => {
+        logger.info(`Server running on port ${PORT}`);
+      })
+      .on("error", (err) => {
+        if (err.code === "EADDRINUSE") {
+          logger.error(`Port ${PORT} is already in use. Trying ${PORT + 1}`);
+          server.listen(PORT + 1);
+        } else {
+          logger.error("Server error:", err);
+          process.exit(1);
+        }
+      });
   } catch (error) {
     logger.error("Failed to start server:", error);
     process.exit(1);

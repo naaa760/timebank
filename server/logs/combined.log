@@ -399,3 +399,60 @@
 {"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:09:20.514Z"}
 {"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:09:21.233Z"}
 {"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:09:21.356Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T18:11:38.455Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:38.461Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:41.575Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:41.817Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hi","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T18:11:42.105Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:42.817Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:45.531Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:45.911Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:46.471Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:46.614Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:46.825Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:47.131Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:47.353Z","type":"typing","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"content":"hell i ","level":"info","message":"Received message:","sender":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"},"timestamp":"2025-02-19T18:11:47.753Z","type":"message"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:48.380Z","type":"stopTyping","userId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa"}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T18:11:49.291Z"}
+{"level":"info","message":"New WebSocket connection","timestamp":"2025-02-19T18:11:52.293Z"}
+{"level":"info","message":"Received message:","timestamp":"2025-02-19T18:11:52.295Z","type":"join","user":{"avatar":"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ydEZuTWlBTWtYUjBFODBzR2RPNHhtNElMYUIifQ","id":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","name":"Neha"}}
+{"level":"info","message":"Client disconnected","timestamp":"2025-02-19T18:12:26.184Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:18:03.194Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:18:03.498Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:18:04.113Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:18:04.268Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:18:29.205Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:18:29.509Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:18:30.105Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:18:30.177Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:18:36.680Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:18:36.982Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:18:37.699Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:18:47.737Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:18:48.004Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:18:48.555Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:21:06.461Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:21:06.467Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:21:06.704Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:21:06.708Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:21:07.178Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:21:07.181Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:21:07.352Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:21:28.101Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:21:28.101Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:21:28.511Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:21:29.124Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:21:29.209Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:22:09.907Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:22:10.190Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:22:10.901Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:23:22.287Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:23:22.289Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:23:22.518Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:23:22.961Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:23:23.037Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T18:23:32.420Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T18:23:32.726Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T18:23:33.441Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T18:23:33.583Z"}
