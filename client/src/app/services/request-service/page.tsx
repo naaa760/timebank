@@ -48,16 +48,29 @@ export default function RequestServicePage() {
 
     setIsSubmitting(true);
     try {
-      await communityApi.createBooking({
-        serviceId: serviceDetails.id,
-        date,
-        timeSlot,
+      // Create the booking
+      const response = await fetch("/api/appointments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          serviceId: serviceDetails.id,
+          date,
+          timeSlot,
+          providerId: serviceDetails.provider,
+          duration: serviceDetails.duration,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to create booking");
+      }
 
       toast.success("Booking confirmed successfully!");
       router.push("/dashboard");
     } catch (error) {
-      console.error("Failed to create booking:", error);
+      console.error("Booking error:", error);
       toast.error("Failed to confirm booking. Please try again.");
     } finally {
       setIsSubmitting(false);

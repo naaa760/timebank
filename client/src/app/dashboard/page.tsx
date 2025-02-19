@@ -51,14 +51,18 @@ export default function DashboardPage() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-lime-500/10 animate-gradient-xy" />
+
+      <main className="relative flex-grow container mx-auto px-4 py-8 z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Main Content Area */}
           <div className="md:col-span-2 space-y-6">
-            <Card className="bg-white/50 backdrop-blur-sm border-lime-500/20">
-              <CardHeader>
-                <CardTitle>Welcome back, {user?.firstName}!</CardTitle>
-                <CardDescription>
+            <Card className="bg-white/40 backdrop-blur-md border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group">
+              <CardHeader className="bg-gradient-to-r from-purple-500/10 to-lime-500/10 rounded-t-xl">
+                <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-lime-600 bg-clip-text text-transparent">
+                  Welcome back, {user?.firstName}!
+                </CardTitle>
+                <CardDescription className="text-gray-600">
                   Here is what is happening with your TimeBank account
                 </CardDescription>
               </CardHeader>
@@ -66,7 +70,10 @@ export default function DashboardPage() {
                 <div className="flex justify-between items-start mb-6">
                   <TimeBalance />
                   <div className="space-x-2">
-                    <Button asChild className="bg-lime-500 hover:bg-lime-600">
+                    <Button
+                      asChild
+                      className="bg-gradient-to-r from-purple-500 to-lime-500 hover:from-purple-600 hover:to-lime-600 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
                       <Link href="/services/offer-service">
                         <PlusCircle className="mr-2 h-4 w-4" /> Offer Service
                       </Link>
@@ -74,7 +81,7 @@ export default function DashboardPage() {
                     <Button
                       variant="outline"
                       asChild
-                      className="border-lime-500/20 hover:bg-lime-50"
+                      className="border-white/20 bg-white/50 hover:bg-white/60 backdrop-blur-sm transition-all duration-300"
                     >
                       <Link href="/services">
                         <Search className="mr-2 h-4 w-4" /> Find Service
@@ -96,9 +103,11 @@ export default function DashboardPage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card className="bg-white/50 backdrop-blur-sm border-lime-500/20">
-              <CardHeader>
-                <CardTitle>Upcoming Appointments</CardTitle>
+            <Card className="bg-white/40 backdrop-blur-md border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <CardHeader className="bg-gradient-to-r from-lime-500/10 to-purple-500/10 rounded-t-xl">
+                <CardTitle className="text-xl font-bold bg-gradient-to-r from-lime-600 to-purple-600 bg-clip-text text-transparent">
+                  Upcoming Appointments
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <Suspense fallback={<Skeleton className="h-32 w-full" />}>
@@ -107,9 +116,11 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/50 backdrop-blur-sm border-lime-500/20">
-              <CardHeader>
-                <CardTitle>Community Activity</CardTitle>
+            <Card className="bg-white/40 backdrop-blur-md border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <CardHeader className="bg-gradient-to-r from-purple-500/10 to-lime-500/10 rounded-t-xl">
+                <CardTitle className="text-xl font-bold bg-gradient-to-r from-purple-600 to-lime-600 bg-clip-text text-transparent">
+                  Community Activity
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <Suspense fallback={<Skeleton className="h-32 w-full" />}>
@@ -120,9 +131,10 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
-      <footer className="border-t border-lime-500/20 bg-white/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 text-center text-sm text-muted-foreground">
-          © 2024 TimeBank. All rights reserved.
+
+      <footer className="relative z-10 border-t border-white/20 bg-white/30 backdrop-blur-md">
+        <div className="container mx-auto px-4 py-4 text-center text-sm text-gray-600">
+          © 2025 TimeBank. All rights reserved.
         </div>
       </footer>
     </div>
