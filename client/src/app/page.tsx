@@ -7,10 +7,12 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { GlassCard } from "@/components/GlassCard";
 import { motion } from "framer-motion";
 import { FeatureCard } from "@/components/FeatureCard";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Navbar } from "@/components/Navbar";
 
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+});
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);

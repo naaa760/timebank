@@ -378,3 +378,8 @@
 {"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T17:08:08.611Z"}
 {"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T17:08:08.614Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T17:08:10.642Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T17:12:19.713Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T17:12:19.967Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T17:12:20.475Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T17:12:20.976Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T17:40:40.006Z"}

@@ -4,12 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar } from "@/components/ui/calendar";
 import { Card } from "@/components/ui/card";
-import {
-  Calendar as CalendarIcon,
-  Clock,
-  Users,
-  ArrowRight,
-} from "lucide-react";
+import { Clock, Users, ArrowRight } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },

@@ -17,6 +17,10 @@ export interface Discussion {
     name: string;
     avatar?: string;
   };
-  createdAt: Date;
+  category: string;
   replies: Reply[];
+  views: number;
+  lastActivity: Date;
+  isSticky: boolean;
+  createdAt: Date;
 }

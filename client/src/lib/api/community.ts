@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Discussion } from "@/types/discussion";
 
 const api = axios.create({
   baseURL: "/api/community",
@@ -114,9 +115,28 @@ export const communityApi = {
     return mockDiscussions;
   },
 
-  getDiscussion: async (id: string) => {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return mockDiscussions.find((d) => d.id === id) || null;
+  getDiscussion: async (id: string): Promise<Discussion> => {
+    try {
+      // Mock data for development
+      return {
+        id,
+        title: "Sample Discussion",
+        content: "This is a sample discussion content...",
+        author: {
+          name: "John Doe",
+          avatar: "/avatars/john.jpg",
+        },
+        category: "general",
+        replies: [],
+        views: 0,
+        lastActivity: new Date(),
+        isSticky: false,
+        createdAt: new Date(),
+      };
+    } catch (error) {
+      console.error("Failed to fetch discussion:", error);
+      throw new Error("Failed to fetch discussion");
+    }
   },
 
   createDiscussion: async (discussionData: CreateDiscussionData) => {

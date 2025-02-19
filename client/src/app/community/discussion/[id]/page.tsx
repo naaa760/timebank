@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MessageSquare, ThumbsUp, Share, Flag } from "lucide-react";
@@ -13,27 +13,36 @@ import { motion } from "framer-motion";
 import { Reply, Discussion } from "@/types/discussion";
 
 export default function DiscussionPage() {
-  const { id } = useParams();
+  const params = useParams();
   const [discussion, setDiscussion] = useState<Discussion | null>(null);
   const [replyContent, setReplyContent] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const loadDiscussion = useCallback(async () => {
+  const loadDiscussion = async () => {
+    const id = params?.id;
+    if (!id) return;
+
+    setIsLoading(true);
     try {
       const data = await communityApi.getDiscussion(id as string);
-      setDiscussion(data);
+      const discussionData: Discussion = {
+        ...data,
+        createdAt: new Date(data.lastActivity),
+        replies: data.replies || [],
+      };
+      setDiscussion(discussionData);
     } catch (error) {
       console.error("Failed to load discussion:", error);
       toast.error("Failed to load discussion");
     } finally {
       setIsLoading(false);
     }
-  }, [id]);
+  };
 
   useEffect(() => {
     loadDiscussion();
-  }, [id, loadDiscussion]);
+  }, [params?.id]);
 
   const handleReply = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +51,7 @@ export default function DiscussionPage() {
     setIsSubmitting(true);
     try {
       await communityApi.createReply({
-        discussionId: id as string,
+        discussionId: params?.id as string,
         content: replyContent,
       });
 

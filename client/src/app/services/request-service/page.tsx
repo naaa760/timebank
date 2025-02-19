@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { format } from "date-fns";
-import { communityApi } from "@/lib/api/community";
+
 import { toast } from "sonner";
 
 interface ServiceDetails {
