@@ -383,3 +383,14 @@
 {"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T17:12:20.475Z"}
 {"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T17:12:20.976Z"}
 {"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T17:40:40.006Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T17:53:39.126Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T17:53:39.434Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T17:53:40.035Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T17:53:40.149Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-19T17:53:44.910Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-19T17:53:45.153Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-19T17:53:45.655Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-02-19T17:53:45.727Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-19T18:03:32.708Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-19T18:03:32.716Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-19T18:03:37.173Z"}
