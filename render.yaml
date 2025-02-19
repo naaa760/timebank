@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: timebank-api
+    env: node
+    rootDir: server
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_mK2e1qToXyds@ep-quiet-sound-a8jazzvo-pooler.eastus2.azure.neon.tech/neondb?sslmode=require
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.com

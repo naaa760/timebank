@@ -27,7 +27,10 @@ const startServer = async () => {
     // Middleware
     app.use(
       cors({
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin:
+          process.env.NODE_ENV === "production"
+            ? process.env.FRONTEND_URL
+            : "http://localhost:3000",
         credentials: true,
       })
     );
@@ -62,7 +65,9 @@ const startServer = async () => {
     const startServerOnPort = (port) => {
       server
         .listen(port, () => {
-          logger.info(`Server running on port ${port}`);
+          logger.info(
+            `Server running in ${process.env.NODE_ENV} mode on port ${port}`
+          );
         })
         .on("error", (err) => {
           if (err.code === "EADDRINUSE") {
