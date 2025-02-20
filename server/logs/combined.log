@@ -609,3 +609,4 @@
 {"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T06:09:53.729Z"}
 {"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T06:09:53.734Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T06:09:54.015Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-20T06:19:31.816Z"}
