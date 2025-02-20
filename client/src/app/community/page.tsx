@@ -9,20 +9,16 @@ import {
   Search,
   Filter,
   PlusCircle,
-  ChevronDown,
 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { communityApi } from "@/lib/api/community";
@@ -42,8 +38,6 @@ interface Discussion {
 export default function CommunityPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [showFilters, setShowFilters] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState<"latest" | "popular" | "active">(
     "latest"
   );
@@ -80,14 +74,11 @@ export default function CommunityPage() {
   useEffect(() => {
     const loadDiscussions = async () => {
       try {
-        setIsLoading(true);
         const data = await communityApi.getDiscussions();
         setDiscussions(data);
       } catch (error) {
         console.error("Failed to load discussions:", error);
         toast.error("Failed to load discussions");
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -132,66 +123,87 @@ export default function CommunityPage() {
   }, [discussions, selectedCategory, searchQuery, sortBy]);
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: 'url("/ti.jpg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-lime-500/10 via-white/30 to-emerald-500/10 backdrop-blur-[2px]" />
+    <div className="min-h-screen relative">
+      {/* Base background layer */}
+      <div
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundColor: "#dcfce7", // Light green background
+          opacity: 0.95,
+        }}
+      />
 
-      {/* Content */}
+      {/* Gradient overlay */}
+      <div
+        className="fixed inset-0 z-0 mix-blend-overlay opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(45deg, rgba(22, 163, 74, 0.15), rgba(236, 252, 203, 0.3))",
+        }}
+      />
+
+      {/* Dark green grain effect */}
+      <div
+        className="fixed inset-0 z-0 mix-blend-soft-light opacity-30"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4' style='fill:%23166534'/%3E%3C/svg%3E\")",
+          filter: "contrast(120%)",
+        }}
+      />
+
+      {/* Content wrapper with enhanced shadows */}
       <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Floating image centered above the card */}
+        {/* Animated hero section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mb-16"
+          className="text-center mb-12"
         >
-          <Image
-            src="/fl.png"
-            alt="Community Icon"
-            width={200}
-            height={200}
-            className="object-contain animate-float"
-            style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.1))" }}
-          />
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-lime-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+            Community Hub
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Join conversations, share experiences, and connect with fellow time
+            bankers
+          </p>
         </motion.div>
 
-        {/* Card content */}
-        <div className="bg-white/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-xl">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Community</h1>
-              <p className="text-muted-foreground">
-                Connect, share, and learn from other time bankers
-              </p>
-            </div>
+        {/* Enhanced card styling */}
+        <div
+          className={`bg-white/90 backdrop-blur-md rounded-2xl p-8 
+            border border-green-100/30
+            shadow-[0_8px_30px_rgba(22,163,74,0.1),0_4px_10px_rgba(22,163,74,0.05),inset_0_0_80px_rgba(255,255,255,0.5)] 
+            hover:shadow-[0_20px_40px_rgba(22,163,74,0.15),0_8px_15px_rgba(22,163,74,0.1),inset_0_0_100px_rgba(255,255,255,0.7)] 
+            transition-all duration-500 ease-out`}
+        >
+          {/* Keep existing header section but add animations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4"
+          >
+            {/* Keep existing header content but enhance buttons */}
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/community/chat"
-                className="group flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 transition-all"
+                className="group flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-lime-500/10 to-emerald-500/10 hover:from-lime-500/20 hover:to-emerald-500/20 transition-all duration-300"
               >
-                <MessageSquare className="h-4 w-4 mr-2 text-lime-600" />
-                <span className="text-lime-700">Open Chat</span>
+                <MessageSquare className="h-5 w-5 mr-2 text-lime-600 group-hover:scale-110 transition-transform" />
+                <span className="text-lime-700">Live Chat</span>
               </Link>
               <Link
                 href="/community/new"
-                className="group flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 transition-all"
+                className="group flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-lime-500 to-emerald-500 hover:from-lime-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <PlusCircle className="h-4 w-4 mr-2 text-lime-600" />
-                <span className="text-lime-700">New Discussion</span>
+                <PlusCircle className="h-5 w-5 mr-2 group-hover:rotate-90 transition-transform" />
+                <span>New Discussion</span>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Search and Filters Bar */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          {/* Enhanced Search and Filters */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 bg-white/40 p-4 rounded-xl backdrop-blur-sm">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
               <Input
@@ -248,56 +260,53 @@ export default function CommunityPage() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">
-                    <TrendingUp className="h-4 w-4 mr-2" />
-                    {sortBy === "latest"
-                      ? "Latest"
-                      : sortBy === "popular"
-                      ? "Popular"
-                      : "Most Active"}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuCheckboxItem
-                    checked={filters.sortBy === "latest"}
-                    onCheckedChange={() =>
-                      setFilters((prev) => ({ ...prev, sortBy: "latest" }))
-                    }
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-600 mr-2">Sort by:</span>
+                <div className="flex space-x-4">
+                  <span
+                    onClick={() => setSortBy("latest")}
+                    className={`cursor-pointer transition-colors ${
+                      sortBy === "latest"
+                        ? "text-lime-600 font-medium"
+                        : "text-gray-600 hover:text-lime-600"
+                    }`}
                   >
                     Latest
-                  </DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem
-                    checked={filters.sortBy === "popular"}
-                    onCheckedChange={() =>
-                      setFilters((prev) => ({ ...prev, sortBy: "popular" }))
-                    }
+                  </span>
+                  <span
+                    onClick={() => setSortBy("popular")}
+                    className={`cursor-pointer transition-colors ${
+                      sortBy === "popular"
+                        ? "text-lime-600 font-medium"
+                        : "text-gray-600 hover:text-lime-600"
+                    }`}
                   >
-                    Popular
-                  </DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem
-                    checked={filters.sortBy === "active"}
-                    onCheckedChange={() =>
-                      setFilters((prev) => ({ ...prev, sortBy: "active" }))
-                    }
+                    Most Popular
+                  </span>
+                  <span
+                    onClick={() => setSortBy("active")}
+                    className={`cursor-pointer transition-colors ${
+                      sortBy === "active"
+                        ? "text-lime-600 font-medium"
+                        : "text-gray-600 hover:text-lime-600"
+                    }`}
                   >
                     Most Active
-                  </DropdownMenuCheckboxItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Left Sidebar - Categories */}
+          {/* Enhanced Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Enhanced Categories Sidebar */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
               className="space-y-4"
             >
-              <Card>
+              <Card className="bg-white/70 backdrop-blur-sm border-white/20 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle>Categories</CardTitle>
                 </CardHeader>
@@ -307,12 +316,11 @@ export default function CommunityPage() {
                       <div
                         key={category.id}
                         onClick={() => setSelectedCategory(category.name)}
-                        className={`flex items-center justify-between w-full px-4 py-2 rounded-lg cursor-pointer transition-all group
-                          ${
-                            selectedCategory === category.name
-                              ? "bg-lime-50"
-                              : "hover:bg-lime-50/50"
-                          }`}
+                        className={`flex items-center justify-between w-full px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
+                          selectedCategory === category.name
+                            ? "bg-gradient-to-r from-lime-500/20 to-emerald-500/20 shadow-md"
+                            : "hover:bg-gradient-to-r hover:from-lime-500/10 hover:to-emerald-500/10"
+                        }`}
                       >
                         <span
                           className={`${
@@ -333,147 +341,114 @@ export default function CommunityPage() {
               </Card>
             </motion.div>
 
-            {/* Main Forum Content */}
-            <div className="md:col-span-3 space-y-6">
-              {isLoading ? (
-                <div className="space-y-4">
-                  {[1, 2, 3].map((i) => (
+            {/* Enhanced Discussion List */}
+            <div className="lg:col-span-3 space-y-6">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={sortBy + selectedCategory}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="space-y-4"
+                >
+                  {getSortedPosts().map((post, index) => (
                     <motion.div
-                      key={i}
+                      key={post.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="animate-pulse"
+                      transition={{ delay: index * 0.05 }}
+                      className="group"
                     >
-                      <div className="h-24 bg-gray-100 rounded-lg"></div>
+                      <Link href={`/community/discussion/${post.id}`}>
+                        <div
+                          className={`p-6 bg-white/95 backdrop-blur-sm rounded-xl 
+                            border border-green-50/50
+                            shadow-[0_4px_20px_rgba(22,163,74,0.06),inset_0_2px_8px_rgba(255,255,255,0.8)] 
+                            hover:shadow-[0_8px_30px_rgba(22,163,74,0.12),0_4px_15px_rgba(22,163,74,0.08),inset_0_2px_12px_rgba(255,255,255,0.9)] 
+                            hover:-translate-y-1 
+                            transition-all duration-300 ease-in-out`}
+                        >
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h3 className="font-medium">
+                                {post.isSticky && (
+                                  <span className="text-primary mr-2">📌</span>
+                                )}
+                                {post.title}
+                              </h3>
+                              <p className="text-sm text-muted-foreground">
+                                Posted by {post.author} in {post.category}
+                              </p>
+                            </div>
+                            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                              <span className="flex items-center">
+                                <MessageSquare className="h-4 w-4 mr-1" />
+                                {post.replies}
+                              </span>
+                              <span className="flex items-center">
+                                <Users className="h-4 w-4 mr-1" />
+                                {post.views}
+                              </span>
+                              <span className="flex items-center">
+                                <TrendingUp className="h-4 w-4 mr-1" />
+                                Active
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
                     </motion.div>
                   ))}
-                </div>
-              ) : (
-                <>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-1 relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                        <Input
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Search discussions..."
-                          className="pl-9 bg-white/50 backdrop-blur-sm border-gray-200 focus:border-lime-500 transition-all"
-                        />
-                      </div>
-                      <div
-                        onClick={() => setShowFilters(!showFilters)}
-                        className="flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 cursor-pointer transition-all"
-                      >
-                        <Filter className="h-4 w-4 mr-2 text-lime-600" />
-                        <span className="text-lime-700">Filter</span>
-                      </div>
-                    </div>
-
-                    <DropdownMenu>
-                      <DropdownMenuTrigger className="flex items-center px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm hover:bg-lime-50 cursor-pointer transition-all">
-                        <span className="text-lime-700 mr-2">Sort by</span>
-                        <ChevronDown className="h-4 w-4 text-lime-600" />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuItem onClick={() => setSortBy("latest")}>
-                          Latest
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setSortBy("popular")}>
-                          Most Popular
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setSortBy("active")}>
-                          Most Active
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={sortBy}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="space-y-4"
-                    >
-                      {getSortedPosts().length === 0 ? (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="text-center py-12 text-gray-500"
-                        >
-                          No discussions found
-                        </motion.div>
-                      ) : (
-                        getSortedPosts().map((post, index) => (
-                          <motion.div
-                            key={post.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            <div
-                              className={`p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow ${
-                                post.isSticky ? "border-l-4 border-primary" : ""
-                              }`}
-                            >
-                              <div className="flex justify-between items-start">
-                                <div>
-                                  <h3 className="font-medium">
-                                    {post.isSticky && (
-                                      <span className="text-primary mr-2">
-                                        📌
-                                      </span>
-                                    )}
-                                    {post.title}
-                                  </h3>
-                                  <p className="text-sm text-muted-foreground">
-                                    Posted by {post.author} in {post.category}
-                                  </p>
-                                </div>
-                                <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                                  <span className="flex items-center">
-                                    <MessageSquare className="h-4 w-4 mr-1" />
-                                    {post.replies}
-                                  </span>
-                                  <span className="flex items-center">
-                                    <Users className="h-4 w-4 mr-1" />
-                                    {post.views}
-                                  </span>
-                                  <span className="flex items-center">
-                                    <TrendingUp className="h-4 w-4 mr-1" />
-                                    Active
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </>
-              )}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Floating animation */}
+      {/* Updated grain animation */}
       <style jsx global>{`
-        @keyframes float {
+        .grain {
+          animation: grain 8s steps(10) infinite;
+          background-repeat: repeat;
+          opacity: 0.25;
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+        }
+
+        @keyframes grain {
           0%,
           100% {
-            transform: translateY(0) rotate(0deg);
+            transform: translate(0, 0);
+          }
+          10% {
+            transform: translate(-2%, -2%);
+          }
+          20% {
+            transform: translate(-4%, 2%);
+          }
+          30% {
+            transform: translate(2%, -4%);
+          }
+          40% {
+            transform: translate(-2%, 6%);
           }
           50% {
-            transform: translateY(-15px) rotate(2deg);
+            transform: translate(-4%, 2%);
           }
-        }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
+          60% {
+            transform: translate(6%, 0%);
+          }
+          70% {
+            transform: translate(0%, 4%);
+          }
+          80% {
+            transform: translate(-6%, 0%);
+          }
+          90% {
+            transform: translate(4%, 2%);
+          }
         }
       `}</style>
     </div>
