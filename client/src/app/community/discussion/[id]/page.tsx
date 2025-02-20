@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MessageSquare, ThumbsUp, Share, Flag } from "lucide-react";
@@ -11,25 +11,35 @@ import { communityApi } from "@/lib/api/community";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { Reply, Discussion } from "@/types/discussion";
+import { useUser } from "@clerk/nextjs";
 
 export default function DiscussionPage() {
+  const { user } = useUser();
   const params = useParams();
   const [discussion, setDiscussion] = useState<Discussion | null>(null);
   const [replyContent, setReplyContent] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
 
-  const loadDiscussion = async () => {
+  const loadDiscussion = useCallback(async () => {
     const id = params?.id;
     if (!id) return;
 
     setIsLoading(true);
     try {
       const data = await communityApi.getDiscussion(id as string);
+      // Increment view count
+      await communityApi.incrementViews(id as string);
+
       const discussionData: Discussion = {
         ...data,
         createdAt: new Date(data.lastActivity),
-        replies: data.replies || [],
+        replies:
+          data.replies?.map((reply: Reply) => ({
+            ...reply,
+            createdAt: new Date(reply.createdAt),
+          })) || [],
       };
       setDiscussion(discussionData);
     } catch (error) {
@@ -38,21 +48,33 @@ export default function DiscussionPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [params?.id]);
 
   useEffect(() => {
     loadDiscussion();
-  }, [params?.id]);
+  }, [params?.id, loadDiscussion]);
 
   const handleReply = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!replyContent.trim()) return;
+    if (!user) {
+      toast.error("Please sign in to reply");
+      return;
+    }
+    if (!replyContent.trim()) {
+      toast.error("Reply cannot be empty");
+      return;
+    }
 
     setIsSubmitting(true);
     try {
       await communityApi.createReply({
         discussionId: params?.id as string,
         content: replyContent,
+        author: {
+          id: user.id,
+          name: user.fullName || "Anonymous",
+          avatar: user.imageUrl,
+        },
       });
 
       toast.success("Reply posted successfully!");
@@ -63,6 +85,56 @@ export default function DiscussionPage() {
       toast.error("Failed to post reply. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleLike = async (replyId: string) => {
+    if (!user) {
+      toast.error("Please sign in to like replies");
+      return;
+    }
+
+    try {
+      const newLikedPosts = new Set(likedPosts);
+      if (newLikedPosts.has(replyId)) {
+        // Unlike
+        await communityApi.unlikeReply(replyId);
+        newLikedPosts.delete(replyId);
+      } else {
+        // Like
+        await communityApi.likeReply(replyId);
+        newLikedPosts.add(replyId);
+      }
+      setLikedPosts(newLikedPosts);
+      loadDiscussion(); // Reload to update likes count
+    } catch (error) {
+      console.error("Failed to update like:", error);
+      toast.error("Failed to update like. Please try again.");
+    }
+  };
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast.success("Link copied to clipboard!");
+    } catch (error) {
+      console.error("Failed to copy link:", error);
+      toast.error("Failed to copy link");
+    }
+  };
+
+  const handleReport = async () => {
+    if (!user) {
+      toast.error("Please sign in to report discussions");
+      return;
+    }
+
+    try {
+      await communityApi.reportDiscussion(params?.id as string);
+      toast.success("Discussion reported. Our team will review it.");
+    } catch (error) {
+      console.error("Failed to report discussion:", error);
+      toast.error("Failed to report discussion");
     }
   };
 
@@ -140,13 +212,39 @@ export default function DiscussionPage() {
             </div>
             <p className="text-gray-700 mb-4">{reply.content}</p>
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-              <button className="hover:text-lime-600 transition-colors">
-                <ThumbsUp className="h-4 w-4" />
-                <span className="ml-1">{reply.likes}</span>
+              <button
+                onClick={() => handleLike(reply.id)}
+                className={`flex items-center hover:text-lime-600 transition-colors
+                  ${likedPosts.has(reply.id) ? "text-lime-600" : ""}`}
+              >
+                <ThumbsUp
+                  className={`h-4 w-4 ${
+                    likedPosts.has(reply.id) ? "fill-current" : ""
+                  }`}
+                />
+                <span className="ml-1">{reply.likes || 0}</span>
               </button>
             </div>
           </Card>
         ))}
+      </div>
+
+      {/* Discussion Actions */}
+      <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-6">
+        <button
+          onClick={handleShare}
+          className="hover:text-lime-600 transition-colors flex items-center"
+        >
+          <Share className="h-4 w-4 mr-1" />
+          Share
+        </button>
+        <button
+          onClick={handleReport}
+          className="hover:text-red-500 transition-colors flex items-center"
+        >
+          <Flag className="h-4 w-4 mr-1" />
+          Report
+        </button>
       </div>
 
       {/* Reply Form */}

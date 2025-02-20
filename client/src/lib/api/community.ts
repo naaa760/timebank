@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Discussion } from "@/types/discussion";
+import { Discussion, Reply } from "@/types/discussion";
 
 const api = axios.create({
   baseURL: "/api/community",
@@ -14,6 +14,11 @@ export interface CreateDiscussionData {
 export interface CreateReplyData {
   discussionId: string;
   content: string;
+  author: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
 }
 
 export interface ServiceFormData {
@@ -108,6 +113,9 @@ export interface BookingFormData {
 // Add mock bookings array
 const mockBookings: BookingFormData[] = [];
 
+// Add this at the top with other mock data
+const mockReplies = new Map<string, Reply[]>();
+
 export const communityApi = {
   // Discussions
   getDiscussions: async () => {
@@ -116,27 +124,23 @@ export const communityApi = {
   },
 
   getDiscussion: async (id: string): Promise<Discussion> => {
-    try {
-      // Mock data for development
-      return {
-        id,
-        title: "Sample Discussion",
-        content: "This is a sample discussion content...",
-        author: {
-          name: "John Doe",
-          avatar: "/avatars/john.jpg",
-        },
-        category: "general",
-        replies: [],
-        views: 0,
-        lastActivity: new Date(),
-        isSticky: false,
-        createdAt: new Date(),
-      };
-    } catch (error) {
-      console.error("Failed to fetch discussion:", error);
-      throw new Error("Failed to fetch discussion");
-    }
+    // Mock data for development
+    const discussion = {
+      id,
+      title: "Sample Discussion",
+      content: "This is a sample discussion content...",
+      author: {
+        name: "John Doe",
+        avatar: "/avatars/john.jpg",
+      },
+      category: "general",
+      replies: mockReplies.get(id) || [],
+      views: 0,
+      lastActivity: new Date(),
+      isSticky: false,
+      createdAt: new Date(),
+    };
+    return discussion;
   },
 
   createDiscussion: async (discussionData: CreateDiscussionData) => {
@@ -155,8 +159,18 @@ export const communityApi = {
 
   // Replies
   createReply: async (replyData: CreateReplyData) => {
-    const { data } = await api.post("/replies", replyData);
-    return data;
+    const reply: Reply = {
+      id: `reply-${Date.now()}`,
+      content: replyData.content,
+      author: replyData.author,
+      createdAt: new Date(),
+      likes: 0,
+    };
+
+    const discussionReplies = mockReplies.get(replyData.discussionId) || [];
+    mockReplies.set(replyData.discussionId, [...discussionReplies, reply]);
+
+    return reply;
   },
 
   // Chat
@@ -218,5 +232,53 @@ export const communityApi = {
   getBookings: async () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return mockBookings;
+  },
+
+  incrementViews: async (discussionId: string) => {
+    const response = await fetch(
+      `/api/community/discussions/${discussionId}/views`,
+      {
+        method: "POST",
+      }
+    );
+    return response.json();
+  },
+
+  likeReply: async (replyId: string) => {
+    // Find and update the reply's likes
+    mockReplies.forEach((replies, discussionId) => {
+      const updatedReplies = replies.map((reply) => {
+        if (reply.id === replyId) {
+          return { ...reply, likes: (reply.likes || 0) + 1 };
+        }
+        return reply;
+      });
+      mockReplies.set(discussionId, updatedReplies);
+    });
+    return { success: true };
+  },
+
+  unlikeReply: async (replyId: string) => {
+    // Find and update the reply's likes
+    mockReplies.forEach((replies, discussionId) => {
+      const updatedReplies = replies.map((reply) => {
+        if (reply.id === replyId) {
+          return { ...reply, likes: Math.max(0, (reply.likes || 0) - 1) };
+        }
+        return reply;
+      });
+      mockReplies.set(discussionId, updatedReplies);
+    });
+    return { success: true };
+  },
+
+  reportDiscussion: async (discussionId: string) => {
+    const response = await fetch(
+      `/api/community/discussions/${discussionId}/report`,
+      {
+        method: "POST",
+      }
+    );
+    return response.json();
   },
 };
