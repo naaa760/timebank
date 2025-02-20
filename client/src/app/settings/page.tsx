@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -26,13 +26,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
+import { toast } from "sonner";
 
 interface UserSettings {
   notifications: {
@@ -83,8 +78,29 @@ const cardVariants = {
   },
 };
 
+// Add these language options with icons
+const languages = [
+  { id: "en", name: "English", icon: "🇺🇸" },
+  { id: "es", name: "Español", icon: "🇪🇸" },
+  { id: "fr", name: "Français", icon: "🇫🇷" },
+];
+
+// Add timezone options with icons
+const timezones = [
+  { id: "UTC", name: "UTC", icon: "🌍" },
+  { id: "EST", name: "Eastern Time", icon: "🌎" },
+  { id: "PST", name: "Pacific Time", icon: "🌏" },
+];
+
+// Add visibility options with icons
+const visibilityOptions = [
+  { id: "public", name: "Public", icon: "🌐" },
+  { id: "private", name: "Private", icon: "🔒" },
+];
+
 export default function SettingsPage() {
   const { user } = useUser();
+  const [isLoading, setIsLoading] = useState(false);
   const [settings, setSettings] = useState<UserSettings>({
     notifications: {
       email: true,
@@ -111,41 +127,132 @@ export default function SettingsPage() {
     },
   });
 
-  const handleNotificationChange = (
-    key: keyof UserSettings["notifications"]
+  const handleSettingChange = <
+    T extends keyof UserSettings,
+    K extends keyof UserSettings[T]
+  >(
+    category: T,
+    key: K,
+    value: UserSettings[T][K]
   ) => {
-    setSettings({
-      ...settings,
-      notifications: {
-        ...settings.notifications,
-        [key]: !settings.notifications[key],
+    setSettings((prev) => ({
+      ...prev,
+      [category]: {
+        ...prev[category],
+        [key]: value,
       },
-    });
+    }));
   };
 
-  const handlePrivacyChange = (key: keyof UserSettings["privacy"]) => {
-    if (key === "profileVisibility") return; // Handled by Select
-    setSettings({
-      ...settings,
-      privacy: {
-        ...settings.privacy,
-        [key]: !settings.privacy[key],
-      },
-    });
+  const handleEditProfile = async () => {
+    try {
+      toast.info("Redirecting to profile editor...");
+      // Add your profile edit logic/navigation here
+    } catch (error: unknown) {
+      console.error("Profile edit failed:", error);
+      toast.error("Failed to edit profile. Please try again.");
+    }
   };
+
+  const handleChangeEmail = async () => {
+    try {
+      toast.info("Redirecting to email change...");
+      // Add your email change logic here
+    } catch (error: unknown) {
+      console.error("Email change failed:", error);
+      toast.error("Failed to change email. Please try again.");
+    }
+  };
+
+  const handleUpdatePassword = async () => {
+    try {
+      toast.info("Redirecting to password update...");
+      // Add your password update logic here
+    } catch (error: unknown) {
+      console.error("Password update failed:", error);
+      toast.error("Failed to update password. Please try again.");
+    }
+  };
+
+  const saveSettings = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/settings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user?.id,
+          settings,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      toast.success("Settings saved successfully!");
+    } catch (error) {
+      console.error("Failed to save settings:", error);
+      toast.error("Failed to save settings. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handle2FASetup = async () => {
+    try {
+      toast.info("2FA setup process initiated");
+    } catch (error: unknown) {
+      console.error("2FA setup failed:", error);
+      toast.error("Failed to setup 2FA. Please try again.");
+    }
+  };
+
+  const handleViewDevices = () => {
+    try {
+      toast.info("Device history feature coming soon!");
+    } catch (error: unknown) {
+      console.error("Device history failed:", error);
+      toast.error("Failed to load devices. Please try again.");
+    }
+  };
+
+  const handleManagePayments = () => {
+    try {
+      toast.info("Payment management feature coming soon!");
+    } catch (error: unknown) {
+      console.error("Payment management failed:", error);
+      toast.error("Failed to load payment methods. Please try again.");
+    }
+  };
+
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const response = await fetch("/api/settings");
+        if (response.ok) {
+          const data = await response.json();
+          setSettings(data.settings);
+        }
+      } catch (error) {
+        console.error("Failed to load settings:", error);
+        toast.error("Failed to load settings");
+      }
+    };
+
+    if (user?.id) {
+      loadSettings();
+    }
+  }, [user?.id]);
 
   return (
-    <div
-      className="min-h-screen relative pb-12"
-      style={{
-        backgroundImage: 'url("/ti.jpg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/80 to-white/90 backdrop-blur-[2px]" />
+    <div className="min-h-screen relative">
+      {/* Beautiful gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-emerald-50 via-white to-lime-50" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(200,255,200,0.2),transparent_50%)]" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(220,220,220,0.2),transparent_50%)]" />
 
       <motion.div
         className="relative z-10 container mx-auto px-4 py-8"
@@ -180,7 +287,13 @@ export default function SettingsPage() {
                       Update your personal information
                     </p>
                   </div>
-                  <Button variant="outline">Edit</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleEditProfile}
+                    disabled={isLoading}
+                  >
+                    Edit
+                  </Button>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail className="h-5 w-5 text-muted-foreground" />
@@ -190,7 +303,13 @@ export default function SettingsPage() {
                       {user?.primaryEmailAddress?.emailAddress}
                     </p>
                   </div>
-                  <Button variant="outline">Change</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleChangeEmail}
+                    disabled={isLoading}
+                  >
+                    Change
+                  </Button>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Lock className="h-5 w-5 text-muted-foreground" />
@@ -200,7 +319,13 @@ export default function SettingsPage() {
                       Last changed 3 months ago
                     </p>
                   </div>
-                  <Button variant="outline">Update</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleUpdatePassword}
+                    disabled={isLoading}
+                  >
+                    Update
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -228,7 +353,10 @@ export default function SettingsPage() {
                   </div>
                   <Switch
                     checked={settings.notifications.email}
-                    onCheckedChange={() => handleNotificationChange("email")}
+                    onCheckedChange={(checked) =>
+                      handleSettingChange("notifications", "email", checked)
+                    }
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -244,7 +372,10 @@ export default function SettingsPage() {
                   </div>
                   <Switch
                     checked={settings.notifications.push}
-                    onCheckedChange={() => handleNotificationChange("push")}
+                    onCheckedChange={(checked) =>
+                      handleSettingChange("notifications", "push", checked)
+                    }
+                    disabled={isLoading}
                   />
                 </div>
               </CardContent>
@@ -261,36 +392,36 @@ export default function SettingsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <Globe className="h-5 w-5 text-muted-foreground" />
-                    <div>
-                      <p className="font-medium">Profile Visibility</p>
-                      <p className="text-sm text-muted-foreground">
-                        Control who can see your profile
-                      </p>
+                <div className="flex items-center space-x-4">
+                  <Globe className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <p className="font-medium">Profile Visibility</p>
+                    <div className="flex gap-3 mt-2">
+                      {visibilityOptions.map((option) => (
+                        <motion.div
+                          key={option.id}
+                          onClick={() =>
+                            handleSettingChange(
+                              "privacy",
+                              "profileVisibility",
+                              option.id as "public" | "private"
+                            )
+                          }
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer 
+                            transition-all duration-300 ${
+                              settings.privacy.profileVisibility === option.id
+                                ? "bg-gradient-to-r from-emerald-500 to-lime-500 text-white shadow-lg"
+                                : "bg-white/60 hover:bg-white/80"
+                            }`}
+                        >
+                          <span>{option.icon}</span>
+                          <span>{option.name}</span>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
-                  <Select
-                    value={settings.privacy.profileVisibility}
-                    onValueChange={(value: "public" | "private") =>
-                      setSettings({
-                        ...settings,
-                        privacy: {
-                          ...settings.privacy,
-                          profileVisibility: value,
-                        },
-                      })
-                    }
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="public">Public</SelectItem>
-                      <SelectItem value="private">Private</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -305,7 +436,10 @@ export default function SettingsPage() {
                   </div>
                   <Switch
                     checked={settings.privacy.showActivity}
-                    onCheckedChange={() => handlePrivacyChange("showActivity")}
+                    onCheckedChange={(checked) =>
+                      handleSettingChange("privacy", "showActivity", checked)
+                    }
+                    disabled={isLoading}
                   />
                 </div>
               </CardContent>
@@ -320,70 +454,70 @@ export default function SettingsPage() {
                 <CardDescription>Customize your experience</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <Languages className="h-5 w-5 text-muted-foreground" />
-                    <div>
-                      <p className="font-medium">Language</p>
-                      <p className="text-sm text-muted-foreground">
-                        Choose your preferred language
-                      </p>
+                <div className="flex items-center space-x-4">
+                  <Languages className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <p className="font-medium">Language</p>
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {languages.map((lang) => (
+                        <motion.div
+                          key={lang.id}
+                          onClick={() =>
+                            !isLoading &&
+                            handleSettingChange(
+                              "preferences",
+                              "language",
+                              lang.id
+                            )
+                          }
+                          className={`${
+                            isLoading
+                              ? "opacity-50 cursor-not-allowed"
+                              : "cursor-pointer"
+                          } flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                            settings.preferences.language === lang.id
+                              ? "bg-gradient-to-r from-emerald-500 to-lime-500 text-white shadow-lg"
+                              : "bg-white/60 hover:bg-white/80"
+                          }`}
+                        >
+                          <span>{lang.icon}</span>
+                          <span>{lang.name}</span>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
-                  <Select
-                    value={settings.preferences.language}
-                    onValueChange={(value) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          language: value,
-                        },
-                      })
-                    }
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="es">Español</SelectItem>
-                      <SelectItem value="fr">Français</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <Clock className="h-5 w-5 text-muted-foreground" />
-                    <div>
-                      <p className="font-medium">Time Zone</p>
-                      <p className="text-sm text-muted-foreground">
-                        Set your local time zone
-                      </p>
+                <div className="flex items-center space-x-4">
+                  <Clock className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <p className="font-medium">Time Zone</p>
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {timezones.map((tz) => (
+                        <motion.div
+                          key={tz.id}
+                          onClick={() =>
+                            handleSettingChange(
+                              "preferences",
+                              "timezone",
+                              tz.id
+                            )
+                          }
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer 
+                            transition-all duration-300 ${
+                              settings.preferences.timezone === tz.id
+                                ? "bg-gradient-to-r from-emerald-500 to-lime-500 text-white shadow-lg"
+                                : "bg-white/60 hover:bg-white/80"
+                            }`}
+                        >
+                          <span>{tz.icon}</span>
+                          <span>{tz.name}</span>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
-                  <Select
-                    value={settings.preferences.timezone}
-                    onValueChange={(value) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          timezone: value,
-                        },
-                      })
-                    }
-                  >
-                    <SelectTrigger className="w-40">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="UTC">UTC</SelectItem>
-                      <SelectItem value="EST">Eastern Time</SelectItem>
-                      <SelectItem value="PST">Pacific Time</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </CardContent>
             </Card>
@@ -407,7 +541,13 @@ export default function SettingsPage() {
                       </p>
                     </div>
                   </div>
-                  <Button variant="outline">Setup 2FA</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handle2FASetup}
+                    disabled={isLoading}
+                  >
+                    Setup 2FA
+                  </Button>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -422,16 +562,14 @@ export default function SettingsPage() {
                   </div>
                   <Switch
                     checked={settings.security?.loginNotifications}
-                    onCheckedChange={() =>
-                      setSettings({
-                        ...settings,
-                        security: {
-                          ...settings.security,
-                          loginNotifications:
-                            !settings.security?.loginNotifications,
-                        },
-                      })
+                    onCheckedChange={(checked) =>
+                      handleSettingChange(
+                        "security",
+                        "loginNotifications",
+                        checked
+                      )
                     }
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -445,7 +583,13 @@ export default function SettingsPage() {
                       </p>
                     </div>
                   </div>
-                  <Button variant="outline">View Devices</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleViewDevices}
+                    disabled={isLoading}
+                  >
+                    View Devices
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -469,7 +613,13 @@ export default function SettingsPage() {
                       </p>
                     </div>
                   </div>
-                  <Button variant="outline">Manage</Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleManagePayments}
+                    disabled={isLoading}
+                  >
+                    Manage
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -482,8 +632,21 @@ export default function SettingsPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <Button className="bg-gradient-to-r from-lime-600 to-emerald-600 text-white hover:from-lime-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all">
-              Save Changes
+            <Button
+              onClick={saveSettings}
+              disabled={isLoading}
+              className="bg-gradient-to-r from-lime-600 to-emerald-600 text-white 
+                hover:from-lime-700 hover:to-emerald-700 shadow-lg hover:shadow-xl 
+                transition-all min-w-[120px]"
+            >
+              {isLoading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                  <span>Saving...</span>
+                </div>
+              ) : (
+                "Save Changes"
+              )}
             </Button>
           </motion.div>
         </div>

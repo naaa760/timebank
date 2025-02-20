@@ -596,3 +596,16 @@
 {"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T05:01:35.933Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T05:01:37.763Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T05:01:39.400Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-20T05:55:56.928Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-20T05:55:57.230Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-20T05:55:58.389Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-02-20T05:55:58.500Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T05:59:07.531Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T05:59:07.532Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T05:59:09.748Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T06:09:48.468Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T06:09:48.499Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T06:09:51.811Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T06:09:53.729Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T06:09:53.734Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T06:09:54.015Z"}
