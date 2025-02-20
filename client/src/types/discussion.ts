@@ -15,6 +15,7 @@ export interface Discussion {
   title: string;
   content: string;
   author: {
+    id: string;
     name: string;
     avatar?: string;
   };

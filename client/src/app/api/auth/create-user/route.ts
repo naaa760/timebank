@@ -15,7 +15,7 @@ export async function POST() {
 
     if (!authResult.userId || !user) {
       console.error("No user found in auth context");
-      return new Response("Unauthorized", { status: 401 });
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const userData = {
@@ -37,28 +37,28 @@ export async function POST() {
       }
     );
 
+    // Try to parse as JSON first
+    let data;
     const responseText = await response.text();
-    console.log("Backend response:", responseText);
-
-    if (!response.ok) {
-      throw new Error(`Sync failed: ${responseText}`);
+    try {
+      data = JSON.parse(responseText);
+    } catch {
+      data = { message: responseText };
     }
 
-    return new Response(responseText, {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    if (!response.ok) {
+      throw new Error(data.error || `Sync failed: ${responseText}`);
+    }
+
+    return Response.json(data);
   } catch (error) {
     console.error("Error in create-user:", error);
-    return new Response(
-      JSON.stringify({
+    return Response.json(
+      {
         error: "Failed to sync user",
         details: error instanceof Error ? error.message : String(error),
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
+      },
+      { status: 500 }
     );
   }
 }

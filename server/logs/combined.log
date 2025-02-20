@@ -620,3 +620,20 @@
 {"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T06:53:28.401Z"}
 {"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T06:53:28.403Z"}
 {"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T06:53:30.515Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-20T09:08:01.468Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-20T09:08:01.715Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-20T09:08:02.215Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-02-20T09:08:02.326Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T09:08:12.550Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T09:08:12.550Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T09:08:14.956Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-02-20T10:00:46.567Z"}
+{"level":"info","message":"Users table created or already exists","timestamp":"2025-02-20T10:00:46.873Z"}
+{"level":"info","message":"Database tables initialized successfully","timestamp":"2025-02-20T10:00:47.588Z"}
+{"level":"info","message":"Server running in development mode on port 5000","timestamp":"2025-02-20T10:00:47.697Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T10:01:19.952Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T10:01:19.953Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T10:01:22.009Z"}
+{"level":"info","message":"POST /api/auth/sync-user","timestamp":"2025-02-20T10:02:09.005Z"}
+{"clerkUserId":"user_2tFnMl5kMJjLG0kIcTSJeYsmdXa","email":"nehaprasad27118@gmail.com","level":"info","message":"Received sync request:","name":"Neha","timestamp":"2025-02-20T10:02:09.006Z"}
+{"exists":true,"level":"info","message":"Existing user check:","timestamp":"2025-02-20T10:02:10.676Z"}

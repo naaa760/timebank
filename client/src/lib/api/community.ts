@@ -61,6 +61,9 @@ const mockDiscussions = [
   },
 ];
 
+// Add this at the top with other mock data
+const mockDiscussionsMap = new Map<string, Discussion>();
+
 // Export the Service interface so other components can use it
 export interface Service {
   id: string;
@@ -124,23 +127,28 @@ export const communityApi = {
   },
 
   getDiscussion: async (id: string): Promise<Discussion> => {
-    // Mock data for development
-    const discussion = {
-      id,
-      title: "Sample Discussion",
-      content: "This is a sample discussion content...",
-      author: {
-        name: "John Doe",
-        avatar: "/avatars/john.jpg",
-      },
-      category: "general",
-      replies: mockReplies.get(id) || [],
-      views: 0,
-      lastActivity: new Date(),
-      isSticky: false,
-      createdAt: new Date(),
-    };
-    return discussion;
+    if (!mockDiscussionsMap.has(id)) {
+      // Create initial discussion with proper date objects
+      const discussion: Discussion = {
+        id,
+        title: "Sample Discussion",
+        content: "This is a sample discussion content...",
+        author: {
+          id: "1",
+          name: "John Doe",
+          avatar: "/avatars/john.jpg",
+        },
+        category: "general",
+        replies: [],
+        views: 0,
+        lastActivity: new Date(),
+        isSticky: false,
+        createdAt: new Date(),
+      };
+      mockDiscussionsMap.set(id, discussion);
+    }
+
+    return mockDiscussionsMap.get(id)!;
   },
 
   createDiscussion: async (discussionData: CreateDiscussionData) => {
@@ -158,7 +166,7 @@ export const communityApi = {
   },
 
   // Replies
-  createReply: async (replyData: CreateReplyData) => {
+  createReply: async (replyData: CreateReplyData): Promise<Reply> => {
     const reply: Reply = {
       id: `reply-${Date.now()}`,
       content: replyData.content,
@@ -167,8 +175,10 @@ export const communityApi = {
       likes: 0,
     };
 
-    const discussionReplies = mockReplies.get(replyData.discussionId) || [];
-    mockReplies.set(replyData.discussionId, [...discussionReplies, reply]);
+    const discussion = await communityApi.getDiscussion(replyData.discussionId);
+    discussion.replies = [...discussion.replies, reply];
+    discussion.lastActivity = new Date();
+    mockDiscussionsMap.set(discussion.id, discussion);
 
     return reply;
   },
