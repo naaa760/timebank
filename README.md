@@ -1,5 +1,8 @@
 # TimeBank - Skill Exchange Platform
 
+![image](https://github.com/user-attachments/assets/546efc57-19b8-4c66-8b47-2aac90387975)
+
+
 TimeBank is a modern web application that enables users to exchange services and skills using time as currency. Users can offer their expertise, request services, and build a community based on mutual skill-sharing.
 
 ## 🌟 Features
