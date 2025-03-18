@@ -1,4 +1,4 @@
-# TimeBank - Skill Exchange Platform
+# TimeBank - Skill Exchange Platform 🌿
 
 ![image](https://github.com/user-attachments/assets/546efc57-19b8-4c66-8b47-2aac90387975)
 
